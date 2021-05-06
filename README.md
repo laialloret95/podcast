@@ -67,7 +67,7 @@ The users are also able to rate and comment their favorite podcasts!
 ​
 ## Models
 ​
-User model
+User
 ​
 ```js
 {
@@ -75,8 +75,7 @@ User model
     lastName: String,
     email: String,
     hashedPassword: String,
-    location: Array,
-    age: Number
+
 }
 ```
 ​
