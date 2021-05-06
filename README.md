@@ -55,9 +55,15 @@ The users are also able to rate and comment their favorite podcasts!
      |
 | Profile         | POST   | /profile/edit                 | Update the user profile                          | {mail, username}                    | /profile
      |
+| Podcast Card    | GET    | /podcast/{podcastID}       | See the podcast information                         | {podcastId, podcastInfo...}         |
+     |
+| Podcast Card    | POST   | /podcast/{podcastID}/favorited    | Add a podcast to users favorites             | {podcastId, podcastInfo...}         |/login or  /podcast/{podcastID}
+     |
+| Podcast Card    | POST   | /podcast/{podcastID}/rating    | Add a rating to a podcast                       | {podcastId, rating}         |/login or  /podcast/{podcastID}
+     |
 | Favorites       | GET    | /{userId}/favorites           | See my favorited podcasts                        | {podcastId}                         |
      |
-| Favorites       | GET    | /{userId}/favorites/{podcastId}/delete    | Delet a favorited podcast                        | {podcastId}                         |
+| Favorites       | GET    | /{userId}/favorites/{podcastId}/delete    | Delet a favorited podcast                        | {podcastId}             |/favorites
 ​
 ## Models
 ​
