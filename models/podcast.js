@@ -4,11 +4,17 @@ const podcastSchema = new Schema(
         title: {
             type: String
         },
+        language: {
+            type: String
+        },
         audio: {
             type: String
         },
         audio_length: {
             type: Number
+        },
+        author: {
+            type: String
         },
         description: {
             type: String
