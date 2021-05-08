@@ -20,6 +20,8 @@ The users are also able to rate and comment their favorite podcasts!
 ​
 * **Episode Profile** - As a user I want to be able to access the episode and listen to it
 ​
+* **Favourites** - As a user I want to be able to access my favourited podcasts
+​
 * **Sign up** - As a user I want to sign up on the webpage so that I can use the premium features
 ​
 * **Log in** - As a user I want to be able to log in on the webpage so that I can add the podcasts to my favorites, listen to them and leave a rating.
@@ -38,6 +40,12 @@ The users are also able to rate and comment their favorite podcasts!
 * **Social Media Login** - As a user I want to be able to login with my social media accounts.
 ​
 * **Custom Collections** - As a user I want to be able to create my customized collections.
+​
+* **User Profile Picture** - As a user I want to be able to upload my profile picture.
+​
+* **API connection** - As a user I want to be able to browse among all API database
+​
+* **Log in redirection** - As a user I want to land on the page I was before logging in
 ​
 ​
 ## Routes
@@ -60,6 +68,7 @@ The users are also able to rate and comment their favorite podcasts!
 ### User
 ```js
 {
+    _id: ObjectId,
     firstName: { 
       type: String,
       required: true
@@ -84,31 +93,39 @@ The users are also able to rate and comment their favorite podcasts!
     { timestamp: true} 
 }
 ```
-### Favorited Podcast
+### Podcasts
 ```js
-{ 
+{
+  _id: ObjectId,
+  apiID: String,
   audio: String,
   image: String,
   podcast: { Object } /* Object with the podcast episodes */,
   thumbnail: String,
   pub_date_ms: Date,
-  guid_from_rss:"004f03c8-cdf9-4ff5-9d89-b2147f8d55cf" /* ? */,
   title_original: String,
   audio_length_sec: Number,
   explicit_content: Bolean,
   description_original: String,
   transcripts_highlighted:[ String ],
-  usersIDs: {
-      type: [mongoose.SchemaTypes.ObjectId]
-  },
   rating: [ Numbers ],
   comments: [ mongoose.SchemaTypes.ObjectId ],
+  { timestamp: true} 
+}
+```
+### Favorites
+```js
+{ 
+  _id: ObjectId,
+  podcastID: {type: [mongoose.SchemaTypes.ObjectId]},
+  usersID: {type: [mongoose.SchemaTypes.ObjectId]},
   { timestamp: true } 
 }
 ```
 ### Comments
 ```js
 {   
+  _id: ObjectId,
   content: String,
   author: mongoose.SchemaTypes.ObjectId,
   { timestamp: true } 
