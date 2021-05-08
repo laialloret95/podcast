@@ -47,35 +47,36 @@ const podcasts = [
         comments: []
     },
     {
-        title: ,
-        audio: ,
-        language: ,
-        audio_length: ,
-        description: ,
-        pub_date: ,
-        image: ,
-        genre: ,
+        title: 'Medioambiente y polímeros biodegradables',
+        audio: 'http://feedproxy.google.com/~r/HablandoConCientficos/~5/Bc1ODi_f6TU/hc_183_polimeros_2.mp3',
+        language: 'Spanish',
+        audio_length: 3059,
+        author: "cienciaes.com",
+        description: 'El conocimiento científico crece gracias a la labor de miles de personas que se esfuerzan por encontrar respuestas a los enigmas que plantea la Naturaleza. En cada programa un científico conversa con Angel Rodríguez Lozano y abre para nosotros las puertas de un campo del conocimiento.',
+        pub_date: '2019-07-26',
+        image: 'http://is4.mzstatic.com/image/thumb/Music4/v4/37/60/3c/37603cc4-0525-9e75-9df1-adf3ed38af93/source/600x600bb.jpg',
+        genre: 'Science',
         ratings: [],
         comments: []
     },
     {
-        title: ,
-        audio: ,
-        language: ,
-        audio_length: ,
-        description: ,
-        pub_date: ,
-        image: ,
-        genre: ,
+        title: 'CX Podcast 5x13 I Especial 2017 : Las sorpresas y decepciones de este año',
+        audio: 'http://www.ivoox.com/cx-podcast-5x13-i-especial-2017-las_mf_22475185_feed_1.mp3',
+        language: 'Spanish',
+        audio_length: 9347,
+        author: "Comunidad Xbox",
+        description: 'Bienvenidos al podcast de Comunidad Xbox, un espacio donde nuestros participantes hablan sobre videojuegos sin tapujos y con nuestro característico toque de humor.  Estamos seguros que te encantará nuestro podcast. Os contamos cada semana las últimas noticias, analizaremos los últimos juegos y debatiremos sobre temas de actualidad. ¿Qué mas puedes pedir?',
+        pub_date: '2017-03-05',
+        image: 'http://is5.mzstatic.com/image/thumb/Music71/v4/1a/db/40/1adb4007-bf0a-7bad-81aa-453fb339beb6/source/600x600bb.jpg',
+        genre: 'Games',
         ratings: [],
         comments: []
-    },
-
-]
+    }
+];
 
 Podcast.create(podcasts)
-  .then((podcasts) => {
-    console.log(`Created ${podcasts.length} celebrities`);
+  .then((podcastsDB) => {
+    console.log(`Created ${podcastsDB.length} celebrities`);
     mongoose.connection.close();
   })
   .catch(err => console.log('error', err))
