@@ -10,9 +10,17 @@ The users are also able to rate and comment their favorite podcasts!
 ​
 * **500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
 ​
-* **Homepage** - As a user I want to be able to access the homepage so that I can search or browse among the most featured podcasts 
+* **Homepage** - As a user I want to be able to access the homepage so that I can search by query or browse among genres 
 ​
-* **Sign up** - As a user I want to sign up on the webpage so that I can use the premium features.
+* **Query Results** - As a user I want to be able to access the results from a query search (by keyword)
+​
+* **Genre Results** - As a user I want to be able to access the results from a click on a genre button
+​
+* **Podcast Profile** - As a user I want to be able to access the profile of a Podcast, get all its information, save it as favourite and access the episodes
+​
+* **Episode Profile** - As a user I want to be able to access the episode and listen to it
+​
+* **Sign up** - As a user I want to sign up on the webpage so that I can use the premium features
 ​
 * **Log in** - As a user I want to be able to log in on the webpage so that I can add the podcasts to my favorites, listen to them and leave a rating.
 ​
