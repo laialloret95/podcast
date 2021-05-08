@@ -8,7 +8,8 @@
     "dev": "nodemon ./bin/www",
     "dev:debug": "DEBUG=basicauth* npm run dev",
     "dev-windows": "nodemon ./bin/www",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "seed": "node ./bin/seed.js"
   },
   "repository": {
     "type": "git",

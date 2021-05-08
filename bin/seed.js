@@ -1,8 +1,9 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
-const Podcast = require('../models/poscast');
+const Podcast = require('../models/podcast');
 
 // ℹ️ Connects to the database
-require("../configs");
+require('../configs/db');
 
 //📸 Populate Podcasts
 
