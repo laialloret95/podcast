@@ -96,22 +96,34 @@ The users are also able to rate and comment their favorite podcasts!
 ### Podcasts
 ```js
 {
-  _id: ObjectId,
-  apiID: String,
-  audio: String,
-  image: String,
-  podcast: { Object } /* Object with the podcast episodes */,
-  thumbnail: String,
-  pub_date_ms: Date,
-  title_original: String,
-  audio_length_sec: Number,
-  explicit_content: Bolean,
-  description_original: String,
-  transcripts_highlighted:[ String ],
-  rating: [ Numbers ],
-  comments: [ mongoose.SchemaTypes.ObjectId ],
-  { timestamp: true} 
-}
+        title: {
+            type: String
+        },
+        audio: {
+            type: String
+        },
+        audio_length: {
+            type: Number
+        },
+        description: {
+            type: String
+        },
+        pub_date: {
+            type: Date
+        },
+        image: {
+            type: String
+        },
+        genre: {
+            type: String
+        },
+        ratings: {
+            type: [Number]
+        },
+        comments: {
+            type: [ Schema.ObjectId ]
+        }
+    }
 ```
 ### Favorites
 ```js
