@@ -122,7 +122,7 @@ The users are also able to rate and comment their favorite podcasts!
 ​
 ### Wireframes
 ​
-[https://excalidraw.com/#room=9ca8cea4b63cce2e4076,DYERAHJrSXWUMBT5r_uscQ]()
+https://excalidraw.com/#room=9ca8cea4b63cce2e4076,DYERAHJrSXWUMBT5r_uscQ
 ​
 ### Slides
 ​
