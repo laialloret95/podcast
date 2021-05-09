@@ -1,1 +1,14 @@
 <p>Podcasts</p>
+
+{{#each genresDB}}
+<ul>
+    <a href="/podcasts/{{this}}">{{this}}</a>
+</ul>
+{{/each}}
+
+{{#each podcastsDB}}
+<ul>
+    <a href="/podcasts/{{_id}}">{{title}}</a>
+    <p>{{author}}</p>
+</ul>
+{{/each}}
