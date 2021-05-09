@@ -25,4 +25,29 @@ router.get('/', (req, res, next) => {
         .catch(error => next(error));
 });
 
+// GENRE SEARCH
+router.get('/podcasts/:genre', (req, res, next) => {
+    const genre = req.params.genre;
+
+    Podcast.find({genre: genre})
+      .then(podcastsDB => { //
+        res.render('podcasts/show', {podcastsDB});
+      })
+      .catch(error => next(error));
+});
+
+// QUERY SEARCH
+router.post('/podcasts/search', (req, res, next) => {
+    const {keywords} = req.body;
+
+    Podcast
+        .find({ $or: [{ title : { $regex: keywords} }, { author : { $regex: keywords} }, { description : { $regex: keywords} }]})
+        .then(podcastsDB => {
+            res.render('podcasts/show', {podcastsDB});
+        })
+        .catch(error => next(error));
+});
+
+
+
 module.exports = router;

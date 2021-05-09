@@ -53,13 +53,13 @@ ul {
     filter: brightness(80%);
 }
 
-#latest-podcasts {
+#podcasts {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-#latest-podcasts ul {
+#podcasts ul {
     width: 25%;
 }
 
@@ -111,6 +111,6 @@ button {
     height: 44px;
 }
 
-#latest-podcasts img {
+#podcasts img {
     max-width: 100%;
 }
