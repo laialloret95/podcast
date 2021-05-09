@@ -1,3 +1,27 @@
+body {
+    margin:0;
+    padding: 0;
+    font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+h2 {
+    font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+a {
+    font-family: inherit;
+    color: inherit;
+    border: none;
+    text-decoration: none;
+    width: max-content;
+}
+
+ul {
+    list-style-type: none;
+    margin: 2vw;
+    padding: 0;
+}
+
 .error {
     background: #f02b63;
     box-sizing: border-box;
@@ -5,4 +29,88 @@
     margin: 20px auto;
     padding: 20px;
     width: 100%;
+}
+
+/* HOME PAGE */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#genres {
+    display: flex;
+    justify-content: space-around;
+    margin:0
+}
+
+#genres ul {
+    width: 15%;
+}
+
+#genres img {
+    max-width: 15vw;
+    filter: brightness(80%);
+}
+
+#latest-podcasts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#latest-podcasts ul {
+    width: 25%;
+}
+
+.genre-container {
+    position: relative;
+    text-align: center;
+    padding:0
+}
+
+.centered {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#search-box {
+    background-color: #4654e1;
+    width: 300px;
+    height: 44px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+input {
+    all: unset;
+    font: 16px system-ui;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    padding: 6px 10px;
+}
+
+
+::placeholder {
+    color: #fff;
+    opacity: 0.7; 
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+}
+
+#latest-podcasts img {
+    max-width: 100%;
 }

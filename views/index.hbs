@@ -1,14 +1,33 @@
-<p>Podcasts</p>
+<div class="home-container">
+    <form id="search-box" action="/podcasts/search" role="search" method="POST">
+        <input id="search" type="text" name="search" placeholder="Search..." autofocus required />
+        <button type="submit">
+            <i class="fa fa-search" aria-hidden="true" style="color:#fff"></i>
+        </button>
+    </form>
 
-{{#each genresDB}}
-<ul>
-    <a href="/podcasts/{{this}}">{{this}}</a>
-</ul>
-{{/each}}
+    <div id="genres">
+        {{#each genresDB}}
+        <ul>
+            <a href="/podcasts/{{this}}">
+                <div class="genre-container">
+                    <img src="../images/podcast-icon.png" alt="">
+                    <p class="centered"> {{this}} </p>
+                </div>
+            </a>
+        </ul>
+        {{/each}}
+    </div>
 
-{{#each podcastsDB}}
-<ul>
-    <a href="/podcasts/{{_id}}">{{title}}</a>
-    <p>{{author}}</p>
-</ul>
-{{/each}}
+    <div id="latest-podcasts">
+        {{#each podcastsDB}}
+        <ul>
+            <a href="/podcasts/{{_id}}">
+                <img src="{{image}}" alt="">
+                <h2>{{title}}</h2>
+                <p>{{author}}</p>
+            </a>
+        </ul>
+        {{/each}}
+    </div>
+</div>
