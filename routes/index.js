@@ -2,7 +2,6 @@ const express = require('express');
 const Podcast = require('../models/podcast');
 const router = express.Router();
 
-
 // HOME PAGE
 router.get('/', (req, res, next) => {
     // get unique genres
@@ -27,10 +26,10 @@ router.get('/', (req, res, next) => {
 
 // GENRE SEARCH
 router.get('/podcasts/:genre', (req, res, next) => {
-    const genre = req.params.genre;
+    const { genre } = req.params;
 
     Podcast.find({genre: genre})
-      .then(podcastsDB => { //
+      .then(podcastsDB => {
         res.render('podcasts/show', {podcastsDB});
       })
       .catch(error => next(error));
@@ -48,6 +47,15 @@ router.post('/podcasts/search', (req, res, next) => {
         .catch(error => next(error));
 });
 
+// PODCAST DETAIL
+router.get('/podcasts/profile/:id', (req, res, next) => {
+    const { id } = req.params;
 
+    Podcast.findById(id)
+      .then(podcastDB => {
+        res.render('podcasts/profile', {podcastDB});
+      })
+      .catch(error => next(error));
+});
 
 module.exports = router;
