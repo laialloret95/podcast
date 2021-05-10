@@ -130,7 +130,8 @@ button {
    padding: 1em;
 }
   
-.login {
+.login, 
+.logout {
    background-color: rgba(32, 178, 171, 0.205);
    padding: 2em 0;
 }
