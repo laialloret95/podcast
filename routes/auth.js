@@ -40,7 +40,7 @@ router.post('/signup', (req, res, next) => {
    })
    .then(userFromDB => {
      console.log('Newly created user is: ', userFromDB);
-     res.redirect("/");
+     res.redirect("/login");
    })
    .catch(error => {
       if (error instanceof mongoose.Error.ValidationError) {
@@ -61,7 +61,6 @@ router.post('/signup', (req, res, next) => {
 router.get('/login', (req, res) => res.render('auth/login'));
 
 router.post('/login', (req, res, next) => {
-  console.log('SESSION =====> ', req.session);
   const { email, password } = req.body;
 
   if ( !email || !password ) {
@@ -73,8 +72,8 @@ router.post('/login', (req, res, next) => {
    .then(userDB => {
      if (!userDB) {
       res.render('auth/login', { errorMessage: 'Email is not registered. Try with other email.' });
-      
-     } else if (bcryptjs.compare(password, userDB.hashedPassword)) {
+      return;      
+     } else if (bcryptjs.compareSync(password, userDB.hashedPassword)) {
        const { _id, firstName, lastName, email: mail, preferences, profilePicture } = userDB;
        req.session.currentUser = {
          _id,
@@ -85,9 +84,9 @@ router.post('/login', (req, res, next) => {
          profilePicture
        };
        res.redirect('/profile');
-
      } else {
       res.render('auth/login', { errorMessage: 'Incorrect password.' });
+      return;
      }
    })
    .catch(error => next(error));
