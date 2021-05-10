@@ -95,6 +95,7 @@ The users are also able to rate and comment their favorite podcasts!
           lowercase: true,
           trim: true
         },
+        preferences: ["Technology", "Business", "Sports", "Science", "Games"],
         profilePicture: {
             Type: String,
             default: "../images/avatar-icon.png"

@@ -18,6 +18,7 @@ const userSchema = new Schema(
           lowercase: true,
           trim: true
         },
+        preferences: ["Technology", "Business", "Sports", "Science", "Games"],
         profilePicture: {
             Type: String,
             default: "../images/avatar-icon.png"
