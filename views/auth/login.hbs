@@ -1,0 +1,17 @@
+<div class="auth-container">
+    <div class="login">
+    <h1>Welcome Back!</h1>
+    <p>Please login with your personal info <br> and enjoy the best episodes of all your favourite podcasts.</p>
+        <form action="/login" method="POST">
+            <input class="input-auth" type="email" name="email" id="email" placeholder="Email" required/>
+
+            <input class="input-auth" type="password" name="password" id="password" placeholder="Password" required/>
+
+            <button class="button-auth" type="submit">Sign in!</button>
+
+            {{#if errorMessage}}
+                <p class="error">{{errorMessage}}</p>
+            {{/if}}
+        </form>
+    </div>
+</div>
