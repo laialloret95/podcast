@@ -19,8 +19,7 @@ const authRouter = require('./routes/auth');
 const app = express();
 
 // ䷍ Sessions
-
-
+require('./configs/session')(app);
 
 // ℹ️ Express View engine setup
 app.set('views', path.join(__dirname, 'views'));

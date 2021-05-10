@@ -1,4 +1,12 @@
-{{!-- WIP - structure done for testing --}}
-
-<h1>Welcome to your PodApp Profile!</h1>
-<img src="{{this.profilePicture}}" alt="">
+<div>
+{{#if userInSession}}
+    <h2>Welcome, {{ userInSession.firstName }}!</h2>
+    <img src="{{userInSession.profilePicture}}" alt="">
+    <p>This is your profile page my friend!</p>
+    <button>
+        <a href="/profile">Reload the page</a>
+    </button>
+{{else}}
+    <p>Still no logged in user, sorry!</p>
+{{/if}}
+</div>
