@@ -58,7 +58,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 //LOGIN
-router.get('/login', (req, res) => res.render('auth/login'));
+router.get('/login', (req, res) => res.render('auth/login', { userInSession: req.session.currentUser }));
 
 router.post('/login', (req, res, next) => {
   const { email, password } = req.body;
