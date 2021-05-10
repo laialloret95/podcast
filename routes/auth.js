@@ -15,6 +15,7 @@ router.post('/signup', (req, res, next) => {
   if ( !firstName || !lastName || !email || !password ) {
     res.render('auth/signup', { errorMessage:`All fields are mandatory. 
     Please fill them all to signup.` });
+    return;
   }
 
     // make sure passwords are strong - left commented for testing easily
@@ -58,5 +59,29 @@ router.post('/signup', (req, res, next) => {
 
 //LOGIN
 router.get('/login', (req, res) => res.render('auth/login'));
+
+router.post('/login', (req, res, next) => {
+  const { email, password } = req.body;
+
+  if ( !email || !password ) {
+    res.render('auth/login', { errorMessage:'Please enter both, email and password to login.'});
+    return;
+  }
+
+  User.findOne({ email })
+   .then(user => {
+     if (!user) {
+      res.render('auth/login', { errorMessage: 'Email is not registered. Try with other email.' });
+      return;
+     } else if (bcryptjs.compare(password, user.hashedPassword)) {
+       res.render('users/profile', { user });
+       return;
+     } else {
+      res.render('auth/login', { errorMessage: 'Incorrect password.' });
+      return;
+     }
+   })
+   .catch(error => next(error));
+});
 
 module.exports = router;
