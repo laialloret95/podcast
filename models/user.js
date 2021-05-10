@@ -20,7 +20,7 @@ const userSchema = new Schema(
         },
         preferences: ["Technology", "Business", "Sports", "Science", "Games"],
         profilePicture: {
-            Type: String,
+            type: String,
             default: "../images/avatar-icon.png"
         },
         hashedPassword: {
