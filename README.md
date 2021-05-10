@@ -78,31 +78,35 @@ The users are also able to rate and comment their favorite podcasts!
 ### User
 
 ```js
-{
-    _id: ObjectId,
-    firstName: {
-      type: String,
-      required: true
+    {
+        firstName: {
+          type: String,
+          required: [ true, 'Name is required.']
+        },
+        lastName: {
+          type: String,
+          required: [ true, 'Last name is required.']
+        },
+        email:{
+          type: String,
+          required: [ true, 'Email is required,'],
+          match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address.'],
+          unique: [ true, 'This email has already been registered.'],
+          lowercase: true,
+          trim: true
+        },
+        profilePicture: {
+            Type: String,
+            default: "../images/avatar-icon.png"
+        },
+        hashedPassword: {
+          type: String,
+          required: [ true, 'Password is required.']
+        }
     },
-    lastName: {
-      type: String,
-      required: true
-    },
-    email:{
-      type: String,
-      required: [ true, 'Email is required,']
-      unique: [ true, 'This email has already been registered.']
-    },
-    profilePicture: {
-        Type: String,
-        default: [look for an avatar]
-    },
-    hashedPassword: {
-      type: String,
-      required: [ true, 'Password is required,']
-    },
-    { timestamp: true}
-}
+    { 
+      timestamps: true 
+    }
 ```
 
 ### Podcasts
