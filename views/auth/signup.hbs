@@ -1,0 +1,21 @@
+<div class="auth-container">
+    <div class="signup">
+    <h1>Sign Up</h1>
+    <p>Fill up the following form to register to Podapp</p>
+        <form action="/signup" method="post">
+            <input class="input-auth" type="text" name="firstname" id="firstName" placeholder="First name" autofocus required/>
+
+            <input class="input-auth" type="text" name="lastname"  id="lastName" placeholder="Last name" required/>
+
+            <input class="input-auth" type="email" name="email" id="email" placeholder="Email" required/>
+
+            <input class="input-auth" type="password" name="password" id="password" placeholder="Password" />
+
+            <button class="button-auth" type="submit">Sign up!</button>
+
+            {{#if errorMessage}}
+                <p class="error">{{errorMessage}}</p>
+            {{/if}}
+        </form>
+    </div>
+</div>
