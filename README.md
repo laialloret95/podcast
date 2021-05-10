@@ -166,10 +166,15 @@ The users are also able to rate and comment their favorite podcasts!
 ```js
 {
   _id: ObjectId,
-  content: String,
-  author: mongoose.SchemaTypes.ObjectId,
-  { timestamp: true }
+  content: {
+     type: String,
+     required: true
+  },
+  author: Schema.Types.ObjectId
 },
+{ 
+  timestamps: true 
+}
 ```
 
 ​
