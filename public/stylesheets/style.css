@@ -175,3 +175,12 @@ button {
 .button-auth:focus {
    box-shadow: lightslategray  5px 10px 9px;
 }
+
+/* USER PROFILE */
+
+.profile-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}

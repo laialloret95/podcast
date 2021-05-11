@@ -15,6 +15,7 @@ require('./configs/db');
 // 🪙 Routers
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
+const usersRouter = require('./routes/users');
 
 const app = express();
 
@@ -39,6 +40,7 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 // 👇 Handling routes here
 app.use('/', indexRouter);
 app.use('/', authRouter);
+app.use('/', usersRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => next(createError(404)));

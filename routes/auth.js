@@ -58,7 +58,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 //LOGIN
-router.get('/login', (req, res) => res.render('auth/login', { userInSession: req.session.currentUser }));
+router.get('/login', (req, res) => res.render('auth/login'));
 
 router.post('/login', (req, res, next) => {
   const { email, password } = req.body;
@@ -90,10 +90,6 @@ router.post('/login', (req, res, next) => {
      }
    })
    .catch(error => next(error));
-});
-
-router.get('/profile', (req, res) => {
-  res.render('users/profile', { userInSession: req.session.currentUser });
 });
 
 router.get('/logout', (req, res) => {

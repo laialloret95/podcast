@@ -1,10 +1,10 @@
-<div>
+<div class="profile-container">
 {{#if userInSession}}
     <h2>Welcome, {{ userInSession.firstName }}!</h2>
     <img src="{{userInSession.profilePicture}}" alt="">
     <p>This is your profile page my friend!</p>
     <button>
-        <a href="/profile">Reload the page</a>
+        <a href="#">Edit information</a>
     </button>
 {{else}}
     <p>Still no logged in user, sorry!</p>
