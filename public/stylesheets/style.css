@@ -115,10 +115,6 @@ button {
     text-align: center;
 }
   
-.container-accent {
-   background-color: rgba(32, 178, 171, 0.226);
-   padding: 1em;
-}
   
 .login, 
 .logout {
