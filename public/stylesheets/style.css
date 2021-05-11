@@ -114,3 +114,73 @@ button {
 #podcasts img {
     max-width: 100%;
 }
+
+
+/* SIGNUP PAGE */
+
+.auth-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+  
+.container-accent {
+   background-color: rgba(32, 178, 171, 0.226);
+   padding: 1em;
+}
+  
+.login, 
+.logout {
+   background-color: rgba(32, 178, 171, 0.205);
+   padding: 2em 0;
+}
+  
+.signup {
+   background-color: rgb(235, 235, 235);
+   padding: 2em 0;
+}
+  
+.input-auth {
+    display: inline-block;
+    width: 90%;
+    margin: 0.5em auto;
+    padding: 0.75em 0.5em;
+    background-color: white;
+    border: none;
+    color: grey;
+    font-weight: bold;
+    text-align: left;
+}
+
+.input-auth::placeholder {
+    color: rgb(92, 91, 91);
+    font-weight: bold;
+    opacity: none;
+}
+  
+.button-auth {
+   margin: 0.2em;
+   padding: 1em 3em;
+   background-color: lightseagreen;
+   border: none;
+   box-shadow: lightslategray  2px 2px 2px;
+   font-weight: 600;
+   color: white;
+   width: auto;
+   height: auto;
+}
+  
+.button-auth:hover,
+.button-auth:focus {
+   box-shadow: lightslategray  5px 10px 9px;
+}
+
+/* USER PROFILE */
+
+.profile-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
