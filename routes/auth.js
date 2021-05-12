@@ -83,6 +83,7 @@ router.post('/login', (req, res, next) => {
          preferences,
          profilePicture
        };
+       req.flash('info','Logged!');
        res.redirect('/profile');
      } else {
       res.render('auth/login', { errorMessage: 'Incorrect password.' });
