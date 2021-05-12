@@ -7,6 +7,7 @@ const favicon = require('serve-favicon');
 
 const cookieParser = require('cookie-parser');
 const hbs = require('hbs');
+hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
 
@@ -35,6 +36,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.flashMessage = req.flash('flashMessage');
+  next();
+});
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);

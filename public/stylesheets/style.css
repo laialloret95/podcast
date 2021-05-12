@@ -1,11 +1,7 @@
 body {
     margin:0;
     padding: 0;
-    font: 3.2vw 'Lucida Grande', Helvetica, Arial, sans-serif;
-}
-
-h1, h2, h3, h4, p {
-    font: 3.2vw'Lucida Grande', Helvetica, Arial, sans-serif;
+    font: 2vw 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -190,7 +186,6 @@ button {
 .podcast-profile-header-container {
     max-height: 90%;
     display: flex;
-    font-size: 0.4rem;
     color: white;
     justify-content: space-around;
     background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/constellation.jpeg);
@@ -237,14 +232,14 @@ hr.solid {
     color:rgba(0, 0, 0, 0.5);
 }
 
-.fas > p {
-    font: 'Lucida Grande';
-    margin: 0;
-    padding: 0 5%;
+.podcast-profile {
+    display: flex;
+    align-items: center;
+    padding: 2%;
 }
 
-.far > p {
-    font: 'Lucida Grande';
+.icon-name {
+    font: 'Lucida Grande', Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0 5%;
 }

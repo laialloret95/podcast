@@ -8,8 +8,8 @@ const router = express.Router();
 // USER PROFILE
 
 router.get('/profile',checkIfUserIsLoggedIn, (req, res) => {
-    console.log(req.flash('info'));
-    res.render('users/profile', { userInSession: req.session.currentUser,  message: req.flash('info') });
+    console.log(req.flash('flashMessage'));
+    res.render('users/profile', { userInSession: req.session.currentUser,  message: req.flash('flashMessage') });
   });
 
 

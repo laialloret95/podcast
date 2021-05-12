@@ -5,27 +5,28 @@
             <div class="podcast-profile-header-text-container">
                 <h1>{{podcastDB.title}}</h1>
                 <h2>{{podcastDB.author}}</h2>
-                <p>{{podcastDB.pub_date}}</p>
+                <p>{{dateFormat podcastDB.pub_date "dddd, MMMM Do YYYY"}}</p>
             </div>
         </div>
         <hr class="solid">
         <div class="podcast-profile-actions-container">
 
             {{#if loggedUser}}
-            <audio controls src={{podcastDB.audio}}> </audio>
-            <i class="fas fa-heart">
-                <p>Favourite</p>
-            </i>
+            <div>
+                <audio controls src={{podcastDB.audio}}> </audio>
+                <a class="podcast-profile" href="/favourites">
+                    <i class="fas fa-heart"></i>
+                    <p class="icon-name">Favourite</p>
+                </a>
+            </div>
             {{else}}
-            <a href="/login">
-                <i class="far fa-play-circle">
-                    <p>Play</p>
-                </i>
+            <a class="podcast-profile" href="/login">
+                <i class="far fa-play-circle"></i>
+                <p class="icon-name">Play</p>
             </a>
-            <a href="/login">
-                <i class="fas fa-heart">
-                    <p>Favourite</p>
-                </i>
+            <a class="podcast-profile" href="/login">
+                <i class="fas fa-heart"></i>
+                <p class="icon-name">Favourite</p>
             </a>
             {{/if}}
 

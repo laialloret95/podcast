@@ -52,15 +52,22 @@ router.get('/podcasts/profile/:id', (req, res, next) => {
     const { id } = req.params;
     let loggedUser;
 
-    // if (req.session.currentUser) {
-    //     loggedUser = true;
-    //     return next();
-    // }
-    Podcast.findById(id)
-      .then(podcastDB => {
-        res.render('podcasts/profile', {podcastDB, loggedUser});
-      })
-      .catch(error => next(error));
+    if (req.session.currentUser) {
+        loggedUser = true;
+        Podcast
+            .findById(id)
+            .then(podcastDB => {
+            res.render('podcasts/profile', {podcastDB, loggedUser});
+            })
+            .catch(error => next(error));
+    } else {
+        Podcast
+        .findById(id)
+        .then(podcastDB => {
+          res.render('podcasts/profile', {podcastDB});
+        })
+        .catch(error => next(error));
+    }
 });
 
 module.exports = router;
