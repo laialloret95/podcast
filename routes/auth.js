@@ -17,7 +17,6 @@ router.post('/signup', (req, res, next) => {
     Please fill them all to signup.` });
     return;
   }
-
     // make sure passwords are strong - left commented for testing easily
     //const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
     //if (!regex.test(password)) {
@@ -40,7 +39,7 @@ router.post('/signup', (req, res, next) => {
    })
    .then(userFromDB => {
      console.log('Newly created user is: ', userFromDB);
-     res.redirect("/login");
+     res.render("auth/preferences", { userFromDB });
    })
    .catch(error => {
       if (error instanceof mongoose.Error.ValidationError) {
@@ -55,6 +54,14 @@ router.post('/signup', (req, res, next) => {
         next(error);
       }
     });
+});
+
+
+// POST ADD PREFERENCES - FORM SHOWN AFTER USER SIGN UP
+router.post('/signup/:id', (req, res, next) => {
+  const { id } = req.params;
+  res.send(req.body);
+
 });
 
 //LOGIN

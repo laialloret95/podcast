@@ -1,0 +1,25 @@
+<div class="auth-container">
+    <div class="signup signup-preferences">
+        <h1>Add your preferences here {{userFromDB.firstName}}</h1>
+
+        <form action="/signup/{{userFromDB._id}}" method="POST"</br>
+            <input type="checkbox" id="technology" name="preferences" value="Technology" checked>
+            <label class="preferences-label" for="technology">Technology</label>
+            </br>
+            <input type="checkbox" id="business" name="preferences" value="Business">
+            <label class="preferences-label" for="business">Business</label>
+            </br>
+            <input type="checkbox" id="games" name="preferences" value="Games">
+            <label class="preferences-label" for="games">Games</label>
+            </br>
+            <input type="checkbox" id="science" name="preferences" value="Science">
+            <label class="preferences-label" for="science">Science</label>
+            </br>
+            <input type="checkbox" id="sports" name="preferences" value="Sports">
+            <label class="preferences-label" for="sports">Sports</label>
+            </br>
+            </br>
+            <button class="button-auth" type="submit">Save preferences!</button>
+        </form>
+    </div>
+</div>

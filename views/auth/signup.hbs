@@ -2,15 +2,16 @@
     <div class="signup">
     <h1>Create a New Account</h1>
     <p>Come join the Podapp community! Let's set up your account.</p>
-    <p>Already have one? <a href="/login">Login</a>in here.</p>
+    <p>Already have one? <a href="/login">Login</a> here.</p>
+
         <form action="/signup" method="POST">
-            <input class="input-auth" type="text" name="firstName" id="firstName" placeholder="First name" autofocus required/>
+            <input class="input-auth" type="text" name="firstName" id="firstName" placeholder="First name" autofocus />
 
-            <input class="input-auth" type="text" name="lastName"  id="lastName" placeholder="Last name" required/>
+            <input class="input-auth" type="text" name="lastName"  id="lastName" placeholder="Last name" />
 
-            <input class="input-auth" type="email" name="email" id="email" placeholder="Email" required/>
+            <input class="input-auth" type="email" name="email" id="email" placeholder="Email" />
 
-            <input class="input-auth" type="password" name="password" id="password" placeholder="Password" required/>
+            <input class="input-auth" type="password" name="password" id="password" placeholder="Password" />
 
             <button class="button-auth" type="submit">Sign up!</button>
 
@@ -18,5 +19,6 @@
                 <p class="error">{{errorMessage}}</p>
             {{/if}}
         </form>
+
     </div>
 </div>
