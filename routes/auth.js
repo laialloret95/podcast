@@ -38,8 +38,8 @@ router.post('/signup', (req, res, next) => {
      });
    })
    .then(userFromDB => {
-     console.log('Newly created user is: ', userFromDB);
-     res.render("auth/preferences", { userFromDB });
+     const uri = `/signup/${userFromDB._id}`;
+     res.redirect(uri);
    })
    .catch(error => {
       if (error instanceof mongoose.Error.ValidationError) {
@@ -56,12 +56,28 @@ router.post('/signup', (req, res, next) => {
     });
 });
 
+// ROUTES TO DEFINE THE USER PREFERENCES DURING THE SIGNUP
+router.get('/signup/:id', (req, res, next) => {
+  const { id } = req.params;
 
-// POST ADD PREFERENCES - FORM SHOWN AFTER USER SIGN UP
+  User.findById(id)
+    .then(userFromDB => {
+      res.render('auth/preferences', {userFromDB});
+    })
+    .catch(error => next(error));
+});
+
 router.post('/signup/:id', (req, res, next) => {
   const { id } = req.params;
-  res.send(req.body);
+  const { preferences } = req.body;
 
+  User
+   .findByIdAndUpdate(id, { preferences: preferences }, { new: true })
+   .then((userFromDB) => {
+     console.log(userFromDB);
+     res.redirect('/login');
+   })
+   .catch(error => next(error));
 });
 
 //LOGIN
