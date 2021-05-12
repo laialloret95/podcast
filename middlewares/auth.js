@@ -5,5 +5,6 @@ const checkIfUserIsLoggedIn = (req, res, next) => {
     }
     return res.redirect('/login');
 };
+
   
 module.exports = checkIfUserIsLoggedIn;

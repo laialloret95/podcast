@@ -1,9 +1,40 @@
 <div>
     <ul>
-        <img src="{{podcastDB.image}}" alt="">
-        <h2>{{podcastDB.title}}</h2>
-        <p>{{podcastDB.author}}</p>
-        <p>{{podcastDB.description}}</p>
-        </a>
+        <div class="podcast-profile-header-container">
+            <img src="{{podcastDB.image}}" alt="podcast_image">
+            <div class="podcast-profile-header-text-container">
+                <h1>{{podcastDB.title}}</h1>
+                <h2>{{podcastDB.author}}</h2>
+                <p>{{podcastDB.pub_date}}</p>
+            </div>
+        </div>
+        <hr class="solid">
+        <div class="podcast-profile-actions-container">
+
+            {{#if loggedUser}}
+            <audio controls src={{podcastDB.audio}}> </audio>
+            <i class="fas fa-heart">
+                <p>Favourite</p>
+            </i>
+            {{else}}
+            <a href="/login">
+                <i class="far fa-play-circle">
+                    <p>Play</p>
+                </i>
+            </a>
+            <a href="/login">
+                <i class="fas fa-heart">
+                    <p>Favourite</p>
+                </i>
+            </a>
+            {{/if}}
+
+            <p class="minutes">{{podcastDB.audio_length}} minutes</p>
+        </div>
+        <hr class="solid">
+        <div class="podcast-profile-description-container">
+            <h2>Description</h2>
+            <p>{{podcastDB.description}}</p>
+        </div>
     </ul>
 </div>
