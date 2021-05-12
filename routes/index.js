@@ -37,7 +37,7 @@ router.get('/podcasts/:genre', (req, res, next) => {
 
 // QUERY SEARCH
 router.post('/podcasts/search', (req, res, next) => {
-    const {keywords} = req.body;
+    const keywords = req.body.keywords.toLowerCase();
     
     Podcast
         .find({ $or: [{ title : { $regex: keywords} }, { author : { $regex: keywords} }, { description : { $regex: keywords} }]})
