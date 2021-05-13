@@ -5,11 +5,12 @@ const checkIfUserIsLoggedIn = require('../middlewares/auth');
 
 const router = express.Router();
 
-// USER PROFILE
+//USER ROUTES JUST FOR THE APP MEMBERS - PRIVATE
+router.use(checkIfUserIsLoggedIn);
 
-router.get('/profile',checkIfUserIsLoggedIn, (req, res) => {
-    console.log(req.flash('info'));
-    res.render('users/profile', { userInSession: req.session.currentUser,  message: req.flash('info') });
+// USER PROFILE
+router.get('/profile', (req, res, next) => {
+    res.render('users/profile', { userInSession: req.session.currentUser });
   });
 
 
