@@ -1,13 +1,19 @@
 <div class="profile-container">
-    <p>{{info}}</p>
-    {{#if userInSession}}
-    <h2>Welcome, {{ userInSession.firstName }}!</h2>
-    <img src="{{userInSession.profilePicture}}" alt="">
-    <p>This is your profile page my friend!</p>
-    <button>
-        <a href="#">Edit information</a>
-    </button>
-    {{else}}
-    <p>Still no logged in user, sorry!</p>
-    {{/if}}
-</div>
+    <div class="profile-info">
+        <div class="profile-picture">
+            <img width="180" height="180" src="./images/avatar-icon.png" alt="{{userInSession.firstName}} {{userInSession.lastName}} Podapp profile.">
+        </div>
+        <div class="profile-details">
+            <h1>{{userInSession.firstName}} {{userInSession.lastName}}</h1>
+            <h2>Favourite Genres</h2>
+                <ul>
+                    <li class="profile-preferences-li">|</li>
+                {{#each userInSession.preferences}}
+                    <li class="profile-preferences-li">{{this}} |</li>
+                {{/each}}
+                </ul>
+            <a class="button-auth button-inline" href="/profile/edit">Edit profile</a>
+        </div>
+    </div> <!-- /profile-info -->
+</div> <!-- /profile-container -->
+
