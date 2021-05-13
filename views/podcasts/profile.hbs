@@ -1,41 +1,57 @@
 <div>
-    <ul>
-        <div class="podcast-profile-header-container">
-            <img src="{{podcastDB.image}}" alt="podcast_image">
-            <div class="podcast-profile-header-text-container">
-                <h1>{{podcastDB.title}}</h1>
-                <h2>{{podcastDB.author}}</h2>
-                <p>{{dateFormat podcastDB.pub_date "dddd, MMMM Do YYYY"}}</p>
-            </div>
+    <div class="podcast-profile-header-container">
+        <img src="{{podcastDB.image}}" alt="podcast_image">
+        <div class="podcast-profile-header-text-container">
+            <h1>{{podcastDB.title}}</h1>
+            <h2>{{podcastDB.author}}</h2>
+            <p>{{dateFormat podcastDB.pub_date "dddd, MMMM Do YYYY"}}</p>
         </div>
-        <hr class="solid">
-        <div class="podcast-profile-actions-container">
+    </div>
+    <hr class="solid">
+    <div class="podcast-profile-actions-container">
 
-            {{#if loggedUser}}
-            <div>
-                <audio controls src={{podcastDB.audio}}> </audio>
-                <a class="podcast-profile" href="/favourites">
-                    <i class="fas fa-heart"></i>
-                    <p class="icon-name">Favourite</p>
-                </a>
-            </div>
-            {{else}}
-            <a class="podcast-profile" href="/login">
-                <i class="far fa-play-circle"></i>
-                <p class="icon-name">Play</p>
-            </a>
-            <a class="podcast-profile" href="/login">
+        {{#if loggedUser}}
+        <div>
+            <audio controls src={{podcastDB.audio}}> </audio>
+            <a class="podcast-profile" href="/favourites">
                 <i class="fas fa-heart"></i>
                 <p class="icon-name">Favourite</p>
             </a>
-            {{/if}}
+        </div>
+        {{else}}
+        <a class="podcast-profile" href="/login">
+            <i class="far fa-play-circle"></i>
+            <p class="icon-name">Play</p>
+        </a>
+        <a class="podcast-profile" href="/login">
+            <i class="fas fa-heart"></i>
+            <p class="icon-name">Favourite</p>
+        </a>
+        {{/if}}
 
-            <p class="minutes">{{podcastDB.audio_length}} minutes</p>
+        <p class="minutes">{{podcastDB.audio_length}} minutes</p>
+    </div>
+    <hr class="solid">
+    <div class="podcast-profile-description-container">
+        <h2>Description</h2>
+        <p>{{podcastDB.description}}</p>
+    </div>
+
+    {{#each podcastDB.comments}}
+    <div>
+        <p>{{podcastDB.comments.content}}</p>
+        <p>{{podcastDB.comments.author}}</p>
+    </div>
+    {{/each}}
+
+    {{#if loggedUser}}
+    <form action="{{podcastDB._id}}/addComment" method="POST">
+        <div class="podcast-profile-comment">
+            <label for="text">New comment</label>
+            <textarea aria-describedby="text" name="text" required></textarea>
+            <div>Write on {{podcastDB.title}}'s wall.</div>
         </div>
-        <hr class="solid">
-        <div class="podcast-profile-description-container">
-            <h2>Description</h2>
-            <p>{{podcastDB.description}}</p>
-        </div>
-    </ul>
+        <button class="podcast-profile-comment-btn" type="submit">Post comment</button>
+    </form>
+    {{/if}}
 </div>

@@ -51,7 +51,7 @@ router.post('/podcasts/search', (req, res, next) => {
 router.get('/podcasts/profile/:id', (req, res, next) => {
     const { id } = req.params;
     let loggedUser;
-
+    console.log(req.session.currentUser);
     if (req.session.currentUser) {
         loggedUser = true;
         Podcast

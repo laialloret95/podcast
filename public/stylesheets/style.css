@@ -2,6 +2,7 @@ body {
     margin:0;
     padding: 0;
     font: 2vw 'Lucida Grande', Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
 }
 
 a {
@@ -103,8 +104,7 @@ input {
 button {
     all: unset;
     cursor: pointer;
-    width: 44px;
-    height: 44px;
+    padding: 1em 2em;
 }
 
 #podcasts img {
@@ -251,6 +251,11 @@ hr.solid {
 }
 
 .podcast-profile-description-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.podcast-profile-comment {
     display: flex;
     flex-direction: column;
 }
