@@ -50,12 +50,24 @@ router.post('/podcasts/search', (req, res, next) => {
 // PODCAST DETAIL
 router.get('/podcasts/profile/:id', (req, res, next) => {
     const { id } = req.params;
-
-    Podcast.findById(id)
-      .then(podcastDB => {
-        res.render('podcasts/profile', {podcastDB});
-      })
-      .catch(error => next(error));
+    let loggedUser;
+    console.log(req.session.currentUser);
+    if (req.session.currentUser) {
+        loggedUser = true;
+        Podcast
+            .findById(id)
+            .then(podcastDB => {
+            res.render('podcasts/profile', {podcastDB, loggedUser});
+            })
+            .catch(error => next(error));
+    } else {
+        Podcast
+        .findById(id)
+        .then(podcastDB => {
+          res.render('podcasts/profile', {podcastDB});
+        })
+        .catch(error => next(error));
+    }
 });
 
 module.exports = router;
