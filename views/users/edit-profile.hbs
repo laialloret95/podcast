@@ -1,0 +1,53 @@
+<div class="profile-container">
+    <div class="edit">
+        <h2>Update your account information</h1>
+        <form action="/profile/edit" method="POST">
+            <input class="input-auth" type="text" name="firstName" id="firstName" value="{{userInSession.firstName}}"/>
+
+            <input class="input-auth" type="text" name="lastName"  id="lastName" value="{{userInSession.lastName}}"/>
+
+            <input class="input-auth" type="email" name="email" id="email" value="{{userInSession.mail}}" />
+        </br>
+        <hr>
+        </br>
+        <h2>Update your preferences</h1>
+        <p>Your current preferences are:</p>
+        {{#each userInSession.preferences}}
+            <ol>
+                <li>{{this}}</li>
+            </ol>
+
+        {{/each}}
+        <p>Select your new preferences:</p>
+        <div class="edit-preferences-form"> 
+            <input type="checkbox" id="technology" name="preferences" value="Technology">
+            <label class="preferences-label" for="technology">Technology</label>
+
+            </br>
+
+            <input type="checkbox" id="business" name="preferences" value="Business">
+            <label class="preferences-label" for="business">Business</label>
+
+            </br>
+
+            <input type="checkbox" id="games" name="preferences" value="Games">
+            <label class="preferences-label" for="games">Games</label>
+
+            </br>
+
+            <input type="checkbox" id="science" name="preferences" value="Science">
+            <label class="preferences-label" for="science">Science</label>
+
+            </br>
+
+            <input type="checkbox" id="sports" name="preferences" value="Sports">
+            <label class="preferences-label" for="sports">Sports</label>
+
+            </br>
+            </br>
+
+            <button class="button-auth" type="submit">Save preferences</button>
+        </div>
+        </form>
+    </div>
+</div>
