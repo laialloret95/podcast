@@ -56,7 +56,7 @@ router.post('/signup', (req, res, next) => {
     });
 });
 
-// ROUTES TO DEFINE THE USER PREFERENCES DURING THE SIGNUP
+// SET UP USER PREFERENCES 
 router.get('/signup/:id', (req, res, next) => {
   const { id } = req.params;
 
