@@ -10,28 +10,32 @@ router.use(checkIfUserIsLoggedIn);
 
 // PROFILE
 router.get('/profile', (req, res, next) => {
-    console.log(req.session.currentUser)
-    res.render('users/profile', { userInSession: req.session.currentUser });
+  const id = req.session.currentUser._id;
+
+  User
+    .findById(id)
+    .then((userFromDB) => res.render('users/profile', { userFromDB }))
+    .catch((error) => next(error));
 });
 
 // EDIT PROFILE
 router.get('/profile/edit', (req, res, next) => {
-  res.render('users/edit-profile', { userInSession: req.session.currentUser });
+  const id = req.session.currentUser._id;
+
+  User
+   .findById(id)
+   .then((userFromDB) => res.render('users/edit-profile', { userFromDB }))
+   .catch((error) => next(error));
 });
 
 router.post('/profile/edit', (req, res, next) => {
-  const { firstName, lastName, mail, preferences } = req.body;
+  const { firstName, lastName, email, preferences } = req.body;
   const id  = req.session.currentUser._id;
 
-  User.findByIdAndUpdate( id, { firstName, lastName, mail, preferences }, { new: true })
+  User.findByIdAndUpdate( id, { firstName, lastName, email, preferences }, { new: true })
    .then(updatedUserDB => {
-     const { firstName, lastName, mail, preferences } = updatedUserDB;
-     req.session.currentUser = {
-      firstName,
-      lastName,
-      mail,
-      preferences
-    };
+     console.log(updatedUserDB)
+
    })
    .then(() => res.redirect("/profile"))
    .catch((error) => next(error));

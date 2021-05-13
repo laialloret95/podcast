@@ -2,17 +2,17 @@
     <div class="edit">
         <h2>Update your account information</h1>
         <form action="/profile/edit" method="POST">
-            <input class="input-auth" type="text" name="firstName" id="firstName" value="{{userInSession.firstName}}"/>
+            <input class="input-auth" type="text" name="firstName" id="firstName" value="{{userFromDB.firstName}}"/>
 
-            <input class="input-auth" type="text" name="lastName"  id="lastName" value="{{userInSession.lastName}}"/>
+            <input class="input-auth" type="text" name="lastName"  id="lastName" value="{{userFromDB.lastName}}"/>
 
-            <input class="input-auth" type="email" name="email" id="email" value="{{userInSession.mail}}" />
+            <input class="input-auth" type="email" name="email" id="email" value="{{userFromDB.email}}" />
         </br>
         <hr>
         </br>
         <h2>Update your preferences</h1>
         <p>Your current preferences are:</p>
-        {{#each userInSession.preferences}}
+        {{#each userFromDB.preferences}}
             <ol>
                 <li>{{this}}</li>
             </ol>
