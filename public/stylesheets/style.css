@@ -4,6 +4,8 @@ body {
     font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
+
+
 h2 {
     font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
@@ -183,4 +185,50 @@ button {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
+}
+
+
+
+
+/* STYLES FOR PREFERENCES FORM */
+
+.signup-preferences {
+    text-align: left;
+    padding: 2em;
+    
+}
+
+input[type=checkbox] {
+    position: relative;
+      cursor: pointer;
+}
+input[type=checkbox]:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    bottom: 0.35em;
+    right: 0.1em;
+    border: 1px solid #555555;
+    border-radius: 3px;
+    background-color: white;
+}
+input[type=checkbox]:checked:after {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 10px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    bottom: 0.7em;
+    right: 0.45em;
+}
+
+.preferences-label {
+    margin-left: 0.6em;
 }
