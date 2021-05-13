@@ -197,6 +197,10 @@ button {
     background: snow;
 }
 
+.profile-preferences-ul {
+    margin: 0;
+}
+
 .profile-preferences-li {
     list-style: none ;
     display: inline-block;
@@ -209,7 +213,7 @@ button {
 
 .button-inline {
     display: inline-block;
-    margin: 1em;
+    margin: 3em;
 }
 
 .profile-details-text {

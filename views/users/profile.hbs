@@ -6,7 +6,7 @@
         <div class="profile-details">
             <h1>{{userInSession.firstName}} {{userInSession.lastName}}</h1>
             <h2>Favourite Genres</h2>
-                <ul>
+                <ul class="profile-preferences-ul">
                     <li class="profile-preferences-li">|</li>
                 {{#each userInSession.preferences}}
                     <li class="profile-preferences-li">{{this}} |</li>
