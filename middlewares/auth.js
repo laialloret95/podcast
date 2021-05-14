@@ -7,3 +7,4 @@ const checkIfUserIsLoggedIn = (req, res, next) => {
 };
   
 module.exports = checkIfUserIsLoggedIn;
+

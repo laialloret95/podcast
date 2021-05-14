@@ -11,36 +11,29 @@
         <hr>
         </br>
         <h2>Update your preferences</h1>
-        <p>Your current preferences are:</p>
-        {{#each userFromDB.preferences}}
-            <ol>
-                <li>{{this}}</li>
-            </ol>
-
-        {{/each}}
         <p>Select your new preferences:</p>
         <div class="edit-preferences-form"> 
-            <input type="checkbox" id="technology" name="preferences" value="Technology">
+            <input type="checkbox" id="technology" name="preferences" value="Technology" {{#ifInPreferences 'Technology' userFromDB.preferences }} checked {{/ifInPreferences}}>
             <label class="preferences-label" for="technology">Technology</label>
 
             </br>
 
-            <input type="checkbox" id="business" name="preferences" value="Business">
+            <input type="checkbox" id="business" name="preferences" value="Business" {{#ifInPreferences 'Business' userFromDB.preferences }} checked {{/ifInPreferences}}>
             <label class="preferences-label" for="business">Business</label>
 
             </br>
 
-            <input type="checkbox" id="games" name="preferences" value="Games">
+            <input type="checkbox" id="games" name="preferences" value="Games" {{#ifInPreferences 'Games' userFromDB.preferences }} checked {{/ifInPreferences}}>
             <label class="preferences-label" for="games">Games</label>
 
             </br>
 
-            <input type="checkbox" id="science" name="preferences" value="Science">
+            <input type="checkbox" id="science" name="preferences" value="Science" {{#ifInPreferences 'Science' userFromDB.preferences }} checked {{/ifInPreferences}}>
             <label class="preferences-label" for="science">Science</label>
 
             </br>
 
-            <input type="checkbox" id="sports" name="preferences" value="Sports">
+            <input type="checkbox" id="sports" name="preferences" value="Sports" {{#ifInPreferences 'Sports' userFromDB.preferences }} checked {{/ifInPreferences}}>
             <label class="preferences-label" for="sports">Sports</label>
 
             </br>

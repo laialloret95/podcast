@@ -37,7 +37,16 @@ app.use(cookieParser());
 app.use(flash());
 
 const app_name = require('./package.json').name;
+const { localsAsTemplateData } = require('hbs');
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
+
+// Register HBS Helpers
+hbs.registerHelper('ifInPreferences', function(elem, arr, options) {
+  if (arr.indexOf(elem) > -1) {
+      return options.fn(this);
+  } 
+    return options.inverse(this);
+});
 
 // 👇 Handling routes here
 app.use('/', indexRouter);
