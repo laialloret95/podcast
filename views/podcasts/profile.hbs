@@ -13,10 +13,17 @@
         {{#if loggedUser}}
         <div>
             <audio controls src={{podcastDB.audio}}> </audio>
-            <a class="podcast-profile" href="/favourites">
+            {{#if favouritedPocast}}
+            <div>
+                <i class="fas fa-check-circle"></i>
+                <p class="icon-name">Included you list!</p>
+            </div>
+            {{else}}
+            <a class="podcast-profile" href="/favourites/{{podcastDB._id}}">
                 <i class="fas fa-heart"></i>
                 <p class="icon-name">Favourite</p>
             </a>
+            {{/if}}
         </div>
         {{else}}
         <a class="podcast-profile" href="/login">
