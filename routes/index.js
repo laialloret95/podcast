@@ -51,22 +51,22 @@ router.post('/podcasts/search', (req, res, next) => {
 // PODCAST DETAIL
 router.get('/podcasts/profile/:id', (req, res, next) => {
     const { id } = req.params;
-    let loggedUser;
+    const userID = req.session.currentUser._id;
 
     if (req.session.currentUser) {
         // If user is logged
-        loggedUser = true;
         Podcast
             .findById(id)
             .then(podcastDB => {
-                Favourite.findOne({podcastID:id}, {userIDs: req.session.currentUser._id})
+                Favourite
+                    .find({ $and: [ {podcastID:id}, {userIDs: userID}] })
                     .then(favouriteDB => {
-                        if (favouriteDB) {
+                        if (favouriteDB.length > 0) {
                         // If podcast has been favourited by the user
-                            res.render('podcasts/profile', {podcastDB, loggedUser, favouritedPocast: true});
+                            res.render('podcasts/profile', {podcastDB, loggedUser: true, favouritedPocast: true});
                         } else {
                         // If podcast has not been favourited by the user
-                            res.render('podcasts/profile', {podcastDB, loggedUser});
+                            res.render('podcasts/profile', {podcastDB, loggedUser: true});
                         }
                     });
                 });
@@ -105,9 +105,12 @@ router.get('/favourites/:podID', (req, res, next) => {
             }
             else {
                 // If podcast has been favorited by another user
-                Favourite.findByIdAndUpdate(podID, { $push: { userIDs: userID } });
-                req.flash('success','Favourite Added!');
-                res.redirect(`/podcasts/profile/${podID}`);
+                Favourite
+                    .findOneAndUpdate({podcastID: podID}, { $push: { userIDs: userID } })
+                    .then(() => {
+                        req.flash('success','Favourite Added!');
+                        res.redirect(`/podcasts/profile/${podID}`);
+                    })
             }
         });
 });
@@ -119,7 +122,6 @@ router.get('/favourites', (req,res, next) => {
         .find({userIDs: userID})
         .populate('podcastID')
         .then(favouritesDB => {
-            console.log(favouritesDB);
             res.render("users/favourites", {favouritesDB});
         });
 });
