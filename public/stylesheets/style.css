@@ -213,7 +213,6 @@ input[type=checkbox]:checked:after {
 .preferences-label {
     margin-left: 0.6em;
 }
-<<<<<<< HEAD
 /* PODCAST PROFILE */
 .podcast-profile-header-container {
     max-height: 90%;
@@ -291,7 +290,6 @@ hr.solid {
     display: flex;
     flex-direction: column;
 }
-=======
 
 /* USER PROFILE */
 
@@ -381,8 +379,5 @@ hr.solid {
    text-align: left;
 }
 
-.edit-preferences-form {
-    
-}
 
->>>>>>> user_profile_page
+
