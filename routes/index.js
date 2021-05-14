@@ -87,6 +87,15 @@ router.get('/podcasts/profile/:id', (req, res, next) => {
         // If unlogged user
         Podcast
             .findById(id)
+            .populate("comments")
+            .populate({
+                // we are populating author in the previously populated comments
+                path: 'comments',
+                populate: {
+                path: 'author',
+                model: User
+                }
+            })
             .then(podcastDB => {
                 res.render('podcasts/profile', {podcastDB});
             })
