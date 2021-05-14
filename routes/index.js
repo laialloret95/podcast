@@ -1,7 +1,9 @@
 const express = require('express');
-const Podcast = require('../models/podcast');
 const router = express.Router();
+const Podcast = require('../models/podcast');
 const Favourite = require('../models/favorites');
+const Comment = require('../models/comment');
+const User = require('../models/user');
 
 // HOME PAGE
 router.get('/', (req, res, next) => {
@@ -58,6 +60,15 @@ router.get('/podcasts/profile/:id', (req, res, next) => {
         // If user is logged
         Podcast
             .findById(id)
+            .populate("comments")
+            .populate({
+                // we are populating author in the previously populated comments
+                path: 'comments',
+                populate: {
+                  path: 'author',
+                  model: User
+                }
+            })
             .then(podcastDB => {
                 Favourite
                     .find({ $and: [ {podcastID:id}, {userIDs: userID}] })
@@ -141,5 +152,26 @@ router.post('/favourites/:podID/delete', (req, res, next) => {
         })
         .catch(error => next(error));
   });
+
+// COMMENTS
+router.post("/podcasts/profile/:podID/addComment", (req,res, next) => {
+    const { podID } = req.params;
+    const userID = req.session.currentUser._id;
+    const { text } = req.body
+
+    Comment
+        .create({
+            content: text,
+            author: userID
+        })
+        .then((commentDB) => {
+            Podcast
+                .findOneAndUpdate({_id: podID}, { $push: { comments: commentDB._id } })
+                .then(() => {
+                    res.redirect(`/podcasts/profile/${podID}`);
+                });
+        })
+        .catch(error => next(error));
+});
 
 module.exports = router;

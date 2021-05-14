@@ -46,8 +46,8 @@
 
     {{#each podcastDB.comments}}
     <div>
-        <p>{{podcastDB.comments.content}}</p>
-        <p>{{podcastDB.comments.author}}</p>
+        <p>{{this.content}}</p>
+        <p>By {{this.author.firstName}} {{this.author.lastName}}</p>
     </div>
     {{/each}}
 
