@@ -16,21 +16,21 @@ router.get('/profile', (req, res, next) => {
   User
     .findById(id)
     .then((userFromDB) => {
-      return userFromDB;
+        return userFromDB;
     })
     .then((userFromDB) =>{
-      //Find last saved fav
+        //Find last saved fav
       return Favourite
-      .find({userIDs: userFromDB._id})
-      .populate('podcastID')
-      .find()
-      .limit(1)
-      .sort({createdAt: -1})
-      .then(lastFavourited => {
-        const [{ podcastID }] = lastFavourited;
-        console.log(podcastID)
-        res.render('users/profile', { userFromDB, podcastID });
-      });
+              .find({userIDs: userFromDB._id})
+              .populate('podcastID')
+              .find()
+              .limit(1)
+              .sort({createdAt: -1})
+              .then(lastFavourited => {
+                const [{ podcastID }] = lastFavourited;
+                  
+                res.render('users/profile', { userFromDB, podcastID });
+              });
     })
     .catch((error) => next(error));
 });
