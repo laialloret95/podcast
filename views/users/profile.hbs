@@ -34,10 +34,15 @@
     </div> <!-- /profile-statistics -->
     <div class="profile-last-saved">
         <h2>Last Saved Podcast</h2>
-        <div class="podcast-card">
-            <p>WIP</p>
-            <p>The last podcast saved by the user will be displayed here</p>
-        </div>
+        <div id="podcasts">
+            <ul>
+                <a href="/podcasts/profile/{{podcastID._id}}">
+                    <img src="{{podcastID.image}}" alt="">
+                    <h2>{{podcastID.title}}</h2>
+                    <p>{{podcastID.author}}</p>
+                </a>
+            </ul>
+        </div> <!-- /podcast -->
     </div> <!-- /profile-last-saved -->
 </div> <!-- /profile-container -->
 

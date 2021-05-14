@@ -1,5 +1,6 @@
 const express = require('express');
 const User = require('../models/user');
+const Favourite = require('../models/favorites');
 const mongoose = require('mongoose');
 const checkIfUserIsLoggedIn = require('../middlewares/auth');
 
@@ -14,7 +15,23 @@ router.get('/profile', (req, res, next) => {
 
   User
     .findById(id)
-    .then((userFromDB) => res.render('users/profile', { userFromDB }))
+    .then((userFromDB) => {
+      return userFromDB;
+    })
+    .then((userFromDB) =>{
+      //Find last saved fav
+      return Favourite
+      .find({userIDs: userFromDB._id})
+      .populate('podcastID')
+      .find()
+      .limit(1)
+      .sort({createdAt: -1})
+      .then(lastFavourited => {
+        const [{ podcastID }] = lastFavourited;
+        console.log(podcastID)
+        res.render('users/profile', { userFromDB, podcastID });
+      });
+    })
     .catch((error) => next(error));
 });
 
@@ -33,16 +50,8 @@ router.post('/profile/edit', (req, res, next) => {
   const id  = req.session.currentUser._id;
 
   User.findByIdAndUpdate( id, { firstName, lastName, email, preferences }, { new: true })
-   .then(updatedUserDB => {
-     console.log(updatedUserDB)
-
-   })
    .then(() => res.redirect("/profile"))
    .catch((error) => next(error));
-
 });
-
-
-
 
 module.exports = router;

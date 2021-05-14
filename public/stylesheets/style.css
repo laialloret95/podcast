@@ -213,6 +213,7 @@ input[type=checkbox]:checked:after {
 .preferences-label {
     margin-left: 0.6em;
 }
+
 /* PODCAST PROFILE */
 .podcast-profile-header-container {
     max-height: 90%;
@@ -378,6 +379,5 @@ hr.solid {
    padding: 2em 2em;
    text-align: left;
 }
-
 
 
