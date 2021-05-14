@@ -112,4 +112,29 @@ router.get('/favourites/:podID', (req, res, next) => {
         });
 });
 
+router.get('/favourites', (req,res, next) => {
+    const userID = req.session.currentUser._id;
+
+    Favourite
+        .find({userIDs: userID})
+        .populate('podcastID')
+        .then(favouritesDB => {
+            console.log(favouritesDB);
+            res.render("users/favourites", {favouritesDB});
+        });
+});
+
+router.post('/favourites/:podID/delete', (req, res, next) => {
+    const { podID } = req.params;
+    const userID = req.session.currentUser._id;
+  
+    Favourite.findOneAndUpdate({podcastID: podID}, { $pull: { userIDs: userID } })
+    .then(() => {
+      res.redirect('/favourites');
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  });
+
 module.exports = router;

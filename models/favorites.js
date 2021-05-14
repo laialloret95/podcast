@@ -4,7 +4,7 @@ const favoritesSchema = new Schema(
     {
       podcastID: { 
         type: Schema.Types.ObjectId, 
-        ref: 'podcastID' 
+        ref: 'Podcast' 
     },
       userIDs: {
         type: [ Schema.Types.ObjectId ], 

@@ -1,0 +1,16 @@
+<h2>Favourites!</h2>
+
+<div id="podcasts">
+    {{#each favouritesDB}}
+    <ul>
+        <a href="/podcasts/profile/{{_id}}">
+            <img src="{{this.podcastID.image}}" alt="">
+            <h2>{{this.podcastID.title}}</h2>
+            <p>{{this.podcastID.author}}</p>
+        </a>
+        <form action="/favourites/{{this.podcastID._id}}/delete" method="POST">
+            <button><i class="fas fa-trash-alt fa-lg" style="color:#8E1515"></i></button>
+        </form>
+    </ul>
+    {{/each}}
+</div>
