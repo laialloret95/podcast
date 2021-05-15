@@ -5,7 +5,8 @@ body {
   font-size: 16px;
   width: 100vw;
   background-color: #f4f7fb;
-  color: #494f65; }
+  color: #494f65;
+  font-family: "Montserrat", sans-serif; }
 
 /* PAGE CONTAINERS */
 .container {
@@ -27,3 +28,58 @@ body {
     margin: auto;
     width: 100%;
     box-sizing: border-box; }
+    .nav__bar__li a:visited {
+      text-decoration: none; }
+
+.card__container {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  height: 50vh;
+  margin-bottom: 2em; }
+
+.card__podcast {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  flex-basis: 16%;
+  align-items: center;
+  padding: 0.5em;
+  margin: 0.5em 2em;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; }
+  .card__podcast__image {
+    width: 60%;
+    height: 100%; }
+    .card__podcast__image img {
+      height: 100%;
+      object-fit: contain; }
+  .card__podcast__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 40%;
+    height: 100%; }
+  .card__podcast:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; }
+
+.genres-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 0; }
+  .genres-container__ul {
+    width: 15%; }
+  .genres-container__ul__bubble {
+    position: relative;
+    text-align: center;
+    padding: 0; }
+    .genres-container__ul__bubble img {
+      max-width: 15vw;
+      filter: brightness(80%); }
+    .genres-container__ul__bubble p {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      color: white;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }

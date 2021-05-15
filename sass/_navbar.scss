@@ -1,12 +1,9 @@
-// @import 'global';
-
 .nav {
         background-color: $color-secondary;
         color: $font-color-secondary;
         position: fixed;
         bottom: 0;
         width: 100%;
-
     &__bar {
         display: flex;
         justify-content: space-evenly;
@@ -14,6 +11,10 @@
         margin: auto;
         width: 100%;
         box-sizing: border-box;
+        &__li {
+            a:visited {
+                text-decoration: none;
+            }
+        }
     }
-
 }

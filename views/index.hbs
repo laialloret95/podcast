@@ -1,33 +1,36 @@
 <div class="home-container">
-    <form id="search-box" action="/podcasts/search" method="POST">
-        <input id="search" type="text" name="keywords" placeholder="Search..." autofocus required />
+    <form class="search-box" action="/podcasts/search" method="POST">
+        <input type="search" results="5" name="keywords" class="searchInput" placeholder="Type person, topic, keyword" required
+        inputmode="search">
         <button type="submit">
-            <i class="fa fa-search" aria-hidden="true" style="color:#fff"></i>
+            <i class="fa fa-search icon" aria-hidden="true" style="color:#fff"></i>
         </button>
     </form>
-
-    <div id="genres">
+    <div class="genres-container">
         {{#each genresDB}}
-        <ul>
+        <ul class="genres-container__ul">
             <a href="/podcasts/{{this}}">
-                <div class="genre-container">
+                <div class="genres-container__ul__bubble">
                     <img src="../images/podcast-icon.png" alt="">
-                    <p class="centered"> {{this}} </p>
+                    <p> {{this}} </p>
                 </div>
             </a>
         </ul>
         {{/each}}
     </div>
-
-    <div id="podcasts">
+    <div class="card__container">
         {{#each podcastsDB}}
-        <ul>
-            <a href="/podcasts/profile/{{_id}}">
-                <img src="{{image}}" alt="">
-                <h2>{{title}}</h2>
-                <p>{{author}}</p>
-            </a>
-        </ul>
+        <a style="display:block" href="/podcasts/profile/{{_id}}">
+                <ul class="card__podcast">
+                    <div class="card__podcast__image">
+                        <img class="card__podcast__image_url"src="{{image}}" alt="podcast_image">
+                    </div>
+                    <div class="card__podcast__content">
+                        <h1 class="title">{{title}}</h1>
+                        <p class="subtitle">{{author}}</p>
+                    </div>
+                </ul>
+        </a>
         {{/each}}
     </div>
 </div>
