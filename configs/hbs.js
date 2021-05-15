@@ -1,17 +1,13 @@
-/*
-
 const hbs = require('hbs');
 
-hbs.registerHelper('ifInPreferences', function(elem, options) {
-    const list = ["Technology", "Business", "Sports", "Science", "Games"]; 
-    elem.forEach(el => {
-    if (list.indexOf(el) > -1) {
+// Register HBS Helpers
+hbs.registerHelper('ifInPreferences', function(elem, arr, options) {
+    if (arr.indexOf(elem) > -1) {
         return options.fn(this);
-    } else if (list.indexOf(el) === -1) {
-        return options.inverse(this);
-    }    
+    } 
+      return options.inverse(this);
 });
 
-*/
+module.exports = hbs;
 
 
