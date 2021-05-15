@@ -20,16 +20,14 @@
     </div>
     <div class="card__container">
         {{#each podcastsDB}}
-        <a style="display:block" href="/podcasts/profile/{{_id}}">
-                <ul class="card__podcast">
-                    <div class="card__podcast__image">
-                        <img class="card__podcast__image_url"src="{{image}}" alt="podcast_image">
-                    </div>
-                    <div class="card__podcast__content">
-                        <h1 class="title">{{title}}</h1>
-                        <p class="subtitle">{{author}}</p>
-                    </div>
-                </ul>
+        <a class="card__podcast" href="/podcasts/profile/{{_id}}">
+            <div class="card__podcast__image">
+                <img class="card__podcast__image_url"src="{{image}}" alt="podcast_image">
+            </div>
+            <div class="card__podcast__content">
+                <h1 class="title">{{title}}</h1>
+                <p class="subtitle">{{author}}</p>
+            </div>
         </a>
         {{/each}}
     </div>

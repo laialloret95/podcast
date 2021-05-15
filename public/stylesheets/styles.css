@@ -8,6 +8,10 @@ body {
   color: #494f65;
   font-family: "Montserrat", sans-serif; }
 
+a {
+  text-decoration: none;
+  color: #494f65; }
+
 /* PAGE CONTAINERS */
 .container {
   width: 90%;
@@ -18,38 +22,66 @@ body {
 .nav {
   background-color: #845cfc;
   color: #fefdff;
-  position: fixed;
-  bottom: 0;
-  width: 100%; }
+  width: 100%;
+  height: 40vh;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%; }
   .nav__bar {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
-    list-style: none;
+    align-items: center;
     margin: auto;
     width: 100%;
+    height: 100%;
     box-sizing: border-box; }
-    .nav__bar__li a:visited {
+    .nav__bar a {
+      text-decoration: none;
+      color: #fefdff; }
+    .nav__bar a:visited {
       text-decoration: none; }
+  .nav__bar__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%; }
+  .nav__bar__top__title {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 30%; }
+  .nav__bar__auth {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%; }
+    .nav__bar__auth a {
+      margin-right: 1em; }
+  .nav__bar__sections {
+    display: flex;
+    justify-content: space-between;
+    width: 20%; }
 
 .card__container {
   display: flex;
   flex-direction: column;
-  width: 90vw;
-  height: 50vh;
-  margin-bottom: 2em; }
+  width: 80vw;
+  height: 100vh;
+  margin-bottom: 2em;
+  margin: 0 auto; }
 
 .card__podcast {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   width: 100%;
-  flex-basis: 16%;
+  height: 20%;
+  margin: 1em 0;
   align-items: center;
-  padding: 0.5em;
-  margin: 0.5em 2em;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; }
   .card__podcast__image {
-    width: 60%;
-    height: 100%; }
+    width: 20%;
+    height: 90%;
+    margin-left: 2%;
+    text-align: center; }
     .card__podcast__image img {
       height: 100%;
       object-fit: contain; }
@@ -57,8 +89,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 40%;
-    height: 100%; }
+    width: 80%;
+    height: 90%; }
   .card__podcast:hover {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; }
 
@@ -83,3 +115,26 @@ body {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%); }
+
+h1 {
+  font-size: 1.5em;
+  margin: 0; }
+
+h2 {
+  font-size: 2.3em; }
+
+h3 {
+  font-size: 2em; }
+
+h4 {
+  font-size: 1.2em;
+  font-weight: 400;
+  line-height: 1.4em; }
+
+h5 {
+  font-size: 1em;
+  line-height: 1.3em;
+  font-weight: 100; }
+
+p {
+  font-size: .9em; }
