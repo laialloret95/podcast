@@ -8,15 +8,20 @@
     <title>Podapp 🎧</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li>
+
+    {{{body}}}
+
+    <nav class="nav">
+        <ul class="nav__bar">
+            <li class="nav__bar__li">
                 <p><a href="/"> Users - Podcasts </a></p>
             </li>
-            <li>
+            <li class="nav__bar__li">
                 <a href="/signup">Signup</a> <span> | </span>
                 <a href="/login">Login</a>
                 <form action="/logout" method="POST">
@@ -25,8 +30,6 @@
             </li>
         </ul>
     </nav>
-
-    {{{body}}}
 
     <script src="/javascripts/script.js"></script>
 </body>

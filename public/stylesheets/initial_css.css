@@ -1,3 +1,6 @@
+/*# sourceMappingURL=style.css.map */
+
+
 body {
     margin:0;
     padding: 0;
@@ -18,11 +21,11 @@ a {
     width: max-content;
 }
 
-ul {
+/* ul {
     list-style-type: none;
     margin: 2vw;
     padding: 0;
-}
+} */
 
 .error {
     background: #f02b63;
