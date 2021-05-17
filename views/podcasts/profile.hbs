@@ -52,6 +52,11 @@
                 <i class="far fa-edit"></i>
                 <p>Edit</p>
             </a>
+
+            <form action="/podcast/{{../podcastDB._id}}/comment/{{this._id}}/delete" method="POST">
+                <button><i class="fas fa-trash-alt fa-lg" style="color:#8E1515"></i></button>
+            </form>
+
         {{/ifUserComment}}
         <p>By {{this.author.firstName}} {{this.author.lastName}}</p>
     </div>

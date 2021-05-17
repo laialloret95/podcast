@@ -161,7 +161,7 @@ router.post('/favourites/:podID/delete', (req, res, next) => {
             res.redirect('/favourites');
         })
         .catch(error => next(error));
-  });
+});
 
 // COMMENTS
 router.post("/podcasts/profile/:podID/addComment", (req,res, next) => {
@@ -199,7 +199,6 @@ router.get('/podcast/:podcastID/comment/:commentID/edit', (req, res, next) => {
      .catch((error) => next(error));
 });
 
-
 router.post('/podcast/:podcastID/comment/:commentID/edit', (req, res, next) => {
     const { podcastID, commentID }  = req.params;
     const { content } = req.body;
@@ -209,6 +208,22 @@ router.post('/podcast/:podcastID/comment/:commentID/edit', (req, res, next) => {
             res.redirect(`/podcasts/profile/${podcastID}`);
         })
         .catch((error) => next(error));
+});
+
+router.post('/podcast/:podcastID/comment/:commentID/delete', (req, res, next) => {
+    const { podcastID, commentID }  = req.params;
+    console.log(podcastID);
+    
+    Podcast
+         .findOneAndUpdate({_id: podcastID}, { $pull: { comments: commentID } })
+         .then( () => {
+            Comment
+                .findByIdAndDelete(commentID)
+                .then( () => {
+                    res.redirect(`/podcasts/profile/${podcastID}`);
+                });
+         })
+        .catch(error => next(error));
 });
 
 module.exports = router;
