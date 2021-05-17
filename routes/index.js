@@ -7,254 +7,229 @@ const User = require('../models/user');
 
 // HOME PAGE
 router.get('/', (req, res, next) => {
-
-    if (req.session.currentUser) {
-      // get unique genres
-      return Podcast
-        .find()
-        .distinct("genre")
-        .then(genresDB => {
-            return genresDB;
-        })
-        .then((genresDB) => {
-            // get the 6 newest Podcasts
-            Podcast
-                .find({})
-                .limit(6)
-                .sort({pub_date: -1})
-                .then(podcastsDB => {
-                    res.render('index', {podcastsDB, genresDB, loggedUser: true});
-                });
-        })
-        .catch(error => next(error));
-    } else {
-      // get unique genres
-      return Podcast
-        .find()
-        .distinct("genre")
-        .then(genresDB => {
-            return genresDB;
-        })
-        .then((genresDB) => {
-            // get the 6 newest Podcasts
-            Podcast
-                .find({})
-                .limit(6)
-                .sort({pub_date: -1})
-                .then(podcastsDB => {
-                    res.render('index', {podcastsDB, genresDB});
-                });
-        })
-        .catch(error => next(error));
-    }
+  if (req.session.currentUser) {
+    // get unique genres
+    return Podcast.find()
+      .distinct('genre')
+      .then(genresDB => {
+        return genresDB;
+      })
+      .then(genresDB => {
+        // get the 6 newest Podcasts
+        Podcast.find({})
+          .limit(6)
+          .sort({ pub_date: -1 })
+          .then(podcastsDB => {
+            res.render('index', { podcastsDB, genresDB, loggedUser: true });
+          });
+      })
+      .catch(error => next(error));
+  } else {
+    // get unique genres
+    return Podcast.find()
+      .distinct('genre')
+      .then(genresDB => {
+        return genresDB;
+      })
+      .then(genresDB => {
+        // get the 6 newest Podcasts
+        Podcast.find({})
+          .limit(6)
+          .sort({ pub_date: -1 })
+          .then(podcastsDB => {
+            res.render('index', { podcastsDB, genresDB });
+          });
+      })
+      .catch(error => next(error));
+  }
 });
 
 // GENRE SEARCH
 router.get('/podcasts/:genre', (req, res, next) => {
-    const { genre } = req.params;
-    
-    if (req.session.currentUser) {
-        return Podcast
-            .find({genre: genre})
-            .then(podcastsDB => {
-                res.render('podcasts/show', {podcastsDB, loggedUser: true });
-            })
-            .catch(error => next(error));
-    } else {
-        return Podcast
-            .find({genre: genre})
-            .then(podcastsDB => {
-                res.render('podcasts/show', {podcastsDB});
-            })
-            .catch(error => next(error));
-    }
+  const { genre } = req.params;
+
+  if (req.session.currentUser) {
+    return Podcast.find({ genre: genre })
+      .then(podcastsDB => {
+        res.render('podcasts/show', { podcastsDB, loggedUser: true });
+      })
+      .catch(error => next(error));
+  } else {
+    return Podcast.find({ genre: genre })
+      .then(podcastsDB => {
+        res.render('podcasts/show', { podcastsDB });
+      })
+      .catch(error => next(error));
+  }
 });
 
 // QUERY SEARCH
 router.post('/podcasts/search', (req, res, next) => {
-    const keywords = req.body.keywords.toLowerCase();
+  const keywords = req.body.keywords.toLowerCase();
 
-    Podcast
-      .find({ $or: [{ title : { $regex: keywords} }, { author : { $regex: keywords} }, { description : { $regex: keywords} }]})
-      .then(podcastsDB => {
-          res.render('podcasts/show', {podcastsDB});
-      })
-      .catch(error => next(error));
+  Podcast.find({ $or: [{ title: { $regex: keywords } }, { author: { $regex: keywords } }, { description: { $regex: keywords } }] })
+    .then(podcastsDB => {
+      res.render('podcasts/show', { podcastsDB });
+    })
+    .catch(error => next(error));
 });
 
 // PODCAST DETAIL
 router.get('/podcasts/profile/:id', (req, res, next) => {
-    const { id } = req.params;
+  const { id } = req.params;
 
-    if (req.session.currentUser) {
-        const userID = req.session.currentUser._id;
-        // If user is logged
-        Podcast
-            .findById(id)
-            .populate("comments")
-            .populate({
-                // we are populating author in the previously populated comments
-                path: 'comments',
-                populate: {
-                  path: 'author',
-                  model: User
-                }
-            })
-            .then(podcastDB => {
-                Favourite
-                    .find({ $and: [ {podcastID:id}, {userIDs: userID}] })
-                    .then(favouriteDB => {
-                        const loggedUser = req.session.currentUser._id;
-                        if (favouriteDB.length > 0) {
-                        // If podcast has been favourited by the user
-                            res.render('podcasts/profile', {podcastDB, loggedUser, favouritedPocast: true});
-                        } else {
-                        // If podcast has not been favourited by the user
-                            res.render('podcasts/profile', {podcastDB, loggedUser});
-                        }
-                    });
-            })
-            .catch(error => next(error));
-    } else {
-        // If unlogged user
-        Podcast
-            .findById(id)
-            .populate("comments")
-            .populate({
-                // we are populating author in the previously populated comments
-                path: 'comments',
-                populate: {
-                path: 'author',
-                model: User
-                }
-            })
-            .then(podcastDB => {
-                res.render('podcasts/profile', {podcastDB});
-            })
-            .catch(error => next(error));
-    }
+  if (req.session.currentUser) {
+    const userID = req.session.currentUser._id;
+    // If user is logged
+    Podcast.findById(id)
+      .populate('comments')
+      .populate({
+        // we are populating author in the previously populated comments
+        path: 'comments',
+        populate: {
+          path: 'author',
+          model: User
+        }
+      })
+      .then(podcastDB => {
+        Favourite.find({ $and: [{ podcastID: id }, { userIDs: userID }] }).then(favouriteDB => {
+          const loggedUser = req.session.currentUser._id;
+          if (favouriteDB.length > 0) {
+            // If podcast has been favourited by the user
+            res.render('podcasts/profile', { podcastDB, loggedUser, favouritedPocast: true });
+          } else {
+            // If podcast has not been favourited by the user
+            res.render('podcasts/profile', { podcastDB, loggedUser });
+          }
+        });
+      })
+      .catch(error => next(error));
+  } else {
+    // If unlogged user
+    Podcast.findById(id)
+      .populate('comments')
+      .populate({
+        // we are populating author in the previously populated comments
+        path: 'comments',
+        populate: {
+          path: 'author',
+          model: User
+        }
+      })
+      .then(podcastDB => {
+        res.render('podcasts/profile', { podcastDB });
+      })
+      .catch(error => next(error));
+  }
 });
 
 //FAVOURITES
 router.get('/favourites/:podID', (req, res, next) => {
-    const { podID } = req.params;
-    const userID = req.session.currentUser._id;
+  const { podID } = req.params;
+  const userID = req.session.currentUser._id;
 
-    Favourite
-        .findOne({podcastID: podID})
-        .then( podcastDB => {
-            if (!podcastDB) {
-                // If podcast has never been favorited by anu user
-                const newFavourite = new Favourite({podcastID: podID, userIDs: userID});
-                newFavourite
-                    .save()
-                    .then(() => {
-                        req.flash('success','Favourite Added!');
-                        res.redirect(`/podcasts/profile/${podID}`);
-                    })
-                    .catch(error => next(error));
-            } else if (podcastDB.userIDs.includes(userID)) {
-                // If podcast has already been favorited by this user
-                req.flash('warning','You have already favourited this podcast!');
-                res.redirect(`/podcasts/profile/${podID}`);
-            } else {
-                // If podcast has been favorited by another user
-                Favourite
-                    .findOneAndUpdate({podcastID: podID}, { $push: { userIDs: userID } })
-                    .then(() => {
-                        req.flash('success','Favourite Added!');
-                        res.redirect(`/podcasts/profile/${podID}`);
-                    })
-                    .catch(error => next(error));
-            }
-        });
-});
-
-router.get('/favourites', (req,res, next) => {
-    const userID = req.session.currentUser._id;
-
-    Favourite
-        .find({userIDs: userID})
-        .populate('podcastID')
-        .then(favouritesDB => {
-            res.render("users/favourites", {favouritesDB, loggedUser: true });
+  Favourite.findOne({ podcastID: podID }).then(podcastDB => {
+    if (!podcastDB) {
+      // If podcast has never been favorited by anu user
+      const newFavourite = new Favourite({ podcastID: podID, userIDs: userID });
+      newFavourite
+        .save()
+        .then(() => {
+          req.flash('success', 'Favourite Added!');
+          res.redirect(`/podcasts/profile/${podID}`);
         })
         .catch(error => next(error));
+    } else if (podcastDB.userIDs.includes(userID)) {
+      // If podcast has already been favorited by this user
+      req.flash('warning', 'You have already favourited this podcast!');
+      res.redirect(`/podcasts/profile/${podID}`);
+    } else {
+      // If podcast has been favorited by another user
+      Favourite.findOneAndUpdate({ podcastID: podID }, { $push: { userIDs: userID } })
+        .then(() => {
+          req.flash('success', 'Favourite Added!');
+          res.redirect(`/podcasts/profile/${podID}`);
+        })
+        .catch(error => next(error));
+    }
+  });
+});
+
+router.get('/favourites', (req, res, next) => {
+  const userID = req.session.currentUser._id;
+
+  Favourite.find({ userIDs: userID })
+    .populate('podcastID')
+    .then(favouritesDB => {
+      res.render('users/favourites', { favouritesDB, loggedUser: true });
+    })
+    .catch(error => next(error));
 });
 
 router.post('/favourites/:podID/delete', (req, res, next) => {
-    const { podID } = req.params;
-    const userID = req.session.currentUser._id;
-  
-    Favourite
-        .findOneAndUpdate({podcastID: podID}, { $pull: { userIDs: userID } })
-        .then(() => {
-            res.redirect('/favourites');
-        })
-        .catch(error => next(error));
+  const { podID } = req.params;
+  const userID = req.session.currentUser._id;
+
+  Favourite.findOneAndUpdate({ podcastID: podID }, { $pull: { userIDs: userID } })
+    .then(() => {
+      res.redirect('/favourites');
+    })
+    .catch(error => next(error));
 });
 
 // COMMENTS
-router.post("/podcasts/profile/:podID/addComment", (req,res, next) => {
-    const { podID } = req.params;
-    const userID = req.session.currentUser._id;
-    const { text } = req.body;
+router.post('/podcasts/profile/:podID/addComment', (req, res, next) => {
+  const { podID } = req.params;
+  const userID = req.session.currentUser._id;
+  const { text } = req.body;
 
-    Comment
-        .create({
-            content: text,
-            author: userID
-        })
-        .then((commentDB) => {
-            Podcast
-                .findOneAndUpdate({_id: podID}, { $push: { comments: commentDB._id } })
-                .then(() => {
-                    res.redirect(`/podcasts/profile/${podID}`);
-                });
-        })
-        .catch(error => next(error));
+  Comment.create({
+    content: text,
+    author: userID
+  })
+    .then(commentDB => {
+      Podcast.findOneAndUpdate({ _id: podID }, { $push: { comments: commentDB._id } }).then(() => {
+        res.redirect(`/podcasts/profile/${podID}`);
+      });
+    })
+    .catch(error => next(error));
 });
 
 router.get('/podcast/:podcastID/comment/:commentID/edit', (req, res, next) => {
-    const { podcastID, commentID }  = req.params;
-  
-    Comment.findById(commentID)
-     .then( commentDB => {
-         console.log(commentDB);
-         Podcast
-            .findById(podcastID)
-            .then(podcastDB => {
-                res.render("comments/edit-comment", {podcastDB, commentDB});
-            });
-     })
-     .catch((error) => next(error));
+  const { podcastID, commentID } = req.params;
+
+  Comment.findById(commentID)
+    .then(commentDB => {
+      console.log(commentDB);
+      Podcast.findById(podcastID).then(podcastDB => {
+        res.render('comments/edit-comment', { podcastDB, commentDB });
+      });
+    })
+    .catch(error => next(error));
 });
 
 router.post('/podcast/:podcastID/comment/:commentID/edit', (req, res, next) => {
-    const { podcastID, commentID }  = req.params;
-    const { content } = req.body;
+  const { podcastID, commentID } = req.params;
+  const { content } = req.body;
 
-    Comment.findByIdAndUpdate(commentID, {content}, {new: true})
-        .then(() => {
-            res.redirect(`/podcasts/profile/${podcastID}`);
-        })
-        .catch((error) => next(error));
+  Comment.findByIdAndUpdate(commentID, { content }, { new: true })
+    .then(() => {
+      res.redirect(`/podcasts/profile/${podcastID}`);
+    })
+    .catch(error => next(error));
 });
 
 router.post('/podcast/:podcastID/comment/:commentID/delete', (req, res, next) => {
-    const { podcastID, commentID }  = req.params;
-    console.log(podcastID);
-    
-    Podcast
-         .findOneAndUpdate({_id: podcastID}, { $pull: { comments: commentID } })
-         .then( () => {
-            Comment
-                .findByIdAndDelete(commentID)
-                .then( () => {
-                    res.redirect(`/podcasts/profile/${podcastID}`);
-                });
-         })
-        .catch(error => next(error));
+  const { podcastID, commentID } = req.params;
+  console.log(podcastID);
+
+  Podcast.findOneAndUpdate({ _id: podcastID }, { $pull: { comments: commentID } })
+    .then(() => {
+      Comment.findByIdAndDelete(commentID).then(() => {
+        res.redirect(`/podcasts/profile/${podcastID}`);
+      });
+    })
+    .catch(error => next(error));
 });
 
 module.exports = router;
