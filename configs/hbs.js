@@ -1,8 +1,6 @@
 const hbs = require("hbs");
 const path = require('path');
 
-hbs.registerPartials(path.join(__dirname, "../views/partials"));
-
 // Register HBS Helpers
 hbs.registerHelper('ifInPreferences', function(elem, arr, options) {
     if (arr.indexOf(elem) > -1) {
