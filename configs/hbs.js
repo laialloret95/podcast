@@ -1,4 +1,7 @@
-const hbs = require('hbs');
+const hbs = require("hbs");
+const path = require('path');
+
+hbs.registerPartials(path.join(__dirname, "../views/partials"));
 
 // Register HBS Helpers
 hbs.registerHelper('ifInPreferences', function(elem, arr, options) {
@@ -8,6 +11,7 @@ hbs.registerHelper('ifInPreferences', function(elem, arr, options) {
       return options.inverse(this);
 });
 
-module.exports = hbs;
-
-
+hbs.registerHelper('ifUserComment', function(authorID, loggedUserID, options) {
+    console.log(authorID, loggedUserID);
+    return (authorID == loggedUserID) ? options.fn(this) : options.inverse(this);
+});

@@ -46,10 +46,11 @@
 
     {{#each podcastDB.comments}}
     <div>
+        <p>{{loggedUser}}</p>
         <p>{{this.content}}</p>
-        {{!-- {{#if this.author._id = loggedUser}}
-        <i class="far fa-edit"></i>
-        {{/if}} --}}
+        {{#if (eq this.author._id loggedUser)}}
+            <p>PATATA</p>
+        {{/if}}
         <p>By {{this.author.firstName}} {{this.author.lastName}}</p>
     </div>
     {{/each}}

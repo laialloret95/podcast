@@ -73,12 +73,13 @@ router.get('/podcasts/profile/:id', (req, res, next) => {
                 Favourite
                     .find({ $and: [ {podcastID:id}, {userIDs: userID}] })
                     .then(favouriteDB => {
+                        const loggedUser = req.session.currentUser._id;
                         if (favouriteDB.length > 0) {
                         // If podcast has been favourited by the user
-                            res.render('podcasts/profile', {podcastDB, loggedUser: req.session.currentUser._id, favouritedPocast: true});
+                            res.render('podcasts/profile', {podcastDB, loggedUser, favouritedPocast: true});
                         } else {
                         // If podcast has not been favourited by the user
-                            res.render('podcasts/profile', {podcastDB, loggedUser: req.session.currentUser._id});
+                            res.render('podcasts/profile', {podcastDB, loggedUser});
                         }
                     });
             })
