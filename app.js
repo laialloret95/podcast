@@ -10,6 +10,7 @@ const hbs = require('hbs');
 hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
+const notifications = require('./middlewares/flash');
 
 // ℹ️ Connects to the database
 require('./configs/db');
@@ -35,12 +36,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
-app.use(flash());
 
-app.use((req, res, next) => {
-  res.locals.flashMessage = req.flash('flashMessage');
-  next();
-});
+// Flash notifications
+app.use(flash());
+app.use(notifications(app));
 
 const app_name = require('./package.json').name;
 const { localsAsTemplateData } = require('hbs');
