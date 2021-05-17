@@ -11,3 +11,11 @@ hbs.registerHelper('ifInPreferences', function(elem, arr, options) {
 hbs.registerHelper('ifUserComment', function(authorID, loggedUserID, options) {
     return (authorID == loggedUserID) ? options.fn(this) : options.inverse(this);
 });
+
+hbs.registerHelper('countStats', (array) => {
+    if (array.length > 0) {
+        return array.length;
+    } else {
+        return 0;
+    }
+});
