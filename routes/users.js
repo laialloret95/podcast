@@ -1,6 +1,7 @@
 const express = require('express');
 const User = require('../models/user');
 const Favourite = require('../models/favorites');
+const Podcast = require('../models/podcast');
 const mongoose = require('mongoose');
 const checkIfUserIsLoggedIn = require('../middlewares/auth');
 
@@ -20,16 +21,23 @@ router.get('/profile', (req, res, next) => {
     })
     .then((userFromDB) => {
           ////Check if user has any podcast saved
-          Favourite
+          return Favourite
             .findOne({userIDs: userFromDB._id})
             .then( favouritesDB => {
+              console.log(favouritesDB)
               if (!favouritesDB) {
                  // If user has no favourites yet
-                 return res.render('users/profile', { userFromDB });
+                 Podcast
+                  .find()
+                  .limit(3)
+                  .sort({ pub_date: -1 })
+                  .then(podcastsDB => {
+                     res.render('users/profile', { userFromDB, podcastsDB });
+                  });
               } else {
                 // If user has already favourited some podcasts
                 //Find the one he/she saved
-                return Favourite
+                Favourite
                   .find({userIDs: userFromDB._id})
                   .populate('podcastID')
                   .find()
@@ -40,7 +48,7 @@ router.get('/profile', (req, res, next) => {
                     res.render('users/profile', { userFromDB, podcastID, lastSaved: true });
                   });
               }
-          });
+          })
     })
      .catch((error) => next(error));
 });
