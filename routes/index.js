@@ -75,10 +75,10 @@ router.get('/podcasts/profile/:id', (req, res, next) => {
                     .then(favouriteDB => {
                         if (favouriteDB.length > 0) {
                         // If podcast has been favourited by the user
-                            res.render('podcasts/profile', {podcastDB, loggedUser: true, favouritedPocast: true});
+                            res.render('podcasts/profile', {podcastDB, loggedUser: req.session.currentUser._id, favouritedPocast: true});
                         } else {
                         // If podcast has not been favourited by the user
-                            res.render('podcasts/profile', {podcastDB, loggedUser: true});
+                            res.render('podcasts/profile', {podcastDB, loggedUser: req.session.currentUser._id});
                         }
                     });
             })
