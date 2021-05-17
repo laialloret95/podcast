@@ -7,8 +7,29 @@ const User = require('../models/user');
 
 // HOME PAGE
 router.get('/', (req, res, next) => {
-    // get unique genres
-    Podcast
+
+    if (req.session.currentUser) {
+      // get unique genres
+      return Podcast
+        .find()
+        .distinct("genre")
+        .then(genresDB => {
+            return genresDB;
+        })
+        .then((genresDB) => {
+            // get the 6 newest Podcasts
+            Podcast
+                .find({})
+                .limit(6)
+                .sort({pub_date: -1})
+                .then(podcastsDB => {
+                    res.render('index', {podcastsDB, genresDB, loggedUser: true});
+                });
+        })
+        .catch(error => next(error));
+    } else {
+      // get unique genres
+      return Podcast
         .find()
         .distinct("genre")
         .then(genresDB => {
@@ -25,30 +46,40 @@ router.get('/', (req, res, next) => {
                 });
         })
         .catch(error => next(error));
+    }
 });
 
 // GENRE SEARCH
 router.get('/podcasts/:genre', (req, res, next) => {
     const { genre } = req.params;
-
-    Podcast
-        .find({genre: genre})
-        .then(podcastsDB => {
-        res.render('podcasts/show', {podcastsDB});
-        })
-        .catch(error => next(error));
+    
+    if (req.session.currentUser) {
+        return Podcast
+            .find({genre: genre})
+            .then(podcastsDB => {
+                res.render('podcasts/show', {podcastsDB, loggedUser: true });
+            })
+            .catch(error => next(error));
+    } else {
+        return Podcast
+            .find({genre: genre})
+            .then(podcastsDB => {
+                res.render('podcasts/show', {podcastsDB});
+            })
+            .catch(error => next(error));
+    }
 });
 
 // QUERY SEARCH
 router.post('/podcasts/search', (req, res, next) => {
     const keywords = req.body.keywords.toLowerCase();
-    
+
     Podcast
-        .find({ $or: [{ title : { $regex: keywords} }, { author : { $regex: keywords} }, { description : { $regex: keywords} }]})
-        .then(podcastsDB => {
-            res.render('podcasts/show', {podcastsDB});
-        })
-        .catch(error => next(error));
+      .find({ $or: [{ title : { $regex: keywords} }, { author : { $regex: keywords} }, { description : { $regex: keywords} }]})
+      .then(podcastsDB => {
+          res.render('podcasts/show', {podcastsDB});
+      })
+      .catch(error => next(error));
 });
 
 // PODCAST DETAIL
@@ -146,7 +177,7 @@ router.get('/favourites', (req,res, next) => {
         .find({userIDs: userID})
         .populate('podcastID')
         .then(favouritesDB => {
-            res.render("users/favourites", {favouritesDB});
+            res.render("users/favourites", {favouritesDB, loggedUser: true });
         })
         .catch(error => next(error));
 });
