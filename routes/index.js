@@ -166,7 +166,7 @@ router.post('/favourites/:podID/delete', (req, res, next) => {
 router.post("/podcasts/profile/:podID/addComment", (req,res, next) => {
     const { podID } = req.params;
     const userID = req.session.currentUser._id;
-    const { text } = req.body
+    const { text } = req.body;
 
     Comment
         .create({

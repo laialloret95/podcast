@@ -18,21 +18,31 @@ router.get('/profile', (req, res, next) => {
     .then((userFromDB) => {
         return userFromDB;
     })
-    .then((userFromDB) =>{
-        //Find last saved fav
-      return Favourite
-              .find({userIDs: userFromDB._id})
-              .populate('podcastID')
-              .find()
-              .limit(1)
-              .sort({createdAt: -1})
-              .then(lastFavourited => {
-                const [{ podcastID }] = lastFavourited;
-                  
-                res.render('users/profile', { userFromDB, podcastID });
-              });
+    .then((userFromDB) => {
+          ////Check if user has any podcast saved
+          Favourite
+            .findOne({userIDs: userFromDB._id})
+            .then( favouritesDB => {
+              if (!favouritesDB) {
+                 // If user has no favourites yet
+                 return res.render('users/profile', { userFromDB });
+              } else {
+                // If user has already favourited some podcasts
+                //Find the one he/she saved
+                return Favourite
+                  .find({userIDs: userFromDB._id})
+                  .populate('podcastID')
+                  .find()
+                  .limit(1)
+                  .sort({createdAt: -1})
+                  .then(lastFavourited => {
+                    const [{ podcastID }] = lastFavourited;
+                    res.render('users/profile', { userFromDB, podcastID, lastSaved: true });
+                  });
+              }
+          });
     })
-    .catch((error) => next(error));
+     .catch((error) => next(error));
 });
 
 // EDIT PROFILE
