@@ -1,5 +1,4 @@
 const hbs = require("hbs");
-const path = require('path');
 
 // Register HBS Helpers
 hbs.registerHelper('ifInPreferences', function(elem, arr, options) {
@@ -10,6 +9,5 @@ hbs.registerHelper('ifInPreferences', function(elem, arr, options) {
 });
 
 hbs.registerHelper('ifUserComment', function(authorID, loggedUserID, options) {
-    console.log(authorID, loggedUserID);
     return (authorID == loggedUserID) ? options.fn(this) : options.inverse(this);
 });

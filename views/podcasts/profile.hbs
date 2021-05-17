@@ -46,11 +46,13 @@
 
     {{#each podcastDB.comments}}
     <div>
-        <p>{{loggedUser}}</p>
         <p>{{this.content}}</p>
-        {{#if (eq this.author._id loggedUser)}}
-            <p>PATATA</p>
-        {{/if}}
+        {{#ifUserComment this.author._id ../loggedUser}}
+            <a href="/podcast/{{../podcastDB._id}}/comment/{{this._id}}/edit">
+                <i class="far fa-edit"></i>
+                <p>Edit</p>
+            </a>
+        {{/ifUserComment}}
         <p>By {{this.author.firstName}} {{this.author.lastName}}</p>
     </div>
     {{/each}}

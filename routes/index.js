@@ -184,4 +184,31 @@ router.post("/podcasts/profile/:podID/addComment", (req,res, next) => {
         .catch(error => next(error));
 });
 
+router.get('/podcast/:podcastID/comment/:commentID/edit', (req, res, next) => {
+    const { podcastID, commentID }  = req.params;
+  
+    Comment.findById(commentID)
+     .then( commentDB => {
+         console.log(commentDB);
+         Podcast
+            .findById(podcastID)
+            .then(podcastDB => {
+                res.render("comments/edit-comment", {podcastDB, commentDB});
+            });
+     })
+     .catch((error) => next(error));
+});
+
+
+router.post('/podcast/:podcastID/comment/:commentID/edit', (req, res, next) => {
+    const { podcastID, commentID }  = req.params;
+    const { content } = req.body;
+
+    Comment.findByIdAndUpdate(commentID, {content}, {new: true})
+        .then(() => {
+            res.redirect(`/podcasts/profile/${podcastID}`);
+        })
+        .catch((error) => next(error));
+});
+
 module.exports = router;
