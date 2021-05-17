@@ -39,6 +39,7 @@ router.post('/signup', (req, res, next) => {
    })
    .then(userFromDB => {
      const uri = `/signup/${userFromDB._id}`;
+     req.flash('success', 'Your Podapp account has been successfully created!')
      res.redirect(uri);
    })
    .catch(error => {
@@ -73,8 +74,8 @@ router.post('/signup/:id', (req, res, next) => {
 
   User
    .findByIdAndUpdate(id, { preferences: preferences }, { new: true })
-   .then((userFromDB) => {
-     console.log(userFromDB);
+   .then(() => {
+     req.flash('success', 'Your preferences have been saved. Now you can login.');
      res.redirect('/login');
    })
    .catch(error => next(error));
@@ -106,7 +107,7 @@ router.post('/login', (req, res, next) => {
          preferences,
          profilePicture
        };
-       req.flash('flashMessage','Logged!');
+       req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
        res.redirect('/profile');
      } else {
       res.render('auth/login', { errorMessage: 'Incorrect password.' });

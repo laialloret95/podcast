@@ -50,7 +50,10 @@ router.post('/profile/edit', (req, res, next) => {
   const id  = req.session.currentUser._id;
 
   User.findByIdAndUpdate( id, { firstName, lastName, email, preferences }, { new: true })
-   .then(() => res.redirect("/profile"))
+   .then(() => {
+      req.flash('success', "Your profile has been updated successfully!");
+      res.redirect("/profile");
+   })
    .catch((error) => next(error));
 });
 

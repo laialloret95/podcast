@@ -29,6 +29,8 @@ require('./configs/session')(app);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+hbs.registerPartials(path.join(__dirname, '/views/partials'));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(logger('dev'));
@@ -37,6 +39,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
+// Registered HBS Helpers
+require('./configs/hbs');
+
 // Flash notifications
 app.use(flash());
 app.use(notifications(app));
@@ -44,9 +49,6 @@ app.use(notifications(app));
 const app_name = require('./package.json').name;
 const { localsAsTemplateData } = require('hbs');
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
-
-// Registered HBS Helpers
-require('./configs/hbs');
 
 
 // 👇 Handling routes here
