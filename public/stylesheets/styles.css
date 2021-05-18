@@ -495,6 +495,8 @@ a {
     .button__auth.light:hover,
     .button__auth.light :focus {
       box-shadow: lightslategray  5px 10px 9px; }
+  .button__auth.small {
+    font-size: 0.5rem; }
 
 /* INPUT FIELDS */
 .input-auth {

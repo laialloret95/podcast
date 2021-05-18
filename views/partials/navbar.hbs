@@ -9,7 +9,7 @@
         {{#if loggedUser}}
             <div class="nav__bar__auth">
                 <form action="/logout" method="POST">
-                    <button>LOGOUT</button>
+                    <button class="button__auth light small">LOGOUT</button>
                 </form>
             </div> <!-- /nav__bar__auth -->
         </div><!-- /nav__bar__top -->
@@ -22,8 +22,8 @@
 
         {{else}}
             <div class="nav__bar__auth">
-                <a href="/signup">Signup</a>
-                <a href="/login">Login</a>
+                <a  href="/signup">Signup</a>
+                <a  href="/login">Login</a>
             </div> <!-- /nav__bar__auth -->
         </div><!-- /nav__bar__top -->
 

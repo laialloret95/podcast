@@ -25,6 +25,10 @@
              box-shadow: lightslategray  5px 10px 9px;
         }
     }
+
+    &.small {
+        font-size: $font-size-smll;
+    }
 }
    
 
