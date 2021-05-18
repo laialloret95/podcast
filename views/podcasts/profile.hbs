@@ -62,13 +62,13 @@
     {{#each podcastDB.comments}}
     <div>
         <p>{{this.content}}</p>
-        {{#ifUserComment this.author._id ../loggedUser}}
-            <a href="/podcast/{{../podcastDB._id}}/comment/{{this._id}}/edit">
+        {{#ifUserComment this.author._id ../loggedUser ../podcastDB this._id}}
+            <a href="/podcast/{{podcastDB._id}}/comment/{{commentID}}/edit">
                 <i class="far fa-edit"></i>
                 <p>Edit</p>
             </a>
 
-            <form action="/podcast/{{../podcastDB._id}}/comment/{{this._id}}/delete" method="POST">
+            <form action="/podcast/{{podcastDB._id}}/comment/{{commentID}}/delete" method="POST">
                 <button><i class="fas fa-trash-alt fa-lg" style="color:#8E1515"></i></button>
             </form>
 

@@ -8,8 +8,12 @@ hbs.registerHelper('ifInPreferences', (elem, arr, options) => {
       return options.inverse(this);
 });
 
-hbs.registerHelper('ifUserComment', (authorID, loggedUserID, options) => {
-    return (authorID == loggedUserID) ? options.fn(this) : options.inverse(this);
+hbs.registerHelper('ifUserComment', (authorID, loggedUserID, podcastDB, commentID, options) => {
+    if (authorID == loggedUserID) {
+        return options.fn({podcastDB, commentID});
+    } else {
+        return options.inverse(this);
+    }
 });
 
 hbs.registerHelper('countStats', (array) => {
