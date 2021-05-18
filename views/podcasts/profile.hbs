@@ -39,6 +39,19 @@
         {{/if}}
 
         <p class="minutes">{{podcastDB.audio_length}} minutes</p>
+
+        {{#if podcastDB.ratings}}
+        <div>
+            {{#each (ratingStars podcastDB.ratings) }}
+                <i class="fas fa-star"></i>
+            {{/each}}
+            {{#each (missingStars podcastDB.ratings) }}
+                <i class="far fa-star"></i>
+            {{/each}}
+        </div>
+        {{/if}}
+
+        <a href="/podcast/{{podcastDB._id}}/rating">Rate this Podcast!</a>
     </div>
     <hr class="solid">
     <div class="podcast-profile-description-container">
