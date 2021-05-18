@@ -1,0 +1,76 @@
+/* INPUT FIELDS */
+.input-auth {
+    display: inline-block;
+    width: 90%;
+    margin: 0.5em auto;
+    padding: 0.75em 0.5em;
+    background-color: white;
+    border: none;
+    color: grey;
+    font-weight: bold;
+    text-align: left;
+}
+
+input:focus {
+    outline: 2px solid #c0c0c0;
+}
+
+.input-auth::placeholder {
+    color: rgb(92, 91, 91);
+    font-weight: bold;
+    opacity: none;
+}
+
+/*SIGNUP FORM */
+.signup {
+
+    background-color: #e5e4e2;
+    padding: 2em 0;    
+
+    h1 {
+        color: $color-secondary;
+    }
+
+    h1, p {
+        margin: 0.75em 0;
+    }
+
+    a {
+        color: $color-secondary;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}
+
+/*SIGNUP PREFERENCES FORM */
+.signup__preferences {
+    text-align: left;
+    padding: 2em;
+
+    input:checked + label {
+        color: $color-secondary;
+        font-weight: 550;
+    }
+
+    &__label {
+        margin-left: 0.6em;
+    }
+}
+
+/* LOGIN & LOGOUT */
+.login, 
+.logout {
+   background-color: $color-secondary;
+   padding: 2em 0;
+   
+    h1, p {
+        margin: 0.75em 0;
+        color: $color-primary;
+    }
+
+    a {
+        color: $color-primary;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}

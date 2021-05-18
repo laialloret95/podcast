@@ -1,33 +1,33 @@
-<div class="auth-container">
-    <div class="signup signup-preferences">
+<div class="container">
+    <div class="signup signup__preferences">
 
         <h1>Hi {{userFromDB.firstName}}, listen to what you love</h1>
         <p>Your selections will help us give you better results and recommendations when you explore on Podapp.</p>
 
         <form action="/signup/{{userFromDB._id}}" method="POST">
         
-            <input type="checkbox" id="technology" name="preferences" value="Technology" checked>
-            <label class="preferences-label" for="technology">Technology</label>
+            <input class="signup__preferences__checkbox" type="checkbox" id="technology" name="preferences" value="Technology" checked>
+            <label class="signup__preferences__label" for="technology">Technology</label>
 
             </br>
 
-            <input type="checkbox" id="business" name="preferences" value="Business">
-            <label class="preferences-label" for="business">Business</label>
+            <input class="signup__preferences__checkbox" type="checkbox" id="business" name="preferences" value="Business">
+            <label class="signup__preferences__label" for="business">Business</label>
 
             </br>
 
-            <input type="checkbox" id="games" name="preferences" value="Games">
-            <label class="preferences-label" for="games">Games</label>
+            <input class="signup__preferences__checkbox" type="checkbox" id="games" name="preferences" value="Games">
+            <label class="signup__preferences__label" for="games">Games</label>
 
             </br>
 
-            <input type="checkbox" id="science" name="preferences" value="Science">
-            <label class="preferences-label" for="science">Science</label>
+            <input class="signup__preferences__checkbox" type="checkbox" id="science" name="preferences" value="Science">
+            <label class="signup__preferences__label" for="science">Science</label>
 
             </br>
 
-            <input type="checkbox" id="sports" name="preferences" value="Sports">
-            <label class="preferences-label" for="sports">Sports</label>
+            <input class="signup__preferences__checkbox" type="checkbox" id="sports" name="preferences" value="Sports">
+            <label class="signup__preferences__label" for="sports">Sports</label>
 
             </br>
             </br>

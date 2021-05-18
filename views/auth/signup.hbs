@@ -1,8 +1,8 @@
-<div class="auth-container">
+<div class="container">
     <div class="signup">
-    <h1>Create a New Account</h1>
-    <p>Come join the Podapp community! Let's set up your account.</p>
-    <p>Already have one? <a href="/login">Login</a> here.</p>
+        <h1>Create a New Account</h1>
+        <p>Come join the Podapp community! Let's set up your account.</p>
+        <p>Already have one? <a href="/login">Login</a> here.</p>
 
         <form action="/signup" method="POST">
             <input class="input-auth" type="text" name="firstName" id="firstName" placeholder="First name" autofocus />
@@ -19,6 +19,5 @@
                 <p class="error">{{errorMessage}}</p>
             {{/if}}
         </form>
-
     </div>
 </div>

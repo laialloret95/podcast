@@ -1,5 +1,5 @@
 /* COLORS */
-$color-primary: rgb(244, 247, 251);
+$color-primary: rgb(255, 255, 255);
 $color-secondary: rgb(132, 92, 252);
 
 $font-color-primary: rgb(73, 79, 101);
@@ -30,6 +30,6 @@ a {
 .container {
     width: 90%;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 3em auto;
     text-align: center;
 }
