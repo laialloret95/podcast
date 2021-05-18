@@ -1,0 +1,77 @@
+/* PODCAST PROFILE */
+.podcast-profile-header-container {
+    max-height: 90%;
+    display: flex;
+    color: white;
+    justify-content: space-around;
+    background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/constellation.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.podcast-profile-header-container img {
+    max-width:20%;
+    max-height:20%;
+    padding: 5%;
+    object-fit: contain;
+    border-radius: 30px;
+}
+
+.podcast-profile-header-text-container {
+    display: flex;
+    flex-direction: column;
+    padding: 5% 5% 5% 0%;
+    justify-content: flex-end;
+}
+
+.podcast-profile-header-text-container > * {
+    margin:0;
+    padding: 1%;
+}
+
+hr.solid {
+    margin: 3% 10%;
+    height: 1px;
+    border: 0;
+    border-top: 0.5px solid rgb(236, 234, 234)
+}
+
+.podcast-profile-actions-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.podcast-profile-actions-container i {
+    padding: 2% ;
+    display: flex;
+    align-items: center;
+    color:rgba(0, 0, 0, 0.5);
+}
+
+.podcast-profile {
+    display: flex;
+    align-items: center;
+    padding: 2%;
+}
+
+.icon-name {
+    font: 'Lucida Grande', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0 5%;
+}
+
+.podcast-profile-actions-container .minutes {
+    margin-left: auto;
+    margin-right: 5%;
+    color:rgba(0, 0, 0, 0.5);
+}
+
+.podcast-profile-description-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.podcast-profile-comment {
+    display: flex;
+    flex-direction: column;
+}
