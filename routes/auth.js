@@ -102,28 +102,30 @@ router.post('/login', (req, res, next) => {
       return;      
      } else if (bcryptjs.compareSync(password, userDB.hashedPassword)) {
        const { _id, firstName, lastName, email: mail, preferences, profilePicture } = userDB;
-       req.session.currentUser = {
+       return req.session.currentUser = {
          _id,
          firstName,
          lastName,
          mail,
          preferences,
          profilePicture
-       };
-       req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
-       
-       if (referer.includes("logout")) {
+       }
+      } else {
+        res.render('auth/login', { errorMessage: 'Incorrect password.' });
+        return;
+       }
+      })
+     .then(() => {
+      if (referer.includes("logout")) {
+        req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
         res.redirect('/');
        } else {
+        req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
         res.redirect(referer);
        }
 
-     } else {
-      res.render('auth/login', { errorMessage: 'Incorrect password.' });
-      return;
-     }
-   })
-   .catch(error => next(error));
+     })
+    .catch(error => next(error));
 });
 
 router.get('/logout', (req, res) => {
