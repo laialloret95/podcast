@@ -1,14 +1,14 @@
 const hbs = require("hbs");
 
 // Register HBS Helpers
-hbs.registerHelper('ifInPreferences', function(elem, arr, options) {
+hbs.registerHelper('ifInPreferences', (elem, arr, options) => {
     if (arr.indexOf(elem) > -1) {
         return options.fn(this);
     } 
       return options.inverse(this);
 });
 
-hbs.registerHelper('ifUserComment', function(authorID, loggedUserID, options) {
+hbs.registerHelper('ifUserComment', (authorID, loggedUserID, options) => {
     return (authorID == loggedUserID) ? options.fn(this) : options.inverse(this);
 });
 
