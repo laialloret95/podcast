@@ -82,10 +82,13 @@ router.post('/signup/:id', (req, res, next) => {
 });
 
 //LOGIN
-router.get('/login', (req, res) => res.render('auth/login'));
+router.get('/login', (req, res) => {
+  res.render('auth/login', {referer: req.headers.referer});
+});
 
 router.post('/login', (req, res, next) => {
-  const { email, password } = req.body;
+  const { email, password, referer } = req.body;
+  console.log(referer);
 
   if ( !email || !password ) {
     res.render('auth/login', { errorMessage:'Please enter both, email and password to login.'});
@@ -108,7 +111,13 @@ router.post('/login', (req, res, next) => {
          profilePicture
        };
        req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
-       res.redirect('/profile');
+       
+       if (referer.includes("logout")) {
+        res.redirect('/');
+       } else {
+        res.redirect(referer);
+       }
+
      } else {
       res.render('auth/login', { errorMessage: 'Incorrect password.' });
       return;
