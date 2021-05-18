@@ -306,6 +306,14 @@ a {
   margin: 3em auto;
   text-align: center; }
 
+/* FOOTER */
+footer {
+  background-color: #845cfc;
+  padding: 1em 0; }
+  footer p {
+    text-align: center;
+    color: white; }
+
 h1 {
   font-size: 1.75rem;
   margin: 0; }
