@@ -310,7 +310,7 @@ a {
 .nav {
   background-color: #845cfc;
   color: #fefdff;
-  height: 40vh;
+  height: 30vh;
   border-bottom-left-radius: 42%;
   border-bottom-right-radius: 42%; }
   .nav__bar {
@@ -318,7 +318,7 @@ a {
     width: 80%;
     max-width: 960px;
     margin: 0 auto;
-    padding-bottom: 1em;
+    padding-bottom: 3em;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -422,10 +422,12 @@ a {
 
 .genres-container {
   display: flex;
-  justify-content: space-around;
-  margin: 0; }
+  margin: 1em auto;
+  flex-wrap: wrap;
+  width: 80%;
+  justify-content: center; }
   .genres-container__ul {
-    width: 15%; }
+    padding: 1em; }
   .genres-container__ul__bubble {
     position: relative;
     text-align: center;

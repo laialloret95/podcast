@@ -2,7 +2,7 @@
 .nav {
         background-color: $color-secondary;
         color: $font-color-secondary;
-        height: 40vh;
+        height: 30vh;
         border-bottom-left-radius: 42% ;
         border-bottom-right-radius: 42% ;
 
@@ -11,7 +11,7 @@
         width: 80%;
         max-width: 960px;
         margin: 0 auto;
-        padding-bottom: 1em;
+        padding-bottom: 3em;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
