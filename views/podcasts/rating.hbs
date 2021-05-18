@@ -1,0 +1,32 @@
+<h1> How did you like the Podcast?</h1>
+
+<div class="podcast-profile-header-container">
+    <img src="{{podcastDB.image}}" alt="podcast_image">
+    <div class="podcast-profile-header-text-container">
+        <h1>{{podcastDB.title}}</h1>
+        <h2>{{podcastDB.author}}</h2>
+    </div>
+</div>
+
+<div>
+    <form action="/podcast/{{podcastDB._id}}/rating/1.67" method="POST">
+            <button>
+                <img src="../../images/Very_Angry_Emoji.png" alt="Angry Face">
+                <p>Needs to Improve</p>
+            </button>
+    </form>
+
+    <form action="/podcast/{{podcastDB._id}}/rating/3.33" method="POST">
+            <button>
+                <img src="../../images/Neutral_Face_Emoji.png" alt="Neutral Face">
+                <p>It is OK</p>
+            </button>
+    </form>
+    
+    <form action="/podcast/{{podcastDB._id}}/rating/5" method="POST">
+            <button>
+                <img src="../../images/Heart_Eyes_Emoji.png" alt="Heart Eyes Face">
+                <p>Super happy with it</p>
+            </button>
+    </form>
+</div>

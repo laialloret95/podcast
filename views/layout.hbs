@@ -13,32 +13,7 @@
 </head>
 
 <body>
-
-    <nav class="nav">
-        <div class="nav__bar">
-            <div class="nav__bar__top">
-                <div class="nav__bar__top__title">
-                    <i class="fas fa-microphone fa-3x" style="color:white"></i>
-                    <h1>Podcasts</h1>
-                </div>
-
-                <div class="nav__bar__auth">
-                    <a href="/signup">Signup</a>
-                    <a href="/login">Login</a>
-                    <form action="/logout" method="POST">
-                        <button>Logout</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="nav__bar__sections">
-                <a href="/"> HOME </a></p>
-                <a href="/favourites"> FAVOURITES </a></p>
-            </div>
-
-
-        </div>
-    </nav>
+    {{> flash}}
 
     {{{body}}}
 

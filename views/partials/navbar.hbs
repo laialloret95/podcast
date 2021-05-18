@@ -1,0 +1,35 @@
+<nav class="nav">
+    <div class="nav__bar">
+        <div class="nav__bar__top">
+            <div class="nav__bar__top__title">
+                <i class="fas fa-microphone fa-3x" style="color:white"></i>
+                <h1>Podcasts</h1>
+            </div>
+
+        {{#if loggedUser}}
+            <div class="nav__bar__auth">
+                <form action="/logout" method="POST">
+                    <button>LOGOUT</button>
+                </form>
+            </div> <!-- /nav__bar__auth -->
+        </div><!-- /nav__bar__top -->
+
+        <div class="nav__bar__sections">
+            <a href="/"> HOME </a>
+            <a href="/favourites"> FAVOURITES </a>
+            <a href="/profile"> PROFILE </a>
+        </div> <!-- /nav__bar__sections -->
+
+        {{else}}
+            <div class="nav__bar__auth">
+                <a href="/signup">Signup</a>
+                <a href="/login">Login</a>
+            </div> <!-- /nav__bar__auth -->
+        </div><!-- /nav__bar__top -->
+
+        <div class="nav__bar__sections">
+            <a href="/"> HOME </a>
+        </div> <!-- /nav__bar__sections -->
+        {{/if}}
+    </div> <!-- /nav__bar -->
+</nav> <!-- /nav -->

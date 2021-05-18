@@ -10,7 +10,9 @@ const hbs = require('hbs');
 hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
+
 // const sassMiddleware = require('node-sass-middleware');
+const notifications = require('./middlewares/flash');
 
 // ℹ️ Connects to the database
 require('./configs/db');
@@ -29,6 +31,8 @@ require('./configs/session')(app);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+hbs.registerPartials(path.join(__dirname, '/views/partials'));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(logger('dev'));
@@ -46,17 +50,15 @@ app.use(flash());
 //   debug: true
 // }));
 
-app.use((req, res, next) => {
-  res.locals.flashMessage = req.flash('flashMessage');
-  next();
-});
-
-const app_name = require('./package.json').name;
-const { localsAsTemplateData } = require('hbs');
-const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
-
 // Registered HBS Helpers
 require('./configs/hbs');
+
+// Flash notifications
+app.use(flash());
+app.use(notifications(app));
+
+const app_name = require('./package.json').name;
+const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
 
 // 👇 Handling routes here

@@ -18,31 +18,47 @@
     <div class="profile-statistics">
         <div class="stats">
             <img class="icon-img" src="/images/favorite.png" alt="Favorite podcast icon">
-            <p class="stats-subtitle"><b>8</b> Favourites</p>
+            <p class="stats-subtitle">{{countStats 'array'}} Favourites</p>
             <a class="button-auth button-inline" href="/favourites">Favourites</a>
         </div>
         <div class="stats">
             <img  class="icon-img" src="/images/playlist-icon.png" alt="Playlist list icon">
-            <p class="stats-subtitle"><b>2</b> Playlist</p>
+            <p class="stats-subtitle">{{playlist}} Playlist</p>
             <a class="button-auth button-inline" href="#">Playlist</a>
         </div>
         <div class="stats">
             <img class="icon-img" src="/images/comments-icon.png" alt="Comments on podcast icon">
-            <p class="stats-subtitle"><b>4</b> Comments</p>
+            <p class="stats-subtitle">{{comments}} Comments</p>
             <a class="button-auth button-inline" href="#">Comments</a>
         </div>
     </div> <!-- /profile-statistics -->
     <div class="profile-last-saved">
+    {{#if lastSaved }}
         <h2>Last Saved Podcast</h2>
-        <div id="podcasts">
-            <ul>
-                <a href="/podcasts/profile/{{podcastID._id}}">
-                    <img src="{{podcastID.image}}" alt="">
-                    <h2>{{podcastID.title}}</h2>
-                    <p>{{podcastID.author}}</p>
-                </a>
-            </ul>
-        </div> <!-- /podcast -->
+            <a class="card__podcast" href="/podcasts/profile/{{podcastID._id}}">
+              <div class="card__podcast__image">
+                  <img class="card__podcast__image_url"src="{{podcastID.image}}" alt="{{podcastID.title}}">
+              </div>
+              <div class="card__podcast__content">
+                  <h1 class="title">{{podcastID.title}}</h1>
+                  <p class="subtitle">{{podcastID.author}}</p>
+              </div> 
+            </a> <!-- /card__podcast -->  
+    {{else }}
+        <h2>3 Can't-Miss Podcasts</h2>
+            {{#each podcastsDB }}
+            <p>{{title}}</p>
+              <a class="card__podcast" href="/podcasts/profile/{{_id}}">
+                <div class="card__podcast__image">
+                    <img class="card__podcast__image_url"src="{{image}}" alt="{{title}}">
+                </div>
+                <div class="card__podcast__content">
+                    <h1 class="title">{{title}}</h1>
+                    <p class="subtitle">{{author}}</p>
+                </div> 
+              </a> <!-- /card__podcast -->  
+             {{/each}}       
+    {{/if}}
     </div> <!-- /profile-last-saved -->
 </div> <!-- /profile-container -->
 

@@ -1,0 +1,22 @@
+<div>
+    <div class="podcast-profile-header-container">
+        <img src="{{podcastDB.image}}" alt="podcast_image">
+        <div class="podcast-profile-header-text-container">
+            <h1>{{podcastDB.title}}</h1>
+            <h2>{{podcastDB.author}}</h2>
+            <p>{{dateFormat podcastDB.pub_date "dddd, MMMM Do YYYY"}}</p>
+        </div>
+    </div>
+
+    <div>
+        <h2>Update the comment</h2>
+        <form action="/podcast/{{podcastDB._id}}/comment/{{commentDB._id}}/edit" method="POST">
+
+            <label>Content:</label>
+            <input class= "comment-input" type="text" name="content" value="{{commentDB.content}}" />
+
+            <button type="submit">Save Changes</button>
+
+        </form>
+    </div>
+</div>
