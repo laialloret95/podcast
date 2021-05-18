@@ -326,7 +326,7 @@ h4 {
 
 p,
 a {
-  font-size: 1rem; }
+  font-size: 0.75rem; }
 
 /* DESKTOP */
 @media (min-width: 1024px) {
@@ -497,11 +497,14 @@ input:focus {
 /*SIGNUP FORM */
 .signup {
   background-color: #e5e4e2;
-  padding: 2em 0; }
+  padding: 2em 1em; }
   .signup h1 {
     color: #845cfc; }
   .signup h1, .signup p {
     margin: 0.75em 0; }
+  .signup p,
+  .signup a {
+    font-size: 1rem; }
   .signup a {
     color: #845cfc;
     font-weight: bold;
@@ -510,7 +513,7 @@ input:focus {
 /*SIGNUP PREFERENCES FORM */
 .signup__preferences {
   text-align: left;
-  padding: 2em; }
+  padding: 2em 1em; }
   .signup__preferences input:checked + label {
     color: #845cfc;
     font-weight: 550; }
@@ -527,6 +530,11 @@ input:focus {
   .logout p {
     margin: 0.75em 0;
     color: white; }
+  .login p,
+  .login a,
+  .logout p,
+  .logout a {
+    font-size: 1rem; }
   .login a,
   .logout a {
     color: white;

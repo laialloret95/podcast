@@ -23,9 +23,8 @@ input:focus {
 
 /*SIGNUP FORM */
 .signup {
-
     background-color: #e5e4e2;
-    padding: 2em 0;    
+    padding: 2em 1em;    
 
     h1 {
         color: $color-secondary;
@@ -33,6 +32,11 @@ input:focus {
 
     h1, p {
         margin: 0.75em 0;
+    }
+
+    p, 
+    a {
+        font-size: $font-size-medium;
     }
 
     a {
@@ -45,7 +49,7 @@ input:focus {
 /*SIGNUP PREFERENCES FORM */
 .signup__preferences {
     text-align: left;
-    padding: 2em;
+    padding: 2em 1em;
 
     input:checked + label {
         color: $color-secondary;
@@ -66,6 +70,11 @@ input:focus {
     h1, p {
         margin: 0.75em 0;
         color: $color-primary;
+    }
+
+    p, 
+    a {
+        font-size: $font-size-medium;
     }
 
     a {
