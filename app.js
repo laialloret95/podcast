@@ -40,7 +40,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
-app.use(flash());
 // app.use(sassMiddleware({
 //   src: path.join(__dirname, 'public'),
 //   dest: path.join(__dirname, 'public'),
