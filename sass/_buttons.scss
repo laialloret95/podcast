@@ -1,0 +1,30 @@
+/* BUTTONS AUTH FORM */
+.button__auth {
+    margin: 1em;
+    padding: 1em 2em;
+    background-color: $color-secondary;
+    border: none;
+    border-radius: 10rem;
+    box-shadow: lightslategray  2px 2px 2px;
+    font-weight: 700;
+    color: white;
+    width: auto;
+    height: auto;
+
+    &:hover,
+    :focus {
+       box-shadow: lightslategray  5px 10px 9px;
+    }
+
+    &.light {
+        background-color: $color-terchary;
+        color: $color-secondary;
+
+        &:hover,
+        :focus {
+             box-shadow: lightslategray  5px 10px 9px;
+        }
+    }
+}
+   
+

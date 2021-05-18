@@ -474,6 +474,28 @@ a {
       left: 50%;
       transform: translate(-50%, -50%); }
 
+/* BUTTONS AUTH FORM */
+.button__auth {
+  margin: 1em;
+  padding: 1em 2em;
+  background-color: #845cfc;
+  border: none;
+  border-radius: 10rem;
+  box-shadow: lightslategray  2px 2px 2px;
+  font-weight: 700;
+  color: white;
+  width: auto;
+  height: auto; }
+  .button__auth:hover,
+  .button__auth :focus {
+    box-shadow: lightslategray  5px 10px 9px; }
+  .button__auth.light {
+    background-color: #F5EA61;
+    color: #845cfc; }
+    .button__auth.light:hover,
+    .button__auth.light :focus {
+      box-shadow: lightslategray  5px 10px 9px; }
+
 /* INPUT FIELDS */
 .input-auth {
   display: inline-block;
