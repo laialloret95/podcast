@@ -226,4 +226,29 @@ router.post('/podcast/:podcastID/comment/:commentID/delete', (req, res, next) =>
         .catch(error => next(error));
 });
 
+// RATINGS
+
+router.get('/podcast/:podcastID/rating', (req, res, next) => {
+    const { podcastID }  = req.params;
+
+    Podcast
+        .findById(podcastID)
+        .then( podcastDB => {
+            res.render("podcasts/rating", { podcastDB } );
+        })
+        .catch(error => next(error));
+});
+
+router.post('/podcast/:podcastID/rating/:rating', (req, res, next) => {
+    const { podcastID }  = req.params;
+    const rating = parseFloat(req.params.rating);
+    
+    Podcast
+        .findOneAndUpdate({_id: podcastID}, { $push: { ratings: rating } })
+        .then( () => {
+            res.redirect(`/podcasts/profile/${podcastID}`);
+        })
+        .catch(error => next(error));
+});
+
 module.exports = router;
