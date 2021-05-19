@@ -51,13 +51,15 @@ router.get('/podcasts/:genre', (req, res, next) => {
   if (req.session.currentUser) {
     return Podcast.find({ genre: genre })
       .then(podcastsDB => {
+        console.log(genre)
         res.render('podcasts/show', { podcastsDB, loggedUser: true });
       })
       .catch(error => next(error));
   } else {
     return Podcast.find({ genre: genre })
       .then(podcastsDB => {
-        res.render('podcasts/show', { podcastsDB });
+        console.log({ genre })
+        res.render('podcasts/show', { podcastsDB, genre });
       })
       .catch(error => next(error));
   }
@@ -69,7 +71,8 @@ router.post('/podcasts/search', (req, res, next) => {
 
   Podcast.find({ $or: [{ title: { $regex: keywords } }, { author: { $regex: keywords } }, { description: { $regex: keywords } }] })
     .then(podcastsDB => {
-      res.render('podcasts/show', { podcastsDB });
+      console.log(keywords)
+      res.render('podcasts/show', { podcastsDB, keywords });
     })
     .catch(error => next(error));
 });

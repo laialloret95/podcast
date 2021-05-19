@@ -5,6 +5,11 @@
         height: 25vh;
         border-bottom-left-radius: 20% ;
         border-bottom-right-radius: 20% ;
+        margin-bottom: 1em;
+
+    &.small {
+        height: 18vh;
+    }
 
     &__bar {
         height: 100%;

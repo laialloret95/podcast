@@ -1,4 +1,4 @@
-<nav class="nav small">
+<nav class="nav">
     <div class="nav__bar">
         <div class="nav__bar__top">
             <div class="nav__bar__top__title">
@@ -28,4 +28,13 @@
         </div><!-- /nav__bar__top -->
         {{/if}}
     </div> <!-- /nav__bar -->
+    <div class="search-bar">
+        <form class="search-bar__items" action="/podcasts/search" method="POST">
+            <input type="search" results="5" name="keywords" class="searchInput" placeholder="Type person, topic, keyword" required
+            inputmode="search">
+            <button type="submit">
+                <i class="fa fa-search icon" aria-hidden="true" style="color:grey"></i>
+            </button>
+        </form>
+    </div><!-- /search-bar -->
 </nav> <!-- /nav -->

@@ -19,7 +19,8 @@ $font-size-smll: 0.5rem;
 /* BODY */
 body {
     font-size:16px;
-    width:100vw;
+    width:100%;
+    height: 100%;
     background-color: $color-primary;
     color: $font-color-primary;
     font-family: $font-family;
@@ -44,6 +45,7 @@ a {
 footer {
     background-color: rgb(132, 92, 252);
     padding: 1em 0;
+    margin-top: 2.5em;
 
     p {
         text-align: center;

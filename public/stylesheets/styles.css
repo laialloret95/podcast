@@ -289,7 +289,8 @@ noscript {
 /* BODY */
 body {
   font-size: 16px;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
   background-color: white;
   color: #494f65;
   font-family: "Montserrat", sans-serif; }
@@ -309,7 +310,8 @@ a {
 /* FOOTER */
 footer {
   background-color: #845cfc;
-  padding: 1em 0; }
+  padding: 1em 0;
+  margin-top: 2.5em; }
   footer p {
     text-align: center;
     color: white; }
@@ -353,7 +355,10 @@ a {
   color: #fefdff;
   height: 25vh;
   border-bottom-left-radius: 20%;
-  border-bottom-right-radius: 20%; }
+  border-bottom-right-radius: 20%;
+  margin-bottom: 1em; }
+  .nav.small {
+    height: 18vh; }
   .nav__bar {
     height: 100%;
     width: 80%;

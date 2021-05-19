@@ -1,13 +1,23 @@
-{{> navbar }}
+{{>navbarsearch}}
 
-<div id="podcasts">
-    {{#each podcastsDB}}
-    <ul>
-        <a href="/podcasts/profile/{{_id}}">
-            <img src="{{image}}" alt="">
-            <h2>{{title}}</h2>
-            <p>{{author}}</p>
+<div class="container">
+  {{#if genre}}
+    <h1>All {{genre}} podcast</h1>
+  {{else}}
+    <h1>Results for "{{keywords}}"</h1>
+  {{/if}}
+
+    <div class="card__container">
+        {{#each podcastsDB}}
+        <a class="card__podcast" href="/podcasts/profile/{{_id}}">
+            <div class="card__podcast__image">
+                <img class="card__podcast__image_url"src="{{image}}" alt="podcast_image">
+            </div>
+            <div class="card__podcast__content">
+                <h2 class="h2--small">{{title}}</h2>
+                <p class="subtitle">{{author}}</p>
+            </div>
         </a>
-    </ul>
-    {{/each}}
-</div>
+        {{/each}}
+    </div> <!-- /card__container -->
+</div> <!-- /container -->
