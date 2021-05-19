@@ -327,7 +327,7 @@ h2 {
   font-size: 1rem; }
 
 h3 {
-  font-size: .75rem; }
+  font-size: .80rem; }
 
 h4 {
   font-size: 0.75rem;
@@ -336,10 +336,10 @@ h4 {
 
 p,
 a {
-  font-size: 0.85rem; }
+  font-size: 0.75rem; }
 
 .subtitle {
-  font-size: 0.75rem; }
+  font-size: 0.65rem; }
 
 /* DESKTOP */
 @media (min-width: 1024px) {
@@ -653,8 +653,9 @@ hr.solid {
   align-items: center;
   padding: 2.5em 0;
   text-align: center;
-  border-bottom: lightgrey solid 1px;
-  background-color: #f2f3f4; }
+  border: lightgrey solid 1px;
+  background-color: #f2f3f4;
+  border-radius: 10px 10px 0 0; }
 
 .profile__info__picture {
   width: 50%;
@@ -682,20 +683,23 @@ hr.solid {
   align-items: flex-end;
   padding: 2.5em 0;
   text-align: center;
-  border-bottom: lightgrey solid 1px; }
+  border-left: lightgrey solid 1px;
+  border-right: lightgrey solid 1px; }
   .profile__statistics .stats {
     width: 30%; }
   .profile__statistics .stats__img {
     display: inline-block;
     width: 50%; }
 
-.stats-subtitle {
-  margin-top: 1.5em;
-  font-size: 1.25em; }
-
-.profile-last-saved {
-  background: lightblue;
-  padding: 2em; }
+.profile__podcast {
+  padding: 2em 1.5em;
+  border-bottom: lightgrey solid 1px;
+  background-color: #845cfc;
+  color: white;
+  border: lightgrey solid 1px;
+  border-radius: 0 0 10px 10px; }
+  .profile__podcast h2 {
+    margin-bottom: 1em; }
 
 /* EDIT PROFILE */
 .edit {

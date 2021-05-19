@@ -25,7 +25,7 @@
         <div class="stats">
             <img class="stats__img" src="/images/playlist-icon.png" alt="Playlist list icon">
             <p class="subtitle">{{playlist}} Playlist</p>
-            <a class="button inline-block small" href="#">Playlist</a>
+            <a class="button inline-block small" href="#">Playlists</a>
         </div>
         <div class="stats">
             <img class="stats__img" src="/images/comments-icon.png" alt="Comments on podcast icon">
@@ -41,20 +41,19 @@
                   <img class="card__podcast__image_url"src="{{podcastID.image}}" alt="{{podcastID.title}}">
               </div>
               <div class="card__podcast__content">
-                  <h1 class="title">{{podcastID.title}}</h1>
+                  <h3>{{podcastID.title}}</h3>
                   <p class="subtitle">{{podcastID.author}}</p>
               </div> 
             </a> <!-- /card__podcast -->  
     {{else }}
         <h2>3 Can't-Miss Podcasts</h2>
             {{#each podcastsDB }}
-            <p>{{title}}</p>
               <a class="card__podcast" href="/podcasts/profile/{{_id}}">
                 <div class="card__podcast__image">
                     <img class="card__podcast__image_url"src="{{image}}" alt="{{title}}">
                 </div>
                 <div class="card__podcast__content">
-                    <h1 class="title">{{title}}</h1>
+                    <h3>{{title}}</h1>
                     <p class="subtitle">{{author}}</p>
                 </div> 
               </a> <!-- /card__podcast -->  
