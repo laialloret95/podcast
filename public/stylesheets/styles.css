@@ -304,7 +304,7 @@ a {
 .container {
   width: 80%;
   max-width: 900px;
-  margin: 2em auto;
+  margin: 3em auto;
   text-align: left; }
 
 /* FOOTER */
@@ -336,7 +336,7 @@ h4 {
 
 p,
 a {
-  font-size: 0.75rem; }
+  font-size: 0.85rem; }
 
 /* DESKTOP */
 @media (min-width: 1024px) {
@@ -358,13 +358,12 @@ a {
   border-bottom-right-radius: 20%;
   margin-bottom: 1em; }
   .nav.small {
-    height: 18vh; }
+    height: 15vh; }
   .nav__bar {
     height: 100%;
     width: 80%;
     max-width: 960px;
     margin: 0 auto;
-    padding-bottom: 1em;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -443,8 +442,10 @@ a {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  background-color: white;
   margin: 1em 0;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 10px;
   text-align: left; }
   .card__podcast__image {
     width: 50%;
@@ -486,53 +487,49 @@ a {
       transform: translate(-50%, -50%); }
 
 /* BUTTONS AUTH FORM */
-.button__auth {
+.button {
   margin: 1em;
   padding: 1em 2em;
   background-color: #845cfc;
+  font-family: "Montserrat", sans-serif;
   border: none;
   border-radius: 10rem;
   box-shadow: lightslategray  2px 2px 2px;
-  font-weight: 700;
   color: white;
   width: auto;
   height: auto; }
-  .button__auth:hover,
-  .button__auth :focus {
+  .button:hover,
+  .button :focus {
     box-shadow: lightslategray  5px 10px 9px; }
-  .button__auth.light {
+  .button.light {
     background-color: #F5EA61;
     color: #845cfc; }
-    .button__auth.light:hover,
-    .button__auth.light :focus {
+    .button.light:hover,
+    .button.light :focus {
       box-shadow: lightslategray  5px 10px 9px; }
-  .button__auth.small {
+  .button.small {
     font-size: 0.5rem; }
+  .button.mg {
+    margin: .5em 0; }
 
 /* INPUT FIELDS */
 .input-auth {
   display: inline-block;
-  width: 90%;
+  width: 100%;
   margin: 0.5em auto;
   padding: 0.75em 0.5em;
   background-color: white;
   border: none;
-  color: grey;
-  font-weight: bold;
-  text-align: left; }
-
-input:focus {
-  outline: 2px solid #c0c0c0; }
-
-.input-auth::placeholder {
-  color: #5c5b5b;
-  font-weight: bold;
-  opacity: none; }
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500; }
+  .input-auth:focus {
+    outline: 2px solid #c0c0c0; }
 
 /*SIGNUP FORM */
 .signup {
-  background-color: #e5e4e2;
-  padding: 2em 1em;
+  background-color: #f2f3f4;
+  padding: 2em 2em;
   text-align: center; }
   .signup h1 {
     color: #845cfc; }
@@ -549,7 +546,7 @@ input:focus {
 /*SIGNUP PREFERENCES FORM */
 .signup__preferences {
   text-align: left;
-  padding: 2em 1em; }
+  padding: 2em 2em; }
   .signup__preferences input:checked + label {
     color: #845cfc;
     font-weight: 550; }
@@ -560,7 +557,7 @@ input:focus {
 .login,
 .logout {
   background-color: #845cfc;
-  padding: 2em 0;
+  padding: 2em 2em;
   text-align: center; }
   .login h1, .login p,
   .logout h1,
@@ -645,30 +642,33 @@ hr.solid {
   flex-direction: column; }
 
 /* USER PROFILE */
-.profile-container {
-  width: 90%;
-  max-width: 960px;
-  margin: 3em auto;
-  text-align: center; }
-
-.profile-info {
+.profile__info {
   padding: 2.5em 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border-bottom: #5c5b5b solid 1px;
-  background: snow; }
+  border-bottom: lightgrey solid 1px;
+  background-color: #f2f3f4; }
 
-.profile-picture {
+.profile__info__picture {
   width: 50%; }
+  .profile__info__picture .avatar-img {
+    display: inline-block;
+    width: 70%; }
 
-.avatar-img {
-  display: inline-block;
-  width: 70%; }
-
-.profile-preferences-ul {
-  margin: 0; }
+.profile__details .profile__details__ul {
+  padding: 0;
+  margin-bottom: 2em; }
+  .profile__details .profile__details__ul .li__link {
+    list-style: none;
+    display: inline-block;
+    padding-left: .5em;
+    font-size: 0.85rem; }
+    .profile__details .profile__details__ul .li__link:hover,
+    .profile__details .profile__details__ul .li__link :focus {
+      font-weight: 600;
+      text-decoration: underline; }
 
 .profile-preferences-li {
   list-style: none;
@@ -681,10 +681,6 @@ hr.solid {
 .button-inline {
   display: inline-block;
   margin-top: 2em; }
-
-.profile-details-text {
-  font-weight: bold;
-  font-size: 2em; }
 
 .profile-statistics {
   text-align: center;

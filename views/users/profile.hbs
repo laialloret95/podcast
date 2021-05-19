@@ -1,23 +1,22 @@
 {{>navbar}}
 
-<div class="profile-container">
-    <div class="profile-info">
-        <div class="profile-picture">
+<div class="container">
+    <div class="profile__info">
+        <div class="profile__info__picture">
             <img class="avatar-img" src="./images/avatar-icon.png" alt="{{userFromDB.firstName}} {{userFromDB.lastName}} Podapp profile.">
         </div>
-        <div class="profile-details">
+        <div class="profile__details">
             <h1>{{userFromDB.firstName}} {{userFromDB.lastName}}</h1>
             <h2>Favourite Genres</h2>
-                <ul class="profile-preferences-ul">
-                    <li class="profile-preferences-li">|</li>
+                <ul class="profile__details__ul">
                 {{#each userFromDB.preferences}}
-                    <li class="profile-preferences-li"><a href="/podcasts/{{this}}"></a>{{this}} |</li>
+                    <a class="li__link" href="/podcasts/{{this}}"><li>#{{this}}</li></a>
                 {{/each}}
                 </ul>
-            <a class="button-auth button-inline" href="/profile/edit">Edit profile</a>
+            <a class="button" href="/profile/edit">Edit profile</a>
         </div>
     </div> <!-- /profile-info -->
-    <div class="profile-statistics">
+    <div class="profile__statistics">
         <div class="stats">
             <img class="icon-img" src="/images/favorite.png" alt="Favorite podcast icon">
             <p class="stats-subtitle">{{countStats 'array'}} Favourites</p>
@@ -34,7 +33,7 @@
             <a class="button-auth button-inline" href="#">Comments</a>
         </div>
     </div> <!-- /profile-statistics -->
-    <div class="profile-last-saved">
+    <div class="profile__podcast">
     {{#if lastSaved }}
         <h2>Last Saved Podcast</h2>
             <a class="card__podcast" href="/podcasts/profile/{{podcastID._id}}">
@@ -62,5 +61,5 @@
              {{/each}}       
     {{/if}}
     </div> <!-- /profile-last-saved -->
-</div> <!-- /profile-container -->
+</div> <!-- /container -->
 

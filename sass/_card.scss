@@ -7,8 +7,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    background-color: $color-primary;
     margin: 1em 0;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 10px;
     text-align: left;
 
     &__image {

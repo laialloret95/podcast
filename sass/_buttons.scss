@@ -1,12 +1,12 @@
 /* BUTTONS AUTH FORM */
-.button__auth {
+.button {
     margin: 1em;
     padding: 1em 2em;
     background-color: $color-secondary;
+    font-family: $font-family;
     border: none;
     border-radius: 10rem;
     box-shadow: lightslategray  2px 2px 2px;
-    font-weight: 700;
     color: white;
     width: auto;
     height: auto;
@@ -28,6 +28,10 @@
 
     &.small {
         font-size: $font-size-smll;
+    }
+
+    &.mg {
+        margin: .5em 0;
     }
 }
    
