@@ -1,7 +1,6 @@
 {{>navbarsearch}}
 
-<div class="home-container">
-
+<div class="container">
     <div class="genres-container">
         {{#each genresDB}}
         <ul class="genres-container__ul">
@@ -18,7 +17,7 @@
         {{#each podcastsDB}}
         <a class="card__podcast" href="/podcasts/profile/{{_id}}">
             <div class="card__podcast__image">
-                <img class="card__podcast__image_url"src="{{image}}" alt="podcast_image">
+                <img class="card__podcast__image_url"src="{{image}}" alt="{{title}}">
             </div>
             <div class="card__podcast__content">
                 <h2 class="h2--small">{{title}}</h2>

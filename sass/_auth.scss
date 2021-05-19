@@ -24,7 +24,8 @@ input:focus {
 /*SIGNUP FORM */
 .signup {
     background-color: #e5e4e2;
-    padding: 2em 1em;    
+    padding: 2em 1em;
+    text-align: center;   
 
     h1 {
         color: $color-secondary;
@@ -66,6 +67,7 @@ input:focus {
 .logout {
    background-color: $color-secondary;
    padding: 2em 0;
+   text-align: center;
    
     h1, p {
         margin: 0.75em 0;

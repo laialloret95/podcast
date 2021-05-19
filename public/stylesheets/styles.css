@@ -302,10 +302,10 @@ a {
 
 /* PAGE CONTAINERS */
 .container {
-  width: 90%;
+  width: 80%;
   max-width: 900px;
   margin: 3em auto;
-  text-align: center; }
+  text-align: left; }
 
 /* FOOTER */
 footer {
@@ -437,9 +437,7 @@ a {
 
 .card__container {
   display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin: 0 auto 3em; }
+  flex-direction: column; }
 
 .card__podcast {
   display: flex;
@@ -536,7 +534,8 @@ input:focus {
 /*SIGNUP FORM */
 .signup {
   background-color: #e5e4e2;
-  padding: 2em 1em; }
+  padding: 2em 1em;
+  text-align: center; }
   .signup h1 {
     color: #845cfc; }
   .signup h1, .signup p {
@@ -563,7 +562,8 @@ input:focus {
 .login,
 .logout {
   background-color: #845cfc;
-  padding: 2em 0; }
+  padding: 2em 0;
+  text-align: center; }
   .login h1, .login p,
   .logout h1,
   .logout p {
