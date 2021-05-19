@@ -52,7 +52,7 @@ router.get('/podcasts/:genre', (req, res, next) => {
     return Podcast.find({ genre: genre })
       .then(podcastsDB => {
         console.log(genre)
-        res.render('podcasts/show', { podcastsDB, loggedUser: true });
+        res.render('podcasts/show', { podcastsDB, loggedUser: true, genre });
       })
       .catch(error => next(error));
   } else {

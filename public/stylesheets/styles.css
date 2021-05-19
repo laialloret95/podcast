@@ -304,7 +304,7 @@ a {
 .container {
   width: 80%;
   max-width: 900px;
-  margin: 3em auto;
+  margin: 2em auto;
   text-align: left; }
 
 /* FOOTER */
@@ -465,12 +465,10 @@ a {
 
 .genres-container {
   display: flex;
-  margin: 1em auto;
   flex-wrap: wrap;
-  width: 80%;
   justify-content: center; }
   .genres-container__ul {
-    padding: 1em; }
+    padding: 0 .75em; }
   .genres-container__ul__bubble {
     position: relative;
     text-align: center;
