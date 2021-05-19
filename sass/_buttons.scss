@@ -1,0 +1,43 @@
+/* BUTTONS AUTH FORM */
+.button {
+    margin: 1em;
+    padding: 0.75em 1.75em;
+    background-color: $color-secondary;
+    font-family: $font-family;
+    border: none;
+    border-radius: 10rem;
+    box-shadow: lightslategray  2px 2px 2px;
+    color: white;
+    font-weight: 600;
+    width: auto;
+    height: auto;
+
+    &:hover,
+    :focus {
+       box-shadow: lightslategray  5px 10px 9px;
+    }
+
+    &.light {
+        background-color: $color-terchary;
+        color: $color-secondary;
+
+        &:hover,
+        :focus {
+             box-shadow: lightslategray  5px 10px 9px;
+        }
+    }
+
+    &.small {
+        font-size: $font-size-smll;
+    }
+
+    &.mg {
+        margin: .5em 0;
+    }
+
+    &.inline-block {
+        display: inline-block;
+    }
+}
+   
+

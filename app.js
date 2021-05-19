@@ -10,6 +10,8 @@ const hbs = require('hbs');
 hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
+
+// const sassMiddleware = require('node-sass-middleware');
 const notifications = require('./middlewares/flash');
 
 // ℹ️ Connects to the database
@@ -38,6 +40,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
+// app.use(sassMiddleware({
+//   src: path.join(__dirname, 'public'),
+//   dest: path.join(__dirname, 'public'),
+//   indentedSyntax: false, // true = .sass and false = .scss
+//   sourceMap: true,
+//   prefix: '/commmon/css',
+//   debug: true
+// }));
 
 // Registered HBS Helpers
 require('./configs/hbs');

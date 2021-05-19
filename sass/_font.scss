@@ -1,0 +1,52 @@
+h1, h2, h3, p, a, input, label, .subtitle, .medium {
+  /* Font minimum, preferred and maximum value */
+  font-size: clamp(var(--min), var(--val), var(--max));
+}
+
+/* Font size variables */
+h1 {
+  --min: 1.5em; /* minimum value */
+  --val: 4vw; /* preferred value = 4% viewport width */
+  --max: 2em; /* maximum value */
+}
+h2 {
+  --min: 1.3em;   /* minimum value */
+  --val: 3vw;     /* preferred value = 3% viewport width */
+  --max: 1.75em;  /* maximum value */
+  margin-bottom: 0.25em;
+}
+
+h3 {
+  --min: 1.10em;   /* minimum value */
+  --val: 2.5vw;     /* preferred value = 3% viewport width */
+  --max: 1.25em;  /* maximum value */
+  margin-bottom: 0.25em;
+}
+
+p, 
+input, 
+input[type=search],
+label {
+  --min: 1em;   /* minimum value */
+  --val: 2vw; /* preferred value = 2 viewport width */
+  --max: 1em; /* maximum value */
+}
+
+a {
+  --min: .85em;   /* minimum value */
+  --val: 1.5vw; /* preferred value = 1.5 viewport width */
+  --max: 1em; /* maximum value */
+}
+
+.subtitle {
+  --min: .75em;   /* minimum value */
+  --val: 1.5vw; /* preferred value = 1 viewport width */
+  --max: 1em; /* maximum value */
+}
+
+//For "a" and "subtitles" that we want to stand out
+.medium {
+  --min: .95em;   /* minimum value */
+  --val: 1.8vw; /* preferred value = 1 viewport width */
+  --max: 1.35em; /* maximum value */
+}

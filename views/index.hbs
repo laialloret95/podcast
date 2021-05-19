@@ -1,35 +1,29 @@
-{{> navbar }}
+{{>navbarsearch}}
 
-<div class="home-container">
-    <form id="search-box" action="/podcasts/search" method="POST">
-        <input id="search" type="text" name="keywords" placeholder="Search..." autofocus required />
-        <button type="submit">
-            <i class="fa fa-search" aria-hidden="true" style="color:#fff"></i>
-        </button>
-    </form>
-
-    <div id="genres">
+<div class="container">
+    <div class="genres-container">
         {{#each genresDB}}
-        <ul>
+        <ul class="genres-container__ul">
             <a href="/podcasts/{{this}}">
-                <div class="genre-container">
+                <div class="genres-container__ul__bubble">
                     <img src="../images/podcast-icon.png" alt="">
-                    <p class="centered"> {{this}} </p>
+                    <p> {{this}} </p>
                 </div>
             </a>
         </ul>
         {{/each}}
     </div>
-
-    <div id="podcasts">
+    <div class="card__container">
         {{#each podcastsDB}}
-        <ul>
-            <a href="/podcasts/profile/{{_id}}">
-                <img src="{{image}}" alt="">
+        <a class="card__podcast" href="/podcasts/profile/{{_id}}">
+            <div class="card__podcast__image">
+                <img class="card__podcast__image_url"src="{{image}}" alt="{{title}}">
+            </div>
+            <div class="card__podcast__content">
                 <h2>{{title}}</h2>
                 <p>{{author}}</p>
-            </a>
-        </ul>
+            </div>
+        </a>
         {{/each}}
-    </div>
+    </div> <!-- /card__container -->
 </div>
