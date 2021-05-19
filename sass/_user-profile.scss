@@ -58,7 +58,6 @@
             display: inline-block;
             width: 50%;
         }
-
     }
 
     &__podcast {
@@ -72,19 +71,18 @@
         h2 {
             margin-bottom: 1em;
         }
-
     }
 
-
-
 }
-
-
 
 
 /* EDIT PROFILE */
 .edit {
     background-color: rgba(211, 211, 211, 0.247);
-    padding: 2em 2em;
+    padding: 1.5em 2em;
     text-align: left;
+
+    h2 {
+        margin: 0.75em 0;
+    }
  }

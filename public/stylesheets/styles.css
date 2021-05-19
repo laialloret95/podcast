@@ -704,8 +704,10 @@ hr.solid {
 /* EDIT PROFILE */
 .edit {
   background-color: rgba(211, 211, 211, 0.247);
-  padding: 2em 2em;
+  padding: 1.5em 2em;
   text-align: left; }
+  .edit h2 {
+    margin: 0.75em 0; }
 
 /*COMMENTS */
 .comment-input {
