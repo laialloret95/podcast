@@ -6,7 +6,6 @@
   {{else}}
     <h1>Results for "{{keywords}}"</h1>
   {{/if}}
-
     <div class="card__container">
         {{#each podcastsDB}}
         <a class="card__podcast" href="/podcasts/profile/{{_id}}">
@@ -14,8 +13,8 @@
                 <img class="card__podcast__image_url"src="{{image}}" alt="podcast_image">
             </div>
             <div class="card__podcast__content">
-                <h2 class="h2--small">{{title}}</h2>
-                <p class="subtitle">{{author}}</p>
+                <h2>{{title}}</h2>
+                <p>{{author}}</p>
             </div>
         </a>
         {{/each}}

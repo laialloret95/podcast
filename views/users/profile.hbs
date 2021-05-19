@@ -7,7 +7,7 @@
         </div>
         <div class="profile__details">
             <h1>{{userFromDB.firstName}} {{userFromDB.lastName}}</h1>
-            <h2>Favourite Genres</h2>
+            <p class="bold">Favourite Genres</p>
                 <ul class="profile__details__ul">
                 {{#each userFromDB.preferences}}
                     <a class="li__link" href="/podcasts/{{this}}"><li>#{{this}}</li></a>
@@ -19,17 +19,20 @@
     <div class="profile__statistics">
         <div class="stats">
             <img class="stats__img" src="/images/favorite.png" alt="Favorite podcast icon">
-            <p class="subtitle">{{countStats 'array'}} Favourites</p>
+            <p class="medium">0</p>
+            <p class="medium"> Favourites</p>
             <a class="button inline-block small" href="/favourites">Favourites</a>
         </div>
         <div class="stats">
             <img class="stats__img" src="/images/playlist-icon.png" alt="Playlist list icon">
-            <p class="subtitle">{{playlist}} Playlist</p>
+            <p class="medium">0</p>
+            <p class="medium"> Playlists</p>
             <a class="button inline-block small" href="#">Playlists</a>
         </div>
         <div class="stats">
             <img class="stats__img" src="/images/comments-icon.png" alt="Comments on podcast icon">
-            <p class="subtitle">{{comments}} Comments</p>
+            <p class="medium">0</p>
+            <p class="medium"> Comments</p>
             <a class="button inline-block small" href="#">Comments</a>
         </div>
     </div> <!-- /profile-statistics -->
@@ -42,7 +45,7 @@
               </div>
               <div class="card__podcast__content">
                   <h3>{{podcastID.title}}</h3>
-                  <p class="subtitle">{{podcastID.author}}</p>
+                  <p>{{podcastID.author}}</p>
               </div> 
             </a> <!-- /card__podcast -->  
     {{else }}
@@ -53,8 +56,8 @@
                     <img class="card__podcast__image_url"src="{{image}}" alt="{{title}}">
                 </div>
                 <div class="card__podcast__content">
-                    <h3>{{title}}</h1>
-                    <p class="subtitle">{{author}}</p>
+                    <h3>{{title}}</h3>
+                    <p>{{author}}</p>
                 </div> 
               </a> <!-- /card__podcast -->  
              {{/each}}       

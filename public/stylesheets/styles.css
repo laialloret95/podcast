@@ -316,41 +316,71 @@ footer {
     text-align: center;
     color: white; }
 
+h1, h2, h3, p, a, input, label, .subtitle, .medium {
+  /* Font minimum, preferred and maximum value */
+  font-size: clamp(var(--min), var(--val), var(--max)); }
+
+/* Font size variables */
 h1 {
-  font-size: 1.35rem;
-  margin: 0; }
+  --min: 1.5em;
+  /* minimum value */
+  --val: 4vw;
+  /* preferred value = 4% viewport width */
+  --max: 2em;
+  /* maximum value */ }
 
 h2 {
-  font-size: 1.2rem; }
-
-.h2--small {
-  font-size: 1rem; }
+  --min: 1.3em;
+  /* minimum value */
+  --val: 3vw;
+  /* preferred value = 3% viewport width */
+  --max: 1.75em;
+  /* maximum value */
+  margin-bottom: 0.25em; }
 
 h3 {
-  font-size: .80rem; }
-
-h4 {
-  font-size: 0.75rem;
-  font-weight: 400;
-  line-height: 1rem; }
+  --min: 1.10em;
+  /* minimum value */
+  --val: 2.5vw;
+  /* preferred value = 3% viewport width */
+  --max: 1.25em;
+  /* maximum value */
+  margin-bottom: 0.25em; }
 
 p,
+input,
+input[type=search],
+label {
+  --min: 1em;
+  /* minimum value */
+  --val: 2vw;
+  /* preferred value = 2 viewport width */
+  --max: 1em;
+  /* maximum value */ }
+
 a {
-  font-size: 0.75rem; }
+  --min: .85em;
+  /* minimum value */
+  --val: 1.5vw;
+  /* preferred value = 1.5 viewport width */
+  --max: 1em;
+  /* maximum value */ }
 
 .subtitle {
-  font-size: 0.65rem; }
+  --min: .75em;
+  /* minimum value */
+  --val: 1.5vw;
+  /* preferred value = 1 viewport width */
+  --max: 1em;
+  /* maximum value */ }
 
-/* DESKTOP */
-@media (min-width: 1024px) {
-  h1 {
-    font-size: 2rem; }
-  h2 {
-    font-size: 1.75rem; }
-  h3 {
-    font-size: 1.25rem; }
-  p, a {
-    font-size: 1.15rem; } }
+.medium {
+  --min: .95em;
+  /* minimum value */
+  --val: 1.8vw;
+  /* preferred value = 1 viewport width */
+  --max: 1.35em;
+  /* maximum value */ }
 
 /* MOBILE VERSION */
 .nav {
@@ -492,13 +522,14 @@ a {
 /* BUTTONS AUTH FORM */
 .button {
   margin: 1em;
-  padding: 1em 2em;
+  padding: 0.75em 1.75em;
   background-color: #845cfc;
   font-family: "Montserrat", sans-serif;
   border: none;
   border-radius: 10rem;
   box-shadow: lightslategray  2px 2px 2px;
   color: white;
+  font-weight: 600;
   width: auto;
   height: auto; }
   .button:hover,
@@ -664,6 +695,10 @@ hr.solid {
     display: inline-block;
     width: 70%; }
 
+.profile__details .bold {
+  font-weight: 600;
+  text-decoration: underline; }
+
 .profile__details .profile__details__ul {
   padding: 0;
   margin-bottom: 2em; }
@@ -689,7 +724,10 @@ hr.solid {
     width: 30%; }
   .profile__statistics .stats__img {
     display: inline-block;
-    width: 50%; }
+    width: 50%;
+    margin-bottom: 0.5em; }
+  .profile__statistics p {
+    margin-bottom: 0.5em; }
 
 .profile__podcast {
   padding: 2em 1.5em;

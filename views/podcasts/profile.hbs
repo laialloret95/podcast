@@ -5,8 +5,8 @@
         <img src="{{podcastDB.image}}" alt="podcast_image">
         <div class="podcast-profile-header-text-container">
             <h1>{{podcastDB.title}}</h1>
-            <h2>{{podcastDB.author}}</h2>
-            <p>{{dateFormat podcastDB.pub_date "dddd, MMMM Do YYYY"}}</p>
+            <p>{{podcastDB.author}}</>
+            <p class="subtitle">{{dateFormat podcastDB.pub_date "dddd, MMMM Do YYYY"}}</p>
         </div>
     </div>
     <hr class="solid">
@@ -38,7 +38,7 @@
         </a>
         {{/if}}
 
-        <p class="minutes">{{podcastDB.audio_length}} minutes</p>
+        <p class="minutes subtitle">{{podcastDB.audio_length}} minutes</p>
 
         {{#if podcastDB.ratings}}
         <div>

@@ -23,9 +23,16 @@
     }
 
     &__details {
+
+        .bold {
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
         .profile__details__ul {
             padding: 0;
             margin-bottom: 2em;
+           
             .li__link {
                 list-style: none ;
                 display: inline-block;
@@ -57,6 +64,11 @@
         .stats__img {
             display: inline-block;
             width: 50%;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            margin-bottom: 0.5em;
         }
     }
 
