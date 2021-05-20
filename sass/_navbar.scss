@@ -70,12 +70,14 @@
         margin: 0 auto;
         //for sticky navbar logged users
         width: 100%;
-        padding: 1em;
+        padding: .75em;
         position: -webkit-sticky; /* Safari */ 
         position:fixed;
         z-index:999999;
         bottom: 0;
         background: $color-fourth;
+        box-shadow: 0 -5px 5px -5px lightgrey;
+
 
         a {
             margin-left: 1em;

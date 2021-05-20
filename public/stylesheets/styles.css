@@ -304,7 +304,7 @@ a {
 .container {
   width: 80%;
   max-width: 900px;
-  margin: 3em auto;
+  margin: 3em auto 4.5em;
   text-align: left; }
 
 /* FOOTER */
@@ -432,13 +432,14 @@ a {
     justify-content: space-around;
     margin: 0 auto;
     width: 100%;
-    padding: 1em;
+    padding: .75em;
     position: -webkit-sticky;
     /* Safari */
     position: fixed;
     z-index: 999999;
     bottom: 0;
-    background: #f2f3f4; }
+    background: #f2f3f4;
+    box-shadow: 0 -5px 5px -5px lightgrey; }
     .nav__bar__sections a {
       margin-left: 1em;
       color: black; }
