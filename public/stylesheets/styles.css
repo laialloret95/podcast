@@ -386,12 +386,10 @@ a {
 .nav {
   background-color: #845cfc;
   color: #fefdff;
-  height: 25vh;
+  height: 30%;
   border-bottom-left-radius: 20%;
   border-bottom-right-radius: 20%;
   margin-bottom: 1em; }
-  .nav.small {
-    height: 15vh; }
   .nav__bar {
     height: 100%;
     width: 80%;
@@ -412,7 +410,12 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; }
+    width: 90%;
+    position: relative;
+    top: 40px; }
+    .nav__bar__top.small {
+      padding: 1.5em 0 1.5em;
+      top: 0; }
   .nav__bar__top__title {
     display: flex;
     justify-content: space-evenly;
@@ -449,7 +452,7 @@ a {
     width: 80%;
     margin: 0 auto;
     position: relative;
-    bottom: 50px; }
+    bottom: -55px; }
     .nav .search-bar input[type=search] {
       background-color: white;
       border: 2px solid lightgrey;

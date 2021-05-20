@@ -2,14 +2,10 @@
 .nav {
         background-color: $color-secondary;
         color: $font-color-secondary;
-        height: 25vh;
+        height: 30%;
         border-bottom-left-radius: 20% ;
         border-bottom-right-radius: 20% ;
         margin-bottom: 1em;
-
-    &.small {
-        height: 15vh;
-    }
 
     &__bar {
         height: 100%;
@@ -37,7 +33,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
+        width: 90%;
+        position: relative;
+        top: 40px;
+
+        &.small {
+            padding: 1.5em 0 1.5em;
+            top: 0;
+        }
     }
 
     &__bar__top__title {
@@ -93,7 +96,7 @@
         width: 80%;
         margin: 0 auto;
         position: relative;
-        bottom: 50px;
+        bottom: -55px;
 
         input[type=search] {
             background-color: $color-primary;
