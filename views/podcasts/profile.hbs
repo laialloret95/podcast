@@ -52,7 +52,9 @@
         {{/if}}
 
         {{#if loggedUser}}
-        <a href="/podcast/{{podcastDB._id}}/rating">Rate this Podcast!</a>
+            {{#if (userRatedAlready userID podcastDB.ratings)}}
+                <a href="/podcast/{{podcastDB._id}}/rating">Rate this Podcast!</a>
+            {{/if}}
         {{/if}}
     </div>
     <hr class="solid">
@@ -89,4 +91,4 @@
         <button class="podcast-profile-comment-btn" type="submit">Post comment</button>
     </form>
     {{/if}}
-</div> <!-- /container -->
+</div>

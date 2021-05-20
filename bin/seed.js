@@ -410,7 +410,7 @@ podcastsCopy.forEach(podcast => {
 
 Podcast.create(podcastsCopy)
   .then((podcastsDB) => {
-    console.log(`Created ${podcastsDB.length} celebrities`);
+    console.log(`Created ${podcastsDB.length} podcasts`);
     mongoose.connection.close();
   })
   .catch(err => console.log('error', err));

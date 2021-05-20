@@ -9,39 +9,23 @@ const Rating = require('../models/ratings');
 // HOME PAGE
 router.get('/', (req, res, next) => {
   if (req.session.currentUser) {
-    // get unique genres
-    return Podcast.find()
-      .distinct('genre')
-      .then(genresDB => {
-        return genresDB;
-      })
-      .then(genresDB => {
         // get the 6 newest Podcasts
         Podcast.find({})
           .limit(6)
           .sort({ pub_date: -1 })
           .then(podcastsDB => {
-            res.render('index', { podcastsDB, genresDB, loggedUser: true });
-          });
-      })
-      .catch(error => next(error));
+            res.render('index', { podcastsDB, loggedUser: true });
+          })
+        .catch(error => next(error));
   } else {
-    // get unique genres
-    return Podcast.find()
-      .distinct('genre')
-      .then(genresDB => {
-        return genresDB;
-      })
-      .then(genresDB => {
         // get the 6 newest Podcasts
         Podcast.find({})
           .limit(6)
           .sort({ pub_date: -1 })
           .then(podcastsDB => {
-            res.render('index', { podcastsDB, genresDB });
-          });
-      })
-      .catch(error => next(error));
+            res.render('index', { podcastsDB });
+          })
+        .catch(error => next(error));
   }
 });
 
@@ -86,6 +70,7 @@ router.get('/podcasts/profile/:id', (req, res, next) => {
     const userID = req.session.currentUser._id;
     // If user is logged
     Podcast.findById(id)
+      .populate('ratings')
       .populate('comments')
       .populate({
         // we are populating author in the previously populated comments
@@ -100,10 +85,10 @@ router.get('/podcasts/profile/:id', (req, res, next) => {
           const loggedUser = req.session.currentUser._id;
           if (favouriteDB.length > 0) {
             // If podcast has been favourited by the user
-            res.render('podcasts/profile', { podcastDB, loggedUser, favouritedPocast: true });
+            res.render('podcasts/profile', { podcastDB, loggedUser, favouritedPocast: true, userID });
           } else {
             // If podcast has not been favourited by the user
-            res.render('podcasts/profile', { podcastDB, loggedUser });
+            res.render('podcasts/profile', { podcastDB, loggedUser, userID });
           }
         });
       })
@@ -111,6 +96,7 @@ router.get('/podcasts/profile/:id', (req, res, next) => {
   } else {
     // If unlogged user
     Podcast.findById(id)
+      .populate('ratings')
       .populate('comments')
       .populate({
         // we are populating author in the previously populated comments
@@ -252,8 +238,8 @@ router.get('/podcast/:podcastID/rating', (req, res, next) => {
 router.post('/podcast/:podID/rating/:rate', (req, res, next) => {
     const { podID }  = req.params;
     const userId = req.session.currentUser._id;
-    const rate = parseFloat(req.params.rating);
-    
+    const rate = parseFloat(req.params.rate);
+
     Rating
       .create({
         podcastID: podID,
@@ -268,12 +254,6 @@ router.post('/podcast/:podID/rating/:rate', (req, res, next) => {
           });
       })
       .catch(error => next(error));
-    // Podcast
-    //     .findOneAndUpdate({_id: podcastID}, { $push: { ratings: rating } })
-    //     .then( () => {
-    //         res.redirect(`/podcasts/profile/${podcastID}`);
-    //     })
-    //     .catch(error => next(error));
 });
 
 module.exports = router;
