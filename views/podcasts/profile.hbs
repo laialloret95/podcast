@@ -51,7 +51,9 @@
         </div>
         {{/if}}
 
+        {{#if loggedUser}}
         <a href="/podcast/{{podcastDB._id}}/rating">Rate this Podcast!</a>
+        {{/if}}
     </div>
     <hr class="solid">
     <div class="podcast-profile-description-container">
