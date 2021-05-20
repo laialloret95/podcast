@@ -262,7 +262,7 @@ const podcasts = [
         audio_length: '00:34:39',
         author: 'Naked Scientists',
         description: "We're pondering the mysterious mind - what is it? Are us humans unique in having one? And where does the brain fit in? Plus we chat over some of the latest neuroscience news with local experts",
-        pub_date: '021-04-22',
+        pub_date: '2021-04-22',
         image: 'https://cdn-images-1.listennotes.com/podcasts/naked-neuroscience-from-the-naked-D5CJvaSikQY-iuHC259pE0L.1400x1400.jpg',
         genre: 'Science',
         ratings: [],
