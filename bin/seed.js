@@ -406,7 +406,6 @@ podcastsCopy.forEach(podcast => {
     podcast.authorLowerCase = podcast.author.toLowerCase();
     podcast.titleLowerCase = podcast.title.toLowerCase();
     podcast.descriptionLowerCase = podcast.description.toLowerCase();
-    console.log(podcastsCopy);
 });
 
 Podcast.create(podcastsCopy)
