@@ -67,11 +67,19 @@
     &__bar__sections {
         display: flex;
         justify-content: space-around;
-        width: 60%;
         margin: 0 auto;
+        //for sticky navbar logged users
+        width: 100%;
+        padding: 1.25em;
+        position: -webkit-sticky; /* Safari */ 
+        position:fixed;
+        z-index:999999;
+        bottom: 0;
+        background: $color-secondary;
 
         a {
             margin-left: 1em;
+            color: black;
         }
     }
 
