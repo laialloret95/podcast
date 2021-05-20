@@ -400,17 +400,27 @@ const podcasts = [
     }
 ];
 
-const podcastsCopy = [...podcasts];
+// const lowerCaseTransformation = podcastsCopy.forEach(podcast => {
+//     podcast.authorLowerCase = podcast.author.toLowerCase();
+//     podcast.titleLowerCase = podcast.title.toLowerCase();
+//     podcast.descriptionLowerCase = podcast.description.toLowerCase();
+// });
 
-podcastsCopy.forEach(podcast => {
+const lowerCaseTransformation = podcasts.map(podcast => {
     podcast.authorLowerCase = podcast.author.toLowerCase();
     podcast.titleLowerCase = podcast.title.toLowerCase();
     podcast.descriptionLowerCase = podcast.description.toLowerCase();
+	
+    return podcast;
 });
 
-Podcast.create(podcastsCopy)
-  .then((podcastsDB) => {
+Podcast
+    .create(lowerCaseTransformation)
+    .then((podcastsDB) => {
     console.log(`Created ${podcastsDB.length} podcasts`);
     mongoose.connection.close();
-  })
-  .catch(err => console.log('error', err));
+    })
+    .catch(err => console.log('error', err));
+
+
+    

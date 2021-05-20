@@ -36,14 +36,12 @@ router.get('/podcasts/:genre', (req, res, next) => {
   if (req.session.currentUser) {
     return Podcast.find({ genre: genre })
       .then(podcastsDB => {
-        console.log(genre)
         res.render('podcasts/show', { podcastsDB, loggedUser: true, genre });
       })
       .catch(error => next(error));
   } else {
     return Podcast.find({ genre: genre })
       .then(podcastsDB => {
-        console.log({ genre })
         res.render('podcasts/show', { podcastsDB, genre });
       })
       .catch(error => next(error));

@@ -36,6 +36,15 @@ const podcastSchema = new Schema(
         comments: { 
             type: [ Schema.Types.ObjectId ], 
             ref: 'Comment' 
+        },
+        authorLowerCase: {
+            type: String
+        },
+        titleLowerCase: {
+            type: String
+        },
+        descriptionLowerCase: {
+            type: String
         }
     }
 );
