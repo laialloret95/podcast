@@ -432,13 +432,13 @@ a {
     justify-content: space-around;
     margin: 0 auto;
     width: 100%;
-    padding: 1.25em;
+    padding: 1em;
     position: -webkit-sticky;
     /* Safari */
     position: fixed;
     z-index: 999999;
     bottom: 0;
-    background: #845cfc; }
+    background: #f2f3f4; }
     .nav__bar__sections a {
       margin-left: 1em;
       color: black; }
