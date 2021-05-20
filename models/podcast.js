@@ -30,7 +30,8 @@ const podcastSchema = new Schema(
             type: String
         },
         ratings: {
-            type: [Number]
+            type: [ Schema.Types.ObjectId ], 
+            ref: 'Ratings' 
         },
         comments: { 
             type: [ Schema.Types.ObjectId ], 

@@ -4,6 +4,7 @@ const Podcast = require('../models/podcast');
 const Favourite = require('../models/favorites');
 const Comment = require('../models/comment');
 const User = require('../models/user');
+const Rating = require('../models/ratings');
 
 // HOME PAGE
 router.get('/', (req, res, next) => {
@@ -248,16 +249,31 @@ router.get('/podcast/:podcastID/rating', (req, res, next) => {
         .catch(error => next(error));
 });
 
-router.post('/podcast/:podcastID/rating/:rating', (req, res, next) => {
-    const { podcastID }  = req.params;
-    const rating = parseFloat(req.params.rating);
+router.post('/podcast/:podID/rating/:rate', (req, res, next) => {
+    const { podID }  = req.params;
+    const userId = req.session.currentUser._id;
+    const rate = parseFloat(req.params.rating);
     
-    Podcast
-        .findOneAndUpdate({_id: podcastID}, { $push: { ratings: rating } })
-        .then( () => {
-            res.redirect(`/podcasts/profile/${podcastID}`);
-        })
-        .catch(error => next(error));
+    Rating
+      .create({
+        podcastID: podID,
+        userID: userId,
+        rating: rate
+      })
+      .then(ratingDB => {
+        Podcast
+          .findOneAndUpdate({ _id: podID }, { $push: { ratings: ratingDB._id } })
+          .then(() => {
+            res.redirect(`/podcasts/profile/${podID}`);
+          });
+      })
+      .catch(error => next(error));
+    // Podcast
+    //     .findOneAndUpdate({_id: podcastID}, { $push: { ratings: rating } })
+    //     .then( () => {
+    //         res.redirect(`/podcasts/profile/${podcastID}`);
+    //     })
+    //     .catch(error => next(error));
 });
 
 module.exports = router;
