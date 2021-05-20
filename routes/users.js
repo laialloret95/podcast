@@ -36,7 +36,8 @@ router.get('/profile', (req, res, next) => {
                       favorited: 0, 
                       playlist: 0, // needs to be updated - default values
                       comments: 0, // needs to be updated - default values
-                      podcastsDB 
+                      podcastsDB,
+                      loggedUser: true
                     });
                   });
               } else {
@@ -51,7 +52,7 @@ router.get('/profile', (req, res, next) => {
                   .then(lastFavourited => {
                     console.log(lastFavourited);
                     const [{ podcastID }] = lastFavourited;
-                    res.render('users/profile', { userFromDB, podcastID, lastSaved: true });
+                    res.render('users/profile', { userFromDB, podcastID, lastSaved: true, loggedUser: true });
                   });
               }
           });
@@ -65,7 +66,7 @@ router.get('/profile/edit', (req, res, next) => {
 
   User
    .findById(id)
-   .then((userFromDB) => res.render('users/edit-profile', { userFromDB }))
+   .then((userFromDB) => res.render('users/edit-profile', { userFromDB, loggedUser: true }))
    .catch((error) => next(error));
 });
 

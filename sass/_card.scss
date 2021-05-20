@@ -1,0 +1,37 @@
+.card__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.card__podcast {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $color-primary;
+    margin: 1em 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 10px;
+    text-align: left;
+
+    &__image {
+        width: 50%;
+        padding: 1em;
+
+        img {
+            height: auto;
+            width: 100%;
+            display: inline-block;
+            object-fit: contain;
+        }
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 70%;
+        padding: 1em;
+    }
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+}
