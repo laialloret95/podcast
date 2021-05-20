@@ -13,10 +13,24 @@ router.use(checkIfUserIsLoggedIn);
 // PROFILE
 router.get('/profile', (req, res, next) => {
   const id = req.session.currentUser._id;
+  const data = {};
 
   User
     .findById(id)
     .then((userFromDB) => {
+        //Find user profile info
+        data.userInfo = userFromDB;
+        return userFromDB;
+    })
+    .then((userFromDB) => {
+      //Find user favorited Podcast
+      Favourite
+        .find({userIDs: userFromDB._id })
+        .populate('podcastID')
+        .then(favouritesArray => {
+          console.log([...favouritesArray]);
+          data['favouritesArray'] = favouritesArray;
+        });
         return userFromDB;
     })
     .then((userFromDB) => {
@@ -50,8 +64,9 @@ router.get('/profile', (req, res, next) => {
                   .limit(1)
                   .sort({createdAt: -1})
                   .then(lastFavourited => {
-                    console.log(lastFavourited);
                     const [{ podcastID }] = lastFavourited;
+                    data.lastFavourited = podcastID;
+                    console.log(data);
                     res.render('users/profile', { userFromDB, podcastID, lastSaved: true, loggedUser: true });
                   });
               }
