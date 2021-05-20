@@ -52,9 +52,8 @@ router.get('/podcasts/:genre', (req, res, next) => {
 router.post('/podcasts/search', (req, res, next) => {
   const keywords = req.body.keywords.toLowerCase();
 
-  Podcast.find({ $or: [{ title: { $regex: keywords } }, { author: { $regex: keywords } }, { description: { $regex: keywords } }] })
+  Podcast.find({ $or: [{ titleLowerCase: { $regex: keywords } }, { authorLowerCase: { $regex: keywords } }, { descriptionLowerCase: { $regex: keywords } }] })
     .then(podcastsDB => {
-      console.log(keywords)
       res.render('podcasts/show', { podcastsDB, keywords });
     })
     .catch(error => next(error));
@@ -188,7 +187,6 @@ router.get('/podcast/:podcastID/comment/:commentID/edit', (req, res, next) => {
 
   Comment.findById(commentID)
     .then(commentDB => {
-      console.log(commentDB);
       Podcast.findById(podcastID).then(podcastDB => {
         res.render('comments/edit-comment', { podcastDB, commentDB });
       });
@@ -209,7 +207,6 @@ router.post('/podcast/:podcastID/comment/:commentID/edit', (req, res, next) => {
 
 router.post('/podcast/:podcastID/comment/:commentID/delete', (req, res, next) => {
   const { podcastID, commentID } = req.params;
-  console.log(podcastID);
 
   Podcast.findOneAndUpdate({ _id: podcastID }, { $pull: { comments: commentID } })
     .then(() => {
