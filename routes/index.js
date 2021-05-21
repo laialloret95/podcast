@@ -10,13 +10,20 @@ const Rating = require('../models/ratings');
 router.get('/', (req, res, next) => {
   if (req.session.currentUser) {
         // get the 6 newest Podcasts
-        Podcast.find({})
-          .limit(6)
-          .sort({ pub_date: -1 })
-          .then(podcastsDB => {
-            res.render('index', { podcastsDB, loggedUser: true });
+        User
+          .findById(req.session.currentUser._id)
+          .select({ "preferences": 1, "_id": 0})
+          .then(userDB => {
+            Podcast
+              .find({genre: { "$in": userDB.preferences } })
+              .sort({ audio_length: -1 })
+              .limit(6)
+              .then(podcastsDB => {
+                res.render('index', { podcastsDB, loggedUser: true });
+              });
           })
-        .catch(error => next(error));
+          .catch(error => next(error));
+
   } else {
         // get the 6 newest Podcasts
         Podcast.find({})

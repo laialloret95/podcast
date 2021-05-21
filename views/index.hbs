@@ -50,6 +50,13 @@
 
 
     </div>
+
+    {{#if loggedUser}}
+        <h2>Based on your Preferences</h2>
+        {{else}}
+        <h2>Most Recent</h2>
+    {{/if}}
+
     <div class="card__container">
         {{#each podcastsDB}}
         <a class="card__podcast" href="/podcasts/profile/{{_id}}">
