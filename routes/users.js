@@ -72,7 +72,6 @@ router.get('/profile', (req, res, next) => {
                   .then(podcastsDB => {
                     //Push to data 3 suggested podcast
                     data.suggestedPodcast = podcastsDB;
-                    console.log(data)
                     res.render('users/profile', { 
                       data,
                       podcastsDB,
