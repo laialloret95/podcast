@@ -737,8 +737,7 @@ hr.solid {
     font-size: 0.85rem; }
     .profile__details .profile__details__ul .li__link:hover,
     .profile__details .profile__details__ul .li__link :focus {
-      font-weight: 600;
-      text-decoration: underline; }
+      font-weight: 600; }
 
 .profile__statistics {
   display: flex;
