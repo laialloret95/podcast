@@ -19,11 +19,10 @@
         color: $font-color-secondary;
         display: flex;
         flex-direction: column;
-        padding: 5% 5% 5% 0%;
         justify-content: flex-end;
-        position: absolute;
-        top: 40%;
-        left: 15%;
+        position: relative;
+        bottom: 90%;
+        left: 5%;
 
         p {
             font-weight: 600;
