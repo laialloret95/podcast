@@ -72,3 +72,33 @@ hbs.registerHelper('userRatedAlready', (userID, ratingArray) => {
 
     return userAllowed;
 });
+
+hbs.registerHelper('formatAudioLength', audioLength => {
+    const time = audioLength.split(':');
+
+    const endTime = [];
+
+    time.forEach( (period,i) => {
+        if (period != '00') {
+            if (i === 0) {
+                if (period[0] == '0') {
+                    endTime.push(`${period[1]} h`);
+                } 
+                else {
+                     endTime.push(`${period} h`);
+                }
+            }
+            else if (i === 1) {
+                if (period[0] == '0') {
+                    endTime.push(`${period[1]} min`);
+                } 
+                else {
+                    endTime.push(`${period} min`);
+
+                }
+            }
+        }
+    });
+
+    return endTime;
+});
