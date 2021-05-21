@@ -1,15 +1,16 @@
 {{>navbar}}
 
 <div class="container">
-    <div class="podcast-profile-header-container">
-        <img src="{{podcastDB.image}}" alt="podcast_image">
-        <div class="podcast-profile-header-text-container">
+    <div class="podcast__header">
+        <img class="podcast__header__img" src="{{podcastDB.image}}" alt="podcast_image">
+        <div class="podcast__header__details">
             <h1>{{podcastDB.title}}</h1>
-            <p>{{podcastDB.author}}</>
+            <p >{{podcastDB.author}}<p/>
             <p class="subtitle">{{dateFormat podcastDB.pub_date "dddd, MMMM Do YYYY"}}</p>
         </div>
     </div>
     <hr class="solid">
+    
     <div class="podcast-profile-actions-container">
 
         {{#if loggedUser}}
