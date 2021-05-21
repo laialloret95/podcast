@@ -1,28 +1,43 @@
 /* PODCAST PROFILE */
-.podcast-profile-header-container {
-    max-height: 90%;
-    display: flex;
-    color: white;
-    justify-content: space-around;
-    background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/constellation.jpeg);
-    background-repeat: no-repeat;
+.podcast__header {
+    width: 100%;
+    height: 250px;
+    max-height: 300px;
+    background: linear-gradient(rgba(3, 3, 3, 0.493), rgba(7, 7, 7, 0.548)), no-repeat;
     background-size: cover;
+
+    &__img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+    }
+
+    &__details {
+        width: 80%;
+        color: $font-color-secondary;
+        display: flex;
+        flex-direction: column;
+        padding: 5% 5% 5% 0%;
+        justify-content: flex-end;
+        position: absolute;
+        top: 40%;
+        left: 15%;
+
+        p {
+            font-weight: 600;
+
+            &.subtitle {
+                font-weight: 500;
+                margin-top: 0.5em;
+            }
+        }
+        
+    }
 }
 
-.podcast-profile-header-container img {
-    max-width:20%;
-    max-height:20%;
-    padding: 5%;
-    object-fit: contain;
-    border-radius: 30px;
-}
 
-.podcast-profile-header-text-container {
-    display: flex;
-    flex-direction: column;
-    padding: 5% 5% 5% 0%;
-    justify-content: flex-end;
-}
 
 .podcast-profile-header-text-container > * {
     margin:0;
