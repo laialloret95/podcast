@@ -59,7 +59,7 @@ router.get('/profile', (req, res, next) => {
       return userFromDB;
     })
     .then((userFromDB) => {
-          ////Check if user has any podcast saved
+          //Check if user has any podcast saved
           Favourite
             .findOne({userIDs: userFromDB._id})
             .then( favouritesDB => {
@@ -91,7 +91,6 @@ router.get('/profile', (req, res, next) => {
                   .then(lastFavourited => {
                     const [{ podcastID }] = lastFavourited;
                     data.lastFavourited = podcastID;
-                    console.log(data);
                     res.render('users/profile', { data, lastSaved: true, loggedUser: true });
                   });
               }
