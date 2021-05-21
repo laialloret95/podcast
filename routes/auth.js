@@ -6,6 +6,10 @@ const bcryptjs = require('bcryptjs');
 
 const router = express.Router();
 
+const multer = require('multer');
+const Picture = require('../models/pictures');
+const upload = multer({ dest: './public/uploads/' });
+
 // SIGNUP
 router.get('/signup', (req, res) => res.render('auth/signup'));
 
@@ -15,7 +19,7 @@ router.post('/signup', (req, res, next) => {
   if (!firstName || !lastName || !email || !password) {
     res.render('auth/signup', {
       errorMessage: `All fields are mandatory. 
-    Please fill them all to signup.`,
+    Please fill them all to signup.`
     });
     return;
   }
@@ -36,7 +40,7 @@ router.post('/signup', (req, res, next) => {
         firstName,
         lastName,
         email,
-        hashedPassword: passwordHash,
+        hashedPassword: passwordHash
       });
     })
     .then((userFromDB) => {
@@ -51,7 +55,7 @@ router.post('/signup', (req, res, next) => {
         res.status(500).render('auth/signup', {
           errorMessage: `This email address is already registered. 
           If you have already an account, please refer to the login page.
-          `,
+          `
         });
       } else {
         next(error);
@@ -108,7 +112,7 @@ router.post('/login', (req, res, next) => {
           lastName,
           mail,
           preferences,
-          profilePicture,
+          profilePicture
         });
       } else {
         res.render('auth/login', { errorMessage: 'Incorrect password.' });
@@ -134,6 +138,22 @@ router.get('/logout', (req, res) => {
 router.post('/logout', (req, res) => {
   req.session.destroy();
   res.redirect('/logout');
+});
+
+// UPLOAD PICTURE
+router.post('/upload', upload.single('photo'), (req, res, next) => {
+  const picture = new Picture({
+    name: req.body.name,
+    path: `/uploads/${req.file.filename}`,
+    originalName: req.file.originalname
+  });
+ 
+  picture
+    .save()
+    .then(() => {
+      res.redirect('/');
+    })
+    .catch(error => next(error));
 });
 
 module.exports = router;
