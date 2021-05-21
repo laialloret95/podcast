@@ -89,7 +89,6 @@ router.get('/login', (req, res) => {
 
 router.post('/login', (req, res, next) => {
   const { email, password, referer } = req.body;
-  console.log(referer);
 
   if (!email || !password) {
     res.render('auth/login', { errorMessage: 'Please enter both, email and password to login.' });

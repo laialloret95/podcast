@@ -2,17 +2,61 @@
 
 <div class="container">
     <div class="genres-container">
-        {{#each genresDB}}
+
         <ul class="genres-container__ul">
-            <a href="/podcasts/{{this}}">
+            <a href="/podcasts/Business">
                 <div class="genres-container__ul__bubble">
                     <img src="../images/podcast-icon.png" alt="">
-                    <p> {{this}} </p>
+                    <p> Business </p>
                 </div>
             </a>
         </ul>
-        {{/each}}
+
+        <ul class="genres-container__ul">
+            <a href="/podcasts/Games">
+                <div class="genres-container__ul__bubble">
+                    <img src="../images/podcast-icon.png" alt="">
+                    <p> Games </p>
+                </div>
+            </a>
+        </ul>
+
+        <ul class="genres-container__ul">
+            <a href="/podcasts/Science">
+                <div class="genres-container__ul__bubble">
+                    <img src="../images/podcast-icon.png" alt="">
+                    <p> Science </p>
+                </div>
+            </a>
+        </ul>
+
+        <ul class="genres-container__ul">
+            <a href="/podcasts/Sports">
+                <div class="genres-container__ul__bubble">
+                    <img src="../images/podcast-icon.png" alt="">
+                    <p> Sports </p>
+                </div>
+            </a>
+        </ul>
+
+        <ul class="genres-container__ul">
+            <a href="/podcasts/Technology">
+                <div class="genres-container__ul__bubble">
+                    <img src="../images/podcast-icon.png" alt="">
+                    <p> Technology </p>
+                </div>
+            </a>
+        </ul>
+
+
     </div>
+
+    {{#if loggedUser}}
+        <h2>Based on your Preferences</h2>
+        {{else}}
+        <h2>Most Recent</h2>
+    {{/if}}
+
     <div class="card__container">
         {{#each podcastsDB}}
         <a class="card__podcast" href="/podcasts/profile/{{_id}}">

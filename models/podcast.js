@@ -12,7 +12,7 @@ const podcastSchema = new Schema(
             type: String
         },
         audio_length: {
-            type: Number
+            type: String
         },
         author: {
             type: String
@@ -30,11 +30,21 @@ const podcastSchema = new Schema(
             type: String
         },
         ratings: {
-            type: [Number]
+            type: [ Schema.Types.ObjectId ], 
+            ref: 'Ratings' 
         },
         comments: { 
             type: [ Schema.Types.ObjectId ], 
             ref: 'Comment' 
+        },
+        authorLowerCase: {
+            type: String
+        },
+        titleLowerCase: {
+            type: String
+        },
+        descriptionLowerCase: {
+            type: String
         }
     }
 );

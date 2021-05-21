@@ -25,7 +25,14 @@ hbs.registerHelper('countStats', (array) => {
 });
 
 hbs.registerHelper('ratingStars', (array) => {
-    const average = Math.round(array.reduce((acc, next) => acc + next) / array.length);
+    const ratings = [];
+
+    array.forEach(rate => {
+        ratings.push(rate.rating);
+    });
+
+    const average = Math.round(ratings.reduce((acc, next) => acc + next) / ratings.length);
+
     const stars = [];
 
     for (let i = 1; i <= average; i++) {
@@ -36,7 +43,14 @@ hbs.registerHelper('ratingStars', (array) => {
 });
 
 hbs.registerHelper('missingStars', (array) => {
-    const average = Math.round(array.reduce((acc, next) => acc + next) / array.length);
+    const ratings = [];
+
+    array.forEach(rate => {
+        ratings.push(rate.rating);
+    });
+
+    const average = Math.round(ratings.reduce((acc, next) => acc + next) / ratings.length);
+    
     const stars = [];
 
     for (let i = 5; i > average; i--) {
@@ -44,4 +58,47 @@ hbs.registerHelper('missingStars', (array) => {
     }
 
     return stars;
+});
+
+
+hbs.registerHelper('userRatedAlready', (userID, ratingArray) => {
+    let userAllowed = true;
+
+    ratingArray.forEach(rate => {
+        if (rate.userID == userID) {
+            return userAllowed = false;
+        }
+    });
+
+    return userAllowed;
+});
+
+hbs.registerHelper('formatAudioLength', audioLength => {
+    const time = audioLength.split(':');
+
+    const endTime = [];
+
+    time.forEach( (period,i) => {
+        if (period != '00') {
+            if (i === 0) {
+                if (period[0] == '0') {
+                    endTime.push(`${period[1]} h`);
+                } 
+                else {
+                     endTime.push(`${period} h`);
+                }
+            }
+            else if (i === 1) {
+                if (period[0] == '0') {
+                    endTime.push(`${period[1]} min`);
+                } 
+                else {
+                    endTime.push(`${period} min`);
+
+                }
+            }
+        }
+    });
+
+    return endTime;
 });
