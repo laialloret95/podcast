@@ -28,17 +28,19 @@
             {{/if}}
         </div>
         {{else}}
-        <a class="podcast-profile" href="/login">
-            <i class="far fa-play-circle"></i>
-            <p class="icon-name">Play</p>
-        </a>
-        <a class="podcast-profile" href="/login">
-            <i class="fas fa-heart"></i>
-            <p class="icon-name">Favourite</p>
-        </a>
+            <a class="podcast-profile" href="/login">
+                <i class="far fa-play-circle"></i>
+                <p class="icon-name">Play</p>
+            </a>
+            <a class="podcast-profile" href="/login">
+                <i class="fas fa-heart"></i>
+                <p class="icon-name">Favourite</p>
+            </a>
+            {{#each (formatAudioLength podcastDB.audio_length)}}
+                <p class="minutes subtitle">{{this}}</p>
+            {{/each}}
         {{/if}}
 
-        <p class="minutes subtitle">{{podcastDB.audio_length}} minutes</p>
 
         {{#if podcastDB.ratings}}
         <div>
