@@ -45,6 +45,8 @@ router.get('/profile', (req, res, next) => {
                   .limit(3)
                   .sort({ pub_date: -1 })
                   .then(podcastsDB => {
+                    //Push to data 3 suggested podcast
+                    data.suggestedPodcast = podcastsDB;
                     res.render('users/profile', { 
                       userFromDB, 
                       favorited: 0, 
