@@ -12,9 +12,8 @@
     <hr class="solid">
     
     <div class="podcast-profile-actions-container">
-
         {{#if loggedUser}}
-        <div>
+        <div class="profile-actions-left">
             <audio controls src={{podcastDB.audio}}> </audio>
             {{#if favouritedPocast}}
             <div>
@@ -28,7 +27,9 @@
             </a>
             {{/if}}
         </div>
+
         {{else}}
+        <div class="profile-actions-left">
             <a class="podcast-profile" href="/login">
                 <i class="far fa-play-circle"></i>
                 <p class="icon-name">Play</p>
@@ -40,26 +41,31 @@
             {{#each (formatAudioLength podcastDB.audio_length)}}
                 <p class="minutes subtitle">{{this}}</p>
             {{/each}}
-        {{/if}}
-
-
-        {{#if podcastDB.ratings}}
-        <div>
-            {{#each (ratingStars podcastDB.ratings) }}
-                <i class="fas fa-star" style="color:#F5EA61"></i>
-            {{/each}}
-            {{#each (missingStars podcastDB.ratings) }}
-                <i class="far fa-star" style="color:#F5EA61"></i>
-            {{/each}}
         </div>
         {{/if}}
 
-        {{#if loggedUser}}
-            {{#if (userRatedAlready userID podcastDB.ratings)}}
-                <a href="/podcast/{{podcastDB._id}}/rating">Rate this Podcast!</a>
-            {{/if}}
-        {{/if}}
-    </div>
+        <div class="profile-actions-right">
+            <div class="profile-actions-right-stars">
+                {{#if podcastDB.ratings}}
+                    {{#each (ratingStars podcastDB.ratings) }}
+                        <i class="fas fa-star" style="color:#F5EA61"></i>
+                    {{/each}}
+                    {{#each (missingStars podcastDB.ratings) }}
+                        <i class="far fa-star" style="color:#F5EA61"></i>
+                    {{/each}}
+                {{/if}}
+            </div>
+
+            <div class="profile-actions-right-rating">
+                {{#if loggedUser}}
+                    {{#if (userRatedAlready userID podcastDB.ratings)}}
+                        <a href="/podcast/{{podcastDB._id}}/rating">Rate this Podcast!</a>
+                    {{/if}}
+                {{/if}}
+            </div>
+        </div>
+</div>
+
     <hr class="solid">
     <div class="podcast-profile-description-container">
         <h2>Description</h2>

@@ -302,7 +302,7 @@ a {
 
 /* PAGE CONTAINERS */
 .container {
-  width: 80%;
+  width: 90%;
   max-width: 900px;
   margin: 3em auto 4.5em;
   text-align: left; }
@@ -675,7 +675,8 @@ hr.solid {
 
 .podcast-profile-actions-container {
   display: flex;
-  justify-content: flex-start; }
+  justify-content: space-between;
+  width: 100%; }
 
 .podcast-profile-actions-container i {
   padding: 2%;
@@ -686,7 +687,7 @@ hr.solid {
 .podcast-profile {
   display: flex;
   align-items: center;
-  padding: 2%; }
+  padding-top: 1em; }
 
 .icon-name {
   font: 'Lucida Grande', Helvetica, Arial, sans-serif;
@@ -705,6 +706,29 @@ hr.solid {
 .podcast-profile-comment {
   display: flex;
   flex-direction: column; }
+
+.profile-actions-left {
+  flex-basis: 20%;
+  margin-right: 0.5em; }
+
+.podcast-profile-actions-container audio {
+  width: 175px;
+  height: 40px;
+  display: block;
+  margin: 0; }
+
+.profile-actions-right {
+  flex-basis: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between; }
+
+.profile-actions-right-stars {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 0.5em; }
 
 /* USER PROFILE */
 .profile__info {
