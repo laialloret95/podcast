@@ -40,11 +40,54 @@
     }
 }
 
+/* COMMENT BUTTON */
+.button-comment {
+    padding: 0.5em 0.5em;
+    background-color: $color-secondary;
+    font-family: $font-family;
+    border: none;
+    border-radius: 10rem;
+    box-shadow: lightslategray  2px 2px 2px;
+    color: white;
+    font-weight: 600;
+    width: 50%;
+    height: auto;
+    align-self: center;
+
+    &:hover,
+    :focus {
+       box-shadow: lightslategray  5px 10px 9px;
+    }
+
+    &.light {
+        background-color: $color-terchary;
+        color: $color-secondary;
+
+        &:hover,
+        :focus {
+             box-shadow: lightslategray  5px 10px 9px;
+        }
+    }
+
+    &.small {
+        font-size: $font-size-smll;
+    }
+
+    &.mg {
+        margin: .5em 0;
+    }
+
+    &.inline-block {
+        display: inline-block;
+    }
+}
+
 /* DELETE BUTTON */
 
 .trash-delete {
     background: none;
     border:none;
+    padding: 0 0.5em;
 }
    
 

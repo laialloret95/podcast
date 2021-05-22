@@ -78,9 +78,16 @@
 
     {{#each podcastDB.comments}}
     <div class="podcast-profile-comments-container">
-        <p>{{this.content}}</p>
+
+        <div class="podcast-profile-comments-header">
+            <div class="podcast-profile-comment-other-user">
+                <img src="/images/avatar-icon.png" alt="">
+                <p> <strong>{{this.author.firstName}} {{this.author.lastName}}</strong></p>
+            </div>
+            <p>{{this.content}}</p>
+        </div>
+
         <div class="podcast-profile-comments-footer">
-        <p class="subtitle">By {{this.author.firstName}} {{this.author.lastName}}</p>
             {{#ifUserComment this.author._id ../userID ../podcastDB this._id}}
                 <div class="podcast-profile-comments-buttons">
 
@@ -108,9 +115,9 @@
             <p>{{loggedUser.firstName}} {{loggedUser.lastName}}</p>
         </div>
 
-        <form action="{{podcastDB._id}}/addComment" method="POST">
-                <textarea class="podcast-profile-comment-content" ria-describedby="text" name="text" required></textarea>
-                <button class="button" type="submit">Comment</button>
+        <form class="podcast-profile-comment-form" action="{{podcastDB._id}}/addComment" method="POST">
+                <textarea class="podcast-profile-comment-form-content" ria-describedby="text" name="text" required></textarea>
+                <button class="button-comment" type="submit">Comment</button>
         </form>
     </div>
     {{/if}}

@@ -94,7 +94,6 @@ router.get('/podcasts/profile/:id', (req, res, next) => {
         }
       })
       .then(podcastDB => {
-        console.log(req.session.currentUser);
         Favourite.find({ $and: [{ podcastID: id }, { userIDs: userID }] }).then(favouriteDB => {
           const loggedUser = req.session.currentUser;
           if (favouriteDB.length > 0) {
