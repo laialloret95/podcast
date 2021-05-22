@@ -108,7 +108,7 @@ router.post('/login', (req, res, next) => {
           lastName,
           mail,
           preferences,
-          profilePicture,
+          profilePicture
         });
       } else {
         res.render('auth/login', { errorMessage: 'Incorrect password.' });
