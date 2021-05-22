@@ -83,6 +83,22 @@ hr.solid {
 .podcast-profile-comment {
     display: flex;
     flex-direction: column;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+
+    form {
+        width: 90%;
+    }
+}
+
+.podcast-profile-comment-content {
+    width: 100%;
+    margin: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: $font-family;
 }
 
 .profile-actions-left {
@@ -128,4 +144,14 @@ hr.solid {
 
 .podcast-profile-comments-footer > * {
     margin-right: 1em;
+}
+
+.podcast-profile-comment-user {
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 10%;
+        margin-right: 0.5em;
+    }
 }
