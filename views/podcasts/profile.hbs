@@ -81,18 +81,18 @@
         <p>{{this.content}}</p>
         <div class="podcast-profile-comments-footer">
         <p class="subtitle">By {{this.author.firstName}} {{this.author.lastName}}</p>
-        {{#ifUserComment this.author._id ../loggedUser ../podcastDB this._id}}
-            <div class="podcast-profile-comments-buttons">
+            {{#ifUserComment this.author._id ../loggedUser ../podcastDB this._id}}
+                <div class="podcast-profile-comments-buttons">
 
-                <a href="/podcast/{{podcastDB._id}}/comment/{{commentID}}/edit">
-                    <i class="far fa-edit"></i>
-                </a>
+                    <a href="/podcast/{{podcastDB._id}}/comment/{{commentID}}/edit">
+                        <i class="far fa-edit"></i>
+                    </a>
 
-                <form action="/podcast/{{podcastDB._id}}/comment/{{commentID}}/delete" method="POST">
-                    <button class="trash-delete"><i class="fas fa-trash-alt fa-sm" style="color:#8E1515"></i></button>
-                </form>
-            </div>
-        {{/ifUserComment}}
+                    <form action="/podcast/{{podcastDB._id}}/comment/{{commentID}}/delete" method="POST">
+                        <button class="trash-delete"><i class="fas fa-trash-alt fa-sm" style="color:#8E1515"></i></button>
+                    </form>
+                </div>
+            {{/ifUserComment}}
         </div>
     </div>
     {{/each}}
