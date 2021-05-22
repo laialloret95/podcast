@@ -115,10 +115,13 @@ router.post('/login', (req, res, next) => {
         return;
       }
     })
-    .then(() => {
+    .then((currentUser) => {
       if (referer.includes('logout')) {
         req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
         res.redirect('/');
+      } else if (referer.includes(currentUser._id))  {
+        req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
+        res.redirect('/profile');
       } else {
         req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
         res.redirect(referer);

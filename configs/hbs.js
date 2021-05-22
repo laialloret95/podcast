@@ -17,7 +17,8 @@ hbs.registerHelper('ifUserComment', (authorID, loggedUserID, podcastDB, commentI
 });
 
 hbs.registerHelper('countStats', (array) => {
-    if (array.length > 0) {
+
+    if (typeof array !== 'undefined' && array.length > 0) {
         return array.length;
     } else {
         return 0;

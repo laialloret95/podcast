@@ -2,6 +2,8 @@ const express = require('express');
 const User = require('../models/user');
 const Favourite = require('../models/favorites');
 const Podcast = require('../models/podcast');
+const Comment = require('../models/comment');
+const Ratings = require('../models/ratings');
 const mongoose = require('mongoose');
 const checkIfUserIsLoggedIn = require('../middlewares/auth');
 
@@ -13,14 +15,51 @@ router.use(checkIfUserIsLoggedIn);
 // PROFILE
 router.get('/profile', (req, res, next) => {
   const id = req.session.currentUser._id;
+  const data = {};
 
   User
     .findById(id)
     .then((userFromDB) => {
+        //Find user profile info
+        data.userInfo = userFromDB;
         return userFromDB;
     })
     .then((userFromDB) => {
-          ////Check if user has any podcast saved
+      //Find Nº of user favorited Podcast
+      Favourite
+        .find({userIDs: userFromDB._id })
+        .populate('podcastID')
+        .then(favouritesArray => {
+          data['favouritesArray'] = favouritesArray;
+        })
+        .catch((error) => next(error));
+
+        return userFromDB;
+    })
+    .then((userFromDB) => {
+      //Find Nº of user comments
+      Comment
+       .find({author: userFromDB._id })
+       .then(commentsArray => {
+         data['commentsArray'] = commentsArray;
+       })
+       .catch((error) => next(error));
+
+      return userFromDB;
+    })
+    .then((userFromDB) => {
+      //Find Nº of user ratings
+      Ratings
+       .find({userID: userFromDB._id })
+       .then(ratingsArray => {
+         data['ratingsArray'] = ratingsArray;
+       })
+       .catch((error) => next(error));
+
+      return userFromDB;
+    })
+    .then((userFromDB) => {
+          //Check if user has any podcast saved
           Favourite
             .findOne({userIDs: userFromDB._id})
             .then( favouritesDB => {
@@ -31,11 +70,10 @@ router.get('/profile', (req, res, next) => {
                   .limit(3)
                   .sort({ pub_date: -1 })
                   .then(podcastsDB => {
+                    //Push to data 3 suggested podcast
+                    data.suggestedPodcast = podcastsDB;
                     res.render('users/profile', { 
-                      userFromDB, 
-                      favorited: 0, 
-                      playlist: 0, // needs to be updated - default values
-                      comments: 0, // needs to be updated - default values
+                      data,
                       podcastsDB,
                       loggedUser: true
                     });
@@ -50,9 +88,9 @@ router.get('/profile', (req, res, next) => {
                   .limit(1)
                   .sort({createdAt: -1})
                   .then(lastFavourited => {
-                    console.log(lastFavourited);
                     const [{ podcastID }] = lastFavourited;
-                    res.render('users/profile', { userFromDB, podcastID, lastSaved: true, loggedUser: true });
+                    data.lastFavourited = podcastID;
+                    res.render('users/profile', { data, lastSaved: true, loggedUser: true });
                   });
               }
           });

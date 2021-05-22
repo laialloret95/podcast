@@ -5,7 +5,7 @@ $color-terchary: #F5EA61;
 $color-fourth: rgb(242, 243, 244);
 
 $font-color-primary: rgb(73, 79, 101);
-$font-color-secondary: rgb(254, 253, 255);
+$font-color-secondary: rgb(255, 255, 255);
 
 $card-color: rgb(255, 255, 255);
 $card-font-color: rgb(94, 124, 139);
@@ -37,7 +37,7 @@ a {
 .container {
     width: 80%;
     max-width: 900px;
-    margin: 3em auto;
+    margin: 3em auto 4.5em ;
     text-align: left;
 }
 

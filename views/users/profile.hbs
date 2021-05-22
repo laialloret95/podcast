@@ -6,10 +6,10 @@
             <img class="avatar-img" src="./images/avatar-icon.png" alt="{{userFromDB.firstName}} {{userFromDB.lastName}} Podapp profile.">
         </div>
         <div class="profile__details">
-            <h1>{{userFromDB.firstName}} {{userFromDB.lastName}}</h1>
+            <h1>{{data.userInfo.firstName}} {{data.userInfo.lastName}}</h1>
             <p class="bold">Favourite Genres</p>
                 <ul class="profile__details__ul">
-                {{#each userFromDB.preferences}}
+                {{#each data.userInfo.preferences}}
                     <a class="li__link" href="/podcasts/{{this}}"><li>#{{this}}</li></a>
                 {{/each}}
                 </ul>
@@ -19,33 +19,30 @@
     <div class="profile__statistics">
         <div class="stats">
             <img class="stats__img" src="/images/favorite.png" alt="Favorite podcast icon">
-            <p class="medium">0</p>
+            <p class="medium">{{countStats data.favouritesArray}}</p>
             <p class="medium"> Favourites</p>
-            <a class="button inline-block small" href="/favourites">Favourites</a>
-        </div>
-        <div class="stats">
-            <img class="stats__img" src="/images/playlist-icon.png" alt="Playlist list icon">
-            <p class="medium">0</p>
-            <p class="medium"> Playlists</p>
-            <a class="button inline-block small" href="#">Playlists</a>
         </div>
         <div class="stats">
             <img class="stats__img" src="/images/comments-icon.png" alt="Comments on podcast icon">
-            <p class="medium">0</p>
+            <p class="medium">{{countStats data.commentsArray}}</p>
             <p class="medium"> Comments</p>
-            <a class="button inline-block small" href="#">Comments</a>
+        </div>
+        <div class="stats">
+            <img class="stats__img" src="/images/rating-icon.png" alt="Ratings on podcast icon">
+            <p class="medium">{{countStats data.ratingsArray}}</p>
+            <p class="medium"> Comments</p>
         </div>
     </div> <!-- /profile-statistics -->
     <div class="profile__podcast">
     {{#if lastSaved }}
         <h2>Last Saved Podcast</h2>
-            <a class="card__podcast" href="/podcasts/profile/{{podcastID._id}}">
+            <a class="card__podcast" href="/podcasts/profile/{{data.lastFavourited._id}}">
               <div class="card__podcast__image">
-                  <img class="card__podcast__image_url"src="{{podcastID.image}}" alt="{{podcastID.title}}">
+                  <img class="card__podcast__image_url"src="{{data.lastFavourited.image}}" alt="{{data.lastFavourited.title}}">
               </div>
               <div class="card__podcast__content">
-                  <h3>{{podcastID.title}}</h3>
-                  <p>{{podcastID.author}}</p>
+                  <h3>{{data.lastFavourited.title}}</h3>
+                  <p>{{data.lastFavourited.author}}</p>
               </div> 
             </a> <!-- /card__podcast -->  
     {{else }}
