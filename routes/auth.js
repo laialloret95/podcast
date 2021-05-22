@@ -6,10 +6,6 @@ const bcryptjs = require('bcryptjs');
 
 const router = express.Router();
 
-const multer = require('multer');
-const Picture = require('../models/pictures');
-const upload = multer({ dest: './public/uploads/' });
-
 // SIGNUP
 router.get('/signup', (req, res) => res.render('auth/signup'));
 
@@ -138,22 +134,6 @@ router.get('/logout', (req, res) => {
 router.post('/logout', (req, res) => {
   req.session.destroy();
   res.redirect('/logout');
-});
-
-// UPLOAD PICTURE
-router.post('/upload', upload.single('photo'), (req, res, next) => {
-  const picture = new Picture({
-    name: req.body.name,
-    path: `/uploads/${req.file.filename}`,
-    originalName: req.file.originalname
-  });
- 
-  picture
-    .save()
-    .then(() => {
-      res.redirect('/');
-    })
-    .catch(error => next(error));
 });
 
 module.exports = router;

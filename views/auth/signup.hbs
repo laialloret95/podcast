@@ -15,18 +15,14 @@
 
             <input class="input-auth" type="password" name="password" id="password" placeholder="Password" />
 
+            <input class="input-auth" type="file" name="profilePicture" id="profilePicture" placeholder="Profile Picture" />
+
             <button class="button" type="submit">Sign up!</button>
 
             {{#if errorMessage}}
                 <p class="error">{{errorMessage}}</p>
             {{/if}}
 
-            <h2>Upload your photo</h2>
-            <form action="/upload" method="post" enctype="multipart/form-data">
-                <input type="text" name="name" />
-                <input type="file" name="photo" />
-                <input type="submit" value="Save" />
-            </form>
         </form>
 
     </div>
