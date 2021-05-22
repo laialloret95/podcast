@@ -59,11 +59,20 @@ router.get('/podcasts/:genre', (req, res, next) => {
 router.post('/podcasts/search', (req, res, next) => {
   const keywords = req.body.keywords.toLowerCase();
 
-  Podcast.find({ $or: [{ titleLowerCase: { $regex: keywords } }, { authorLowerCase: { $regex: keywords } }, { descriptionLowerCase: { $regex: keywords } }] })
+  if (req.session.currentUser) {
+    Podcast.find({ $or: [{ titleLowerCase: { $regex: keywords } }, { authorLowerCase: { $regex: keywords } }, { descriptionLowerCase: { $regex: keywords } }] })
+    .then(podcastsDB => {
+      res.render('podcasts/show', { podcastsDB, keywords, loggedUser: true });
+    })
+    .catch(error => next(error));
+  } else {
+    Podcast.find({ $or: [{ titleLowerCase: { $regex: keywords } }, { authorLowerCase: { $regex: keywords } }, { descriptionLowerCase: { $regex: keywords } }] })
     .then(podcastsDB => {
       res.render('podcasts/show', { podcastsDB, keywords });
     })
     .catch(error => next(error));
+  }
+
 });
 
 // PODCAST DETAIL
