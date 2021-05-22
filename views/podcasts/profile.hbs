@@ -19,7 +19,7 @@
             {{#if favouritedPocast}}
             <div>
                 <i class="fas fa-check-circle"></i>
-                <p class="icon-name">Included you list!</p>
+                <p class="icon-name">Included in your list!</p>
             </div>
             {{else}}
             <a class="podcast-profile" href="/favourites/{{podcastDB._id}}">
@@ -46,10 +46,10 @@
         {{#if podcastDB.ratings}}
         <div>
             {{#each (ratingStars podcastDB.ratings) }}
-                <i class="fas fa-star"></i>
+                <i class="fas fa-star" style="color:#F5EA61"></i>
             {{/each}}
             {{#each (missingStars podcastDB.ratings) }}
-                <i class="far fa-star"></i>
+                <i class="far fa-star" style="color:#F5EA61"></i>
             {{/each}}
         </div>
         {{/if}}
