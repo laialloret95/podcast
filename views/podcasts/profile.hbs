@@ -9,17 +9,17 @@
             <p class="subtitle">{{dateFormat podcastDB.pub_date "dddd, MMMM Do YYYY"}}</p>
         </div>
     </div>
+
     <hr class="solid">
     
     <div class="podcast-profile-actions-container">
-
         {{#if loggedUser}}
-        <div>
+        <div class="profile-actions-left">
             <audio controls src={{podcastDB.audio}}> </audio>
             {{#if favouritedPocast}}
-            <div>
+            <div class="podcast-profile">
                 <i class="fas fa-check-circle"></i>
-                <p class="icon-name">Included in your list!</p>
+                <p class="icon-name">Saved!</p>
             </div>
             {{else}}
             <a class="podcast-profile" href="/favourites/{{podcastDB._id}}">
@@ -28,7 +28,9 @@
             </a>
             {{/if}}
         </div>
+
         {{else}}
+        <div class="profile-actions-left">
             <a class="podcast-profile" href="/login">
                 <i class="far fa-play-circle"></i>
                 <p class="icon-name">Play</p>
@@ -40,54 +42,65 @@
             {{#each (formatAudioLength podcastDB.audio_length)}}
                 <p class="minutes subtitle">{{this}}</p>
             {{/each}}
-        {{/if}}
-
-
-        {{#if podcastDB.ratings}}
-        <div>
-            {{#each (ratingStars podcastDB.ratings) }}
-                <i class="fas fa-star" style="color:#F5EA61"></i>
-            {{/each}}
-            {{#each (missingStars podcastDB.ratings) }}
-                <i class="far fa-star" style="color:#F5EA61"></i>
-            {{/each}}
         </div>
         {{/if}}
 
-        {{#if loggedUser}}
-            {{#if (userRatedAlready userID podcastDB.ratings)}}
-                <a href="/podcast/{{podcastDB._id}}/rating">Rate this Podcast!</a>
-            {{/if}}
-        {{/if}}
-    </div>
+        <div class="profile-actions-right">
+            <div class="profile-actions-right-stars">
+                {{#if podcastDB.ratings}}
+                    {{#each (ratingStars podcastDB.ratings) }}
+                        <i class="fas fa-star" style="color:#F5EA61"></i>
+                    {{/each}}
+                    {{#each (missingStars podcastDB.ratings) }}
+                        <i class="far fa-star" style="color:#F5EA61"></i>
+                    {{/each}}
+                {{/if}}
+            </div>
+
+            <div class="profile-actions-right-rating">
+                {{#if loggedUser}}
+                    {{#if (userRatedAlready userID podcastDB.ratings)}}
+                        <a href="/podcast/{{podcastDB._id}}/rating">Rate this Podcast!</a>
+                    {{/if}}
+                {{/if}}
+            </div>
+        </div>
+</div>
+
     <hr class="solid">
+
     <div class="podcast-profile-description-container">
         <h2>Description</h2>
         <p>{{podcastDB.description}}</p>
     </div>
 
+    <hr class="solid">
+
     {{#each podcastDB.comments}}
-    <div>
+    <div class="podcast-profile-comments-container">
         <p>{{this.content}}</p>
-        {{#ifUserComment this.author._id ../loggedUser ../podcastDB this._id}}
-            <a href="/podcast/{{podcastDB._id}}/comment/{{commentID}}/edit">
-                <i class="far fa-edit"></i>
-                <p>Edit</p>
-            </a>
+        <div class="podcast-profile-comments-footer">
+        <p class="subtitle">By {{this.author.firstName}} {{this.author.lastName}}</p>
+            {{#ifUserComment this.author._id ../loggedUser ../podcastDB this._id}}
+                <div class="podcast-profile-comments-buttons">
 
-            <form action="/podcast/{{podcastDB._id}}/comment/{{commentID}}/delete" method="POST">
-                <button><i class="fas fa-trash-alt fa-lg" style="color:#8E1515"></i></button>
-            </form>
+                    <a href="/podcast/{{podcastDB._id}}/comment/{{commentID}}/edit">
+                        <i class="far fa-edit"></i>
+                    </a>
 
-        {{/ifUserComment}}
-        <p>By {{this.author.firstName}} {{this.author.lastName}}</p>
+                    <form action="/podcast/{{podcastDB._id}}/comment/{{commentID}}/delete" method="POST">
+                        <button class="trash-delete"><i class="fas fa-trash-alt fa-sm" style="color:#8E1515"></i></button>
+                    </form>
+                </div>
+            {{/ifUserComment}}
+        </div>
     </div>
     {{/each}}
 
     {{#if loggedUser}}
     <form action="{{podcastDB._id}}/addComment" method="POST">
         <div class="podcast-profile-comment">
-            <label for="text">New comment</label>
+            <label for="text">Add a new comment</label>
             <textarea aria-describedby="text" name="text" required></textarea>
             <div>Write on {{podcastDB.title}}'s wall.</div>
         </div>

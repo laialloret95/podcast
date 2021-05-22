@@ -122,6 +122,9 @@ router.post('/login', (req, res, next) => {
       } else if (referer.includes(currentUser._id))  {
         req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
         res.redirect('/profile');
+      } else if (referer.includes('signup'))  {
+        req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
+        res.redirect('/');
       } else {
         req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
         res.redirect(referer);

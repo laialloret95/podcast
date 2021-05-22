@@ -1,0 +1,33 @@
+.ratings-container {
+    display: flex;
+    margin-top: 3em;
+
+    form {
+        background: $color-fourth;
+        border-radius: 5%;
+        margin: 0 0.5em;
+    }
+
+    form:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+}
+
+.ratings-container form > button {
+    display: flex;
+    flex-direction: column;
+    background: none;
+    text-decoration: none;
+    border: none;
+    align-items: center;
+    font-family: $font-family;
+    padding: 1em 0;
+}
+
+.ratings-container form > button > img {
+    width: 30%;
+}
+
+.ratings-container form > button > p {
+    margin-top: 1em;
+}
