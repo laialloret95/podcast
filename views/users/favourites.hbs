@@ -12,7 +12,7 @@
                 <p class="subtitle">{{this.podcastID.author}}</p>
             </div>
             <form action="/favourites/{{this.podcastID._id}}/delete" method="POST">
-                <button><i class="fas fa-trash-alt fa-lg" style="color:#8E1515"></i></button>
+                <button class="trash-delete"><i class="fas fa-trash-alt fa-lg" style="color:#8E1515"></i></button>
             </form>
         </a>
       {{/each}}

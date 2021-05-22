@@ -9,6 +9,7 @@
             <p class="subtitle">{{dateFormat podcastDB.pub_date "dddd, MMMM Do YYYY"}}</p>
         </div>
     </div>
+
     <hr class="solid">
     
     <div class="podcast-profile-actions-container">
@@ -67,33 +68,39 @@
 </div>
 
     <hr class="solid">
+
     <div class="podcast-profile-description-container">
         <h2>Description</h2>
         <p>{{podcastDB.description}}</p>
     </div>
 
+    <hr class="solid">
+
     {{#each podcastDB.comments}}
-    <div>
+    <div class="podcast-profile-comments-container">
         <p>{{this.content}}</p>
+        <div class="podcast-profile-comments-footer">
+        <p class="subtitle">By {{this.author.firstName}} {{this.author.lastName}}</p>
         {{#ifUserComment this.author._id ../loggedUser ../podcastDB this._id}}
-            <a href="/podcast/{{podcastDB._id}}/comment/{{commentID}}/edit">
-                <i class="far fa-edit"></i>
-                <p>Edit</p>
-            </a>
+            <div class="podcast-profile-comments-buttons">
 
-            <form action="/podcast/{{podcastDB._id}}/comment/{{commentID}}/delete" method="POST">
-                <button><i class="fas fa-trash-alt fa-lg" style="color:#8E1515"></i></button>
-            </form>
+                <a href="/podcast/{{podcastDB._id}}/comment/{{commentID}}/edit">
+                    <i class="far fa-edit"></i>
+                </a>
 
+                <form action="/podcast/{{podcastDB._id}}/comment/{{commentID}}/delete" method="POST">
+                    <button class="trash-delete"><i class="fas fa-trash-alt fa-sm" style="color:#8E1515"></i></button>
+                </form>
+            </div>
         {{/ifUserComment}}
-        <p>By {{this.author.firstName}} {{this.author.lastName}}</p>
+        </div>
     </div>
     {{/each}}
 
     {{#if loggedUser}}
     <form action="{{podcastDB._id}}/addComment" method="POST">
         <div class="podcast-profile-comment">
-            <label for="text">New comment</label>
+            <label for="text">Add a new comment</label>
             <textarea aria-describedby="text" name="text" required></textarea>
             <div>Write on {{podcastDB.title}}'s wall.</div>
         </div>

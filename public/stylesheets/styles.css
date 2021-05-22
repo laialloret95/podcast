@@ -576,6 +576,11 @@ a {
   .button.inline-block {
     display: inline-block; }
 
+/* DELETE BUTTON */
+.trash-delete {
+  background: none;
+  border: none; }
+
 /* INPUT FIELDS */
 .input-auth {
   display: inline-block;
@@ -729,6 +734,20 @@ hr.solid {
   justify-content: flex-end;
   width: 100%;
   margin-top: 0.5em; }
+
+.podcast-profile-comments-container {
+  display: flex;
+  flex-direction: column; }
+
+.podcast-profile-comments-buttons {
+  display: flex; }
+
+.podcast-profile-comments-footer {
+  display: flex;
+  align-items: center; }
+
+.podcast-profile-comments-footer > * {
+  margin-right: 1em; }
 
 /* USER PROFILE */
 .profile__info {
