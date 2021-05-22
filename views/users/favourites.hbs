@@ -3,7 +3,7 @@
     <h2>Favourites!</h2>
     <div class="card__container">
       {{#each favouritesDB}}
-        <a class="card__podcast" href="/podcasts/profile/{{_id}}">
+        <a class="card__podcast" href="/podcasts/profile/{{this.podcastID._id}}">
             <div class="card__podcast__image">
                 <img class="card__podcast__image_url"src="{{this.podcastID.image}}" alt="{{this.podcastID.title}}">
             </div>
