@@ -686,7 +686,7 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.5; }
+    opacity: 0.4; }
   .podcast__header__details {
     width: 80%;
     color: white;
@@ -694,7 +694,7 @@ a {
     flex-direction: column;
     justify-content: flex-end;
     position: relative;
-    bottom: 90%;
+    bottom: 85%;
     left: 5%; }
     .podcast__header__details p {
       font-weight: 600; }
