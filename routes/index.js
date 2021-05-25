@@ -78,7 +78,7 @@ router.post('/podcasts/search', (req, res, next) => {
 // PODCAST DETAIL
 router.get('/podcasts/profile/:id', (req, res, next) => {
   const { id } = req.params;
-  let loggedUser;
+  let userData;
 
   if (req.session.currentUser) {
     const userID = req.session.currentUser._id;
@@ -98,20 +98,19 @@ router.get('/podcasts/profile/:id', (req, res, next) => {
         User
         .findById(userID)
         .then((userDB) => {
-          loggedUser = userDB;
-        });
-
-        return podcastDB;
-      })
-      .then(podcastDB => {
-        Favourite.find({ $and: [{ podcastID: id }, { userIDs: userID }] }).then(favouriteDB => {
-          if (favouriteDB.length > 0) {
-            // If podcast has been favourited by the user
-            res.render('podcasts/profile', { podcastDB, loggedUser, favouritedPocast: true, userID });
-          } else {
-            // If podcast has not been favourited by the user
-            res.render('podcasts/profile', { podcastDB, loggedUser, userID });
-          }
+          userData = userDB;
+          const loggedUser = req.session.currentUser;
+          Favourite
+            .find({ $and: [{ podcastID: id }, { userIDs: userID }] })
+            .then(favouriteDB => {
+              if (favouriteDB.length > 0) {
+                // If podcast has been favourited by the user
+                res.render('podcasts/profile', { podcastDB, loggedUser, userData, favouritedPocast: true, userID });
+              } else {
+                // If podcast has not been favourited by the user
+                res.render('podcasts/profile', { podcastDB, loggedUser, userData, userID });
+              }
+            });
         });
       })
       .catch(error => next(error));

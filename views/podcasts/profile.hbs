@@ -111,8 +111,8 @@
     {{#if loggedUser}}
     <div class="podcast-profile-comment">
         <div class="podcast-profile-comment-user">
-            <img  src={{loggedUser.profilePicture}} alt="">
-            <p>{{loggedUser.firstName}} {{loggedUser.lastName}}</p>
+            <img  src={{userData.profilePicture}} alt="">
+            <p>{{userData.firstName}} {{userData.lastName}}</p>
         </div>
 
         <form class="podcast-profile-comment-form" action="{{podcastDB._id}}/addComment" method="POST">

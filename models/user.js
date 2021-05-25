@@ -21,7 +21,7 @@ const userSchema = new Schema(
         preferences: ["Technology", "Business", "Sports", "Science", "Games"],
         profilePicture: {
             type: String,
-            default: "../images/avatar-icon.png"
+            default: "https://raw.githubusercontent.com/laialloret95/podcast/dev/public/images/avatar-icon.png"
         },
         hashedPassword: {
           type: String,
