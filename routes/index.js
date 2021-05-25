@@ -204,7 +204,7 @@ router.get('/podcast/:podcastID/comment/:commentID/edit', (req, res, next) => {
   Comment.findById(commentID)
     .then(commentDB => {
       Podcast.findById(podcastID).then(podcastDB => {
-        res.render('comments/edit-comment', { podcastDB, commentDB });
+        res.render('comments/edit-comment', { podcastDB, commentDB, loggedUser: true });
       });
     })
     .catch(error => next(error));
