@@ -3,7 +3,7 @@
 <div class="container">
     <div class="profile__info">
         <div class="profile__info__picture">
-            <img class="avatar-img" src="./images/avatar-icon.png" alt="{{userFromDB.firstName}} {{userFromDB.lastName}} Podapp profile.">
+            <img class="avatar-img" src={{data.userInfo.profilePicture}} alt="{{userFromDB.firstName}} {{userFromDB.lastName}} Podapp profile.">
         </div>
         <div class="profile__details">
             <h1>{{data.userInfo.firstName}} {{data.userInfo.lastName}}</h1>

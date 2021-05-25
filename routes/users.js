@@ -6,6 +6,7 @@ const Comment = require('../models/comment');
 const Ratings = require('../models/ratings');
 const mongoose = require('mongoose');
 const checkIfUserIsLoggedIn = require('../middlewares/auth');
+const fileUploader = require('../configs/cloudinary');
 
 const router = express.Router();
 
@@ -108,11 +109,18 @@ router.get('/profile/edit', (req, res, next) => {
    .catch((error) => next(error));
 });
 
-router.post('/profile/edit', (req, res, next) => {
+router.post('/profile/edit', fileUploader.single('image'), (req, res, next) => {
   const { firstName, lastName, email, preferences } = req.body;
   const id  = req.session.currentUser._id;
 
-  User.findByIdAndUpdate( id, { firstName, lastName, email, preferences }, { new: true })
+  let profilePicture;
+  if (req.file) {
+    profilePicture = req.file.path;
+  } else {
+    profilePicture = req.body.existingImage;
+  }
+
+  User.findByIdAndUpdate( id, { firstName, lastName, email, preferences, profilePicture }, { new: true })
    .then(() => {
       req.flash('success', "Your profile has been updated successfully!");
       res.redirect("/profile");

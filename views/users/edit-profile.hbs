@@ -2,7 +2,12 @@
 <div class="container">
     <div class="edit">
         <h2>Update your account information</h1>
-        <form action="/profile/edit" method="POST">
+        <form action="/profile/edit" method="POST" enctype="multipart/form-data">
+
+            <label for="image-input">Image:</label>
+            <input type="file" name="image" id="image-input" class="form-control-file" />
+            <input type="text" name="existingImage" hidden id="" value="{{userFromDB.profilePicture}}">
+            
             <input class="input-auth" type="text" name="firstName" id="firstName" value="{{userFromDB.firstName}}"/>
 
             <input class="input-auth" type="text" name="lastName"  id="lastName" value="{{userFromDB.lastName}}"/>
