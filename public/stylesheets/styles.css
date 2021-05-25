@@ -848,7 +848,8 @@ hr.solid {
   flex-direction: column; }
   .podcast-profile-comments-header img {
     width: 2em;
-    margin-right: 0.5em; }
+    margin-right: 0.5em;
+    border-radius: 50%; }
 
 .podcast-profile-comment-other-user {
   display: flex;
@@ -861,7 +862,8 @@ hr.solid {
   margin: 0.5em; }
   .podcast-profile-comment-user img {
     width: 2em;
-    margin-right: 0.5em; }
+    margin-right: 0.5em;
+    border-radius: 50%; }
 
 /* USER PROFILE */
 .profile__info {
@@ -879,6 +881,7 @@ hr.solid {
   margin-bottom: 1em; }
   .profile__info__picture .avatar-img {
     display: inline-block;
+    border-radius: 50%;
     width: 70%; }
 
 .profile__details .bold {

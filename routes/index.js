@@ -99,8 +99,7 @@ router.get('/podcasts/profile/:id', (req, res, next) => {
         .findById(userID)
         .then((userDB) => {
           loggedUser = userDB;
-          console.log(loggedUser)
-        })
+        });
 
         return podcastDB;
       })
