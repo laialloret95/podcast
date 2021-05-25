@@ -8,7 +8,6 @@ const favicon = require('serve-favicon');
 const cookieParser = require('cookie-parser');
 const hbs = require('hbs');
 hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
-const mongoose = require('mongoose');
 const flash = require('connect-flash');
 
 // const sassMiddleware = require('node-sass-middleware');
@@ -40,14 +39,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
-// app.use(sassMiddleware({
-//   src: path.join(__dirname, 'public'),
-//   dest: path.join(__dirname, 'public'),
-//   indentedSyntax: false, // true = .sass and false = .scss
-//   sourceMap: true,
-//   prefix: '/commmon/css',
-//   debug: true
-// }));
 
 // Registered HBS Helpers
 require('./configs/hbs');
@@ -55,10 +46,6 @@ require('./configs/hbs');
 // Flash notifications
 app.use(flash());
 app.use(notifications(app));
-
-const app_name = require('./package.json').name;
-const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
-
 
 // 👇 Handling routes here
 app.use('/', indexRouter);
