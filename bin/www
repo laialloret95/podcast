@@ -43,6 +43,6 @@ server.on('error', error => {
   }
 });
 
-server.listen(PORT, () => {
+server.listen(PORT || 5000, () => {
   console.log(`Listening on http://localhost:${PORT}`);
 });
