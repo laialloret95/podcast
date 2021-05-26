@@ -208,11 +208,17 @@ router.post('/podcasts/profile/:podID/addComment', (req, res, next) => {
 
 router.get('/podcast/:podcastID/comment/:commentID/edit', (req, res, next) => {
   const { podcastID, commentID } = req.params;
+  const userID = req.session.currentUser._id;
 
   Comment.findById(commentID)
     .then(commentDB => {
-      Podcast.findById(podcastID).then(podcastDB => {
-        res.render('comments/edit-comment', { podcastDB, commentDB, loggedUser: true });
+      Podcast.findById(podcastID)
+      .then(podcastDB => {
+        User
+          .findById(userID)
+          .then(userDB => {
+            res.render('comments/edit-comment', { podcastDB, commentDB, userDB, loggedUser: true });
+          });
       });
     })
     .catch(error => next(error));

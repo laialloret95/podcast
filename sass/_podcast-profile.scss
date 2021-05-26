@@ -15,7 +15,7 @@
     }
 
     &__details {
-        width: 80%;
+        width: 85%;
         color: $font-color-secondary;
         display: flex;
         flex-direction: column;
@@ -60,7 +60,7 @@ hr.solid {
 .podcast-profile {
     display: flex;
     align-items: center;
-    padding-top: 1em;
+    padding: 0.5em 0;
 }
 
 .icon-name {
@@ -73,6 +73,7 @@ hr.solid {
     margin-left: auto;
     margin-right: 5%;
     color:rgba(0, 0, 0, 0.5);
+    padding: 0.5em 0;
 }
 
 .podcast-profile-description-container {
@@ -85,7 +86,8 @@ hr.solid {
     flex-direction: column;
     background-color: #fcfafa;
     border-radius: 5px;
-    padding: 0.5em;
+    padding: 1em;
+    margin-top: 1em;
 }
 
 .podcast-profile-comment-form {
@@ -101,7 +103,9 @@ hr.solid {
     border-radius: 4px;
     box-sizing: border-box;
     font-family: $font-family;
+    padding: 0.5em; 
     line-height: 2;
+    display: inline;
 }
 
 .profile-actions-left {
@@ -129,6 +133,11 @@ hr.solid {
     justify-content: flex-end;
     width: 100%;
     margin-top: 0.5em;
+}
+
+.profile-actions-right-bottom {
+    width: 100%;
+    text-align: end;
 }
 
 .podcast-profile-comments-container {
@@ -175,7 +184,7 @@ hr.solid {
 .podcast-profile-comment-user {
     display: flex;
     align-items: center;
-    margin: 0.5em ;
+    margin: 0.5em 0.5em 0 0.5em;
 
     img {
         width: 2em;

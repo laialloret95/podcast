@@ -39,9 +39,6 @@
                 <i class="fas fa-heart"></i>
                 <p class="icon-name">Favourite</p>
             </a>
-            {{#each (formatAudioLength podcastDB.audio_length)}}
-                <p class="minutes subtitle">{{this}}</p>
-            {{/each}}
         </div>
         {{/if}}
 
@@ -57,11 +54,15 @@
                 {{/if}}
             </div>
 
-            <div class="profile-actions-right-rating">
+            <div class="profile-actions-right-bottom">
                 {{#if loggedUser}}
                     {{#if (userRatedAlready userID podcastDB.ratings)}}
                         <a href="/podcast/{{podcastDB._id}}/rating">Rate this Podcast!</a>
                     {{/if}}
+                {{else}}
+                    {{#each (formatAudioLength podcastDB.audio_length)}}
+                        <p class="minutes subtitle">{{this}}</p>
+                    {{/each}}
                 {{/if}}
             </div>
         </div>
@@ -74,7 +75,9 @@
         <p>{{podcastDB.description}}</p>
     </div>
 
-    <hr class="solid">
+    {{#if podcastDB.comments}}
+        <hr class="solid">
+    {{/if}}
 
     {{#each podcastDB.comments}}
     <div class="podcast-profile-comments-container">
@@ -105,7 +108,9 @@
     {{/each}}
 
     {{#if podcastDB.comments}}
-        <hr class="solid">
+        {{#if loggedUser}}
+            <hr class="solid">
+          {{/if}}
     {{/if}}
 
     {{#if loggedUser}}

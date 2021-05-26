@@ -1,23 +1,21 @@
 {{>navbar}}
 <div class="container">
-    <div class="podcast-profile-header-container">
-        <img src="{{podcastDB.image}}" alt="podcast_image">
-        <div class="podcast-profile-header-text-container">
+    <div class="podcast__header__rating">
+        <img class="podcast__header__img" src="{{podcastDB.image}}" alt="podcast_image">
+        <div class="podcast__header__rating__details">
             <h1>{{podcastDB.title}}</h1>
-            <h2>{{podcastDB.author}}</h2>
-            <p>{{dateFormat podcastDB.pub_date "dddd, MMMM Do YYYY"}}</p>
         </div>
     </div>
 
-    <div>
-        <h2>Update the comment</h2>
-        <form action="/podcast/{{podcastDB._id}}/comment/{{commentDB._id}}/edit" method="POST">
+    <div class="podcast-profile-comment">
+        <div class="podcast-profile-comment-user">
+            <img  src={{userDB.profilePicture}} alt="">
+            <p>{{userDB.firstName}} {{userDB.lastName}}</p>
+        </div>
 
-            <label>Content:</label>
-            <input class= "comment-input" type="text" name="content" value="{{commentDB.content}}" />
-
-            <button type="submit">Save Changes</button>
-
+        <form class="podcast-profile-comment-form" action="/podcast/{{podcastDB._id}}/comment/{{commentDB._id}}/edit" method="POST">
+            <input class="podcast-profile-comment-form-content" type="text" name="content" value="{{commentDB.content}}" />
+            <button class="button-comment" type="submit">Save Changes</button>
         </form>
     </div>
 </div> <!-- /container -->

@@ -1,6 +1,13 @@
 {{>navbar}}
 <div class="container">
-    <p> Did you like <strong>{{podcastDB.title}}</strong> ?</p>
+
+    <div class="podcast__header__rating">
+        <img class="podcast__header__img" src="{{podcastDB.image}}" alt="podcast_image">
+        <div class="podcast__header__rating__details">
+            <h1>{{podcastDB.title}}</h1>
+        </div>
+    </div>
+    <!-- <p> Did you like <strong>{{podcastDB.title}}</strong> ?</p> -->
 
     <div class="ratings-container">
         <form action="/podcast/{{podcastDB._id}}/rating/1.67" method="POST">
