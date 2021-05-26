@@ -109,7 +109,7 @@ router.get('/profile/edit', (req, res, next) => {
    .catch((error) => next(error));
 });
 
-router.post('/profile/edit', fileUploader.single('image'), (req, res, next) => {
+router.post('/profile/edit', (req, res, next) => {
   const { firstName, lastName, email, preferences } = req.body;
   const id  = req.session.currentUser._id;
 
@@ -122,14 +122,7 @@ router.post('/profile/edit', fileUploader.single('image'), (req, res, next) => {
     return;
   }
 
-  let profilePicture;
-  if (req.file) {
-    profilePicture = req.file.path;
-  } else {
-    profilePicture = req.body.existingImage;
-  }
-
-  User.findByIdAndUpdate( id, { firstName, lastName, email, preferences, profilePicture }, { new: true })
+  User.findByIdAndUpdate( id, { firstName, lastName, email, preferences }, { new: true })
    .then(() => {
       req.flash('success', "Your profile has been updated successfully!");
       res.redirect("/profile");
