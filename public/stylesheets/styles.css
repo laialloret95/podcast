@@ -308,6 +308,8 @@ a {
   max-width: 900px;
   margin: 1.5em auto 4.75em;
   text-align: left; }
+  .container.mg {
+    margin: 1.5em auto 2em; }
 
 /* FOOTER */
 footer {
@@ -673,7 +675,7 @@ a {
 /*SIGNUP FORM */
 .signup {
   background-color: #f2f3f4;
-  padding: 2em 2em;
+  padding: 2em 2em 1.25em;
   text-align: center; }
   .signup h1 {
     color: #845cfc; }

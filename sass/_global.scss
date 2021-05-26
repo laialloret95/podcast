@@ -45,7 +45,11 @@ a {
     width: 90%;
     max-width: 900px;
     margin: 1.5em auto 4.75em;
-    text-align: left;
+    text-align: left; 
+
+    &.mg {
+        margin: 1.5em auto 2em;
+    }
 }
 
 /* FOOTER */
