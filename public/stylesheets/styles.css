@@ -581,7 +581,7 @@ a {
   ##Screen = B/w 481px to 767px
 */
 /*   ##Device = Tablets, Ipads (landscape) */
-@media (min-width: 570px) and (max-width: 1281px) {
+@media (min-width: 570px) {
   .genres__slider {
     justify-content: space-evenly; }
   .genres__slider__bubble {

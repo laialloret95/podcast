@@ -68,7 +68,7 @@
   ##Screen = B/w 481px to 767px
 */
 /*   ##Device = Tablets, Ipads (landscape) */
-@media (min-width: 570px) and (max-width: 1281px) {
+@media (min-width: 570px) {
     .genres {
         &__slider {
             justify-content: space-evenly;
