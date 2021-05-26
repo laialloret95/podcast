@@ -306,7 +306,7 @@ a {
 .container {
   width: 90%;
   max-width: 900px;
-  margin: 2.5em auto 4em;
+  margin: 1.5em auto 4.75em;
   text-align: left; }
 
 /* FOOTER */
@@ -884,12 +884,11 @@ hr.solid {
   border-radius: 10px 10px 0 0; }
 
 .profile__info__picture {
-  width: 50%;
-  margin-bottom: 1em; }
+  width: 50%; }
   .profile__info__picture .avatar-img {
     display: inline-block;
     border-radius: 50%;
-    width: 70%; }
+    width: 80%; }
 
 .profile__details .bold {
   font-weight: 600;
