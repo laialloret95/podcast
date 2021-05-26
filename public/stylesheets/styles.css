@@ -969,6 +969,12 @@ hr.solid {
   .profile__podcast h2 {
     margin-bottom: 1em; }
 
+.dropdown-content {
+  display: none;
+  overflow: hidden; }
+  .dropdown-content.show {
+    display: block; }
+
 /* EDIT PROFILE */
 .edit {
   background-color: rgba(211, 211, 211, 0.247);

@@ -86,6 +86,15 @@
 
 }
 
+.dropdown-content {
+    display: none;
+    overflow: hidden;
+
+    &.show {
+        display:block;
+    }
+}
+
 
 /* EDIT PROFILE */
 .edit {
