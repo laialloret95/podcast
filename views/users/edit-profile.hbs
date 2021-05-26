@@ -8,11 +8,11 @@
             <input type="file" name="image" id="image-input" class="form-control-file" />
             <input type="text" name="existingImage" hidden id="" value="{{userFromDB.profilePicture}}">
             
-            <input class="input-auth" type="text" name="firstName" id="firstName" value="{{userFromDB.firstName}}"/>
+            <input class="input-auth" type="text" name="firstName" id="firstName" value="{{userFromDB.firstName}}" required/>
 
-            <input class="input-auth" type="text" name="lastName"  id="lastName" value="{{userFromDB.lastName}}"/>
+            <input class="input-auth" type="text" name="lastName"  id="lastName" value="{{userFromDB.lastName}}" required/>
 
-            <input class="input-auth" type="email" name="email" id="email" value="{{userFromDB.email}}" />
+            <input class="input-auth" type="email" name="email" id="email" value="{{userFromDB.email}}" required/>
         </br>
         <h2>Update your preferences</h1>
             <input type="checkbox" id="technology" name="preferences" value="Technology" {{#ifInPreferences 'Technology' userFromDB.preferences }} checked {{/ifInPreferences}}>
@@ -41,7 +41,10 @@
             </br>
             </br>
 
-            <button class="button mg" type="submit">Save preferences</button>
+            <button class="button mg" type="submit">Save changes</button>
+            {{#if errorMessage}}
+               <p class="error">{{errorMessage}}</p>
+            {{/if}}
         </form>
     </div>
 </div> <!-- /container -->

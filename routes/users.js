@@ -113,6 +113,15 @@ router.post('/profile/edit', fileUploader.single('image'), (req, res, next) => {
   const { firstName, lastName, email, preferences } = req.body;
   const id  = req.session.currentUser._id;
 
+  if (!firstName || !lastName || !email ) {
+    User
+    .findById(id)
+    .then((userFromDB) => res.render('users/edit-profile', { userFromDB, loggedUser: true, 
+      errorMessage: `Firstname, lastname and email are required fields. 
+    Please fill them all to edit your profile.` }));
+    return;
+  }
+
   let profilePicture;
   if (req.file) {
     profilePicture = req.file.path;
