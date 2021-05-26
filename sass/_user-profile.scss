@@ -24,6 +24,10 @@
 
     &__details {
 
+        h1 {
+          margin: 0 0 0.67em;
+        }
+
         .bold {
             font-weight: 600;
             text-decoration: underline;
@@ -93,18 +97,15 @@
     left: 40px;
 
     .btn-edit {
+        width: auto;
         border-radius: 25%;
-
-        &:focus,
-        &:hover {
-            background-color: $color-secondary;
-        }
     }
 }
 
 .dropdown-content {
     display: none;
     overflow: hidden;
+    background: none;
 
     &.show {
         display: block;
@@ -128,10 +129,16 @@
             font-size: 0.80em;
         }
 
-        button {
-            margin: 0.75em 0 0.5em;
-            font-size: 0.75em;
-            align-self: center;
+        .pop-up__buttons {
+            width: 100%;
+
+            .button {
+                margin: 0.75em 0 0.5em;
+                font-size: 0.75em;
+                align-self: center;
+
+            }
+
         }
     }
 }

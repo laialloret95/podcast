@@ -653,6 +653,10 @@ a {
     margin: .5em 0; }
   .button.inline-block {
     display: inline-block; }
+  .button.cancel {
+    background-color: #f2f3f4;
+    box-shadow: none;
+    color: #494f65; }
 
 /* COMMENT BUTTON */
 .button-comment {
@@ -926,6 +930,9 @@ hr.solid {
     border-radius: 50%;
     width: 80%; }
 
+.profile__details h1 {
+  margin: 0 0 0.67em; }
+
 .profile__details .bold {
   font-weight: 600;
   text-decoration: underline; }
@@ -975,13 +982,13 @@ hr.solid {
   bottom: 40px;
   left: 40px; }
   .profile__info__picture__edit .btn-edit {
+    width: auto;
     border-radius: 25%; }
-    .profile__info__picture__edit .btn-edit:focus, .profile__info__picture__edit .btn-edit:hover {
-      background-color: #845cfc; }
 
 .dropdown-content {
   display: none;
-  overflow: hidden; }
+  overflow: hidden;
+  background: none; }
   .dropdown-content.show {
     display: block;
     overflow: visible;
@@ -1001,10 +1008,12 @@ hr.solid {
       background: white;
       font-family: "Montserrat", sans-serif;
       font-size: 0.80em; }
-    .dropdown-content.show button {
-      margin: 0.75em 0 0.5em;
-      font-size: 0.75em;
-      align-self: center; }
+    .dropdown-content.show .pop-up__buttons {
+      width: 100%; }
+      .dropdown-content.show .pop-up__buttons .button {
+        margin: 0.75em 0 0.5em;
+        font-size: 0.75em;
+        align-self: center; }
 
 /* EDIT PROFILE */
 .edit {

@@ -9,3 +9,7 @@ toggle between hiding and showing the dropdown content */
 function editImgDropDown() {
   document.getElementById("dropDown-btn").classList.toggle("show");
 }
+
+function cancelChanges() {
+  document.getElementById("dropDown-btn").classList.remove("show");
+}
