@@ -14,7 +14,7 @@
         </div>
 
         <form class="podcast-profile-comment-form" action="/podcast/{{podcastDB._id}}/comment/{{commentDB._id}}/edit" method="POST">
-            <input class="podcast-profile-comment-form-content" type="text" name="content" value="{{commentDB.content}}" />
+            <textarea class="podcast-profile-comment-form-content" name="content" value="{{commentDB.content}}" />{{commentDB.content}}</textarea>
             <button class="button-comment" type="submit">Save Changes</button>
         </form>
     </div>
