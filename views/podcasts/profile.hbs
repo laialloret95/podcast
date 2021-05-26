@@ -85,7 +85,7 @@
         <div class="podcast-profile-comments-header">
             <div class="podcast-profile-comment-other-user">
                 <img src={{this.author.profilePicture}} alt="">
-                <p> <strong>{{this.author.firstName}} {{this.author.lastName}}</strong></p>
+                <p><strong>{{this.author.firstName}} {{this.author.lastName}}</strong></p>
             </div>
             <p>{{this.content}}</p>
         </div>
@@ -116,8 +116,8 @@
     {{#if loggedUser}}
     <div class="podcast-profile-comment">
         <div class="podcast-profile-comment-user">
-            <img  src={{userData.profilePicture}} alt="">
-            <p>{{userData.firstName}} {{userData.lastName}}</p>
+            <img src={{userData.profilePicture}} alt="">
+            <p><strong>{{userData.firstName}} {{userData.lastName}}</strong></p>
         </div>
 
         <form class="podcast-profile-comment-form" action="{{podcastDB._id}}/addComment" method="POST">
