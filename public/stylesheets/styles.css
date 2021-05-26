@@ -504,6 +504,37 @@ a {
   .searchBar {
     bottom: -10px; } }
 
+/************ ALERTS ************/
+.fixed {
+  position: absolute; }
+
+.alert {
+  padding: 16px;
+  border: 1px solid transparent;
+  top: 0px;
+  width: 100vw;
+  position: fixed;
+  color: #fff;
+  text-align: center;
+  animation: moveInBottom 5s ease-out; }
+  .alert.alert-success {
+    background-color: #62C890;
+    border-color: #62C890; }
+  .alert.alert-info {
+    background-color: #1A697F;
+    border-color: #1A697F; }
+  .alert.alert-danger {
+    background-color: #C84040;
+    border-color: #C84040; }
+
+@keyframes moveInBottom {
+  0% {
+    top: 0px; }
+  80% {
+    top: 0px; }
+  100% {
+    top: 0px; } }
+
 .card__container {
   display: flex;
   flex-direction: column; }
