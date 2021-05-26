@@ -255,7 +255,7 @@ router.get('/podcast/:podcastID/rating', (req, res, next) => {
     Podcast
         .findById(podcastID)
         .then( podcastDB => {
-            res.render("podcasts/rating", { podcastDB } );
+            res.render("podcasts/rating", { podcastDB, loggedUser: true } );
         })
         .catch(error => next(error));
 });

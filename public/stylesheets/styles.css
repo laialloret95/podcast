@@ -311,7 +311,8 @@ a {
 
 /* FOOTER */
 footer {
-  position: relative;
+  position: absolute;
+  z-index: 1;
   bottom: 0;
   width: 100%;
   background-color: #845cfc;
@@ -319,6 +320,8 @@ footer {
   footer p {
     text-align: center;
     color: white; }
+  footer.relative {
+    position: relative; }
 
 h1, h2, h3, p, a, input, label, .subtitle, .medium {
   /* Font minimum, preferred and maximum value */

@@ -20,7 +20,7 @@ $font-size-smll: 0.60rem;
 /* BODY */
 body {
     font-size:16px;
-    width:100%;
+    width: 100%;
     height: 100%;
     background-color: $color-primary;
     color: $font-color-primary;
@@ -51,7 +51,8 @@ a {
 /* FOOTER */
 
 footer {
-    position: relative;
+    position: absolute;
+    z-index:1;
     bottom: 0;
     width: 100%;
     background-color: rgb(132, 92, 252);
@@ -60,5 +61,9 @@ footer {
     p {
         text-align: center;
         color: white;
+    }
+
+    &.relative {
+        position: relative;
     }
 }
