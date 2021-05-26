@@ -969,11 +969,42 @@ hr.solid {
   .profile__podcast h2 {
     margin-bottom: 1em; }
 
+/* EDIT PROFILE PICTURE FROM PROFILE */
+.profile__info__picture__edit {
+  position: relative;
+  bottom: 40px;
+  left: 40px; }
+  .profile__info__picture__edit .btn-edit {
+    border-radius: 25%; }
+    .profile__info__picture__edit .btn-edit:focus, .profile__info__picture__edit .btn-edit:hover {
+      background-color: #845cfc; }
+
 .dropdown-content {
   display: none;
   overflow: hidden; }
   .dropdown-content.show {
-    display: block; }
+    display: block;
+    overflow: visible;
+    width: 100%;
+    width: 350px;
+    position: relative;
+    right: 130px;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5em;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; }
+    .dropdown-content.show .input-file {
+      height: 1.75em;
+      background: white;
+      font-family: "Montserrat", sans-serif;
+      font-size: 0.80em; }
+    .dropdown-content.show button {
+      margin: 0.75em 0 0.5em;
+      font-size: 0.75em;
+      align-self: center; }
 
 /* EDIT PROFILE */
 .edit {
