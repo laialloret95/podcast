@@ -92,45 +92,42 @@ router.post('/login', (req, res, next) => {
 
   if (!email || !password) {
     res.render('auth/login', { errorMessage: 'Please enter both, email and password to login.' });
-    return;
   }
 
   User.findOne({ email })
     .then((userDB) => {
       if (!userDB) {
         res.render('auth/login', { errorMessage: 'Email is not registered. Try with other email.' });
-        return;
       } else if (bcryptjs.compareSync(password, userDB.hashedPassword)) {
         const { _id, firstName, lastName, email: mail, preferences, profilePicture } = userDB;
-        return (req.session.currentUser = {
+        req.session.currentUser = {
           _id,
           firstName,
           lastName,
           mail,
           preferences,
           profilePicture
-        });
+         };
+
+          if (referer.includes('logout')) {
+            req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
+            res.redirect('/');
+          } else if (referer.includes(req.session.currentUser._id))  {
+            req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
+            res.redirect('/profile');
+          } else if (referer.includes('signup'))  {
+            req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
+            res.redirect('/');
+          } else {
+            req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
+            res.redirect('/profile');
+          }
+
       } else {
         res.render('auth/login', { errorMessage: 'Incorrect password.' });
-        return;
       }
     })
-    .then((currentUser) => {
-      if (referer.includes('logout')) {
-        req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
-        res.redirect('/');
-      } else if (referer.includes(currentUser._id))  {
-        req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
-        res.redirect('/profile');
-      } else if (referer.includes('signup'))  {
-        req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
-        res.redirect('/');
-      } else {
-        req.flash('success', 'Welcome to your Podapp profile! Enjoy listening 🎧');
-        res.redirect(referer);
-      }
-    })
-    .catch((error) => next(error));
+    .catch(error => next(error));
 });
 
 router.get('/logout', (req, res) => {
