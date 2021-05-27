@@ -138,21 +138,17 @@ router.post('/profile/edit/picture', fileUploader.single('image'), (req, res, ne
   let profilePicture;
   if (req.file) {
     profilePicture = req.file.path;
-    User.findByIdAndUpdate( id, { profilePicture }, { new: true })
-    .then(() => {
- 
-       req.flash('success', "Your profile has been updated successfully!");
-       res.redirect("/profile");
-    })
-    .catch((error) => next(error));
   } else {
     profilePicture = req.body.existingImage;
-    User.findByIdAndUpdate( id, { profilePicture }, { new: true })
-    .then(() => {
-       res.redirect("/profile");
-    })
-    .catch((error) => next(error));
   }
+
+  User.findByIdAndUpdate( id, { profilePicture }, { new: true })
+   .then(() => {
+
+      req.flash('success', "Your profile has been updated successfully!");
+      res.redirect("/profile");
+   })
+   .catch((error) => next(error));
 });
 
 module.exports = router;
