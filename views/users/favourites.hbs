@@ -1,7 +1,18 @@
 {{>navbar}}
  <div class="container">
-    <h2>Favourites!</h2>
+    {{#if favouritesDB}}
+        <h2>Favourites!</h2>
+    {{/if}}
+
     <div class="card__container">
+      {{#unless favouritesDB}}
+        <div class="no-favourites">
+          <img src="../../images/heart_broken_panda.png" width="300px" alt="heart broken panda">
+          <p>It seems like you don't have any favourites yet!</p>
+          <a class="button" href="/">Find them in here</a>
+        </div>
+
+      {{/unless}}
       {{#each favouritesDB}}
         <a class="card__podcast" href="/podcasts/profile/{{this.podcastID._id}}">
             <div class="card__podcast__image">

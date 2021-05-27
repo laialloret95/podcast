@@ -1216,3 +1216,17 @@ hr.solid {
 .content .btns a:hover {
   background: #69a6ce;
   color: #fff; }
+
+.no-favourites {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  height: 65vh; }
+  .no-favourites p {
+    width: 90%;
+    text-align: center;
+    margin-bottom: 0.5em; }
+  .no-favourites img {
+    margin: 0 0 1em 2em; }

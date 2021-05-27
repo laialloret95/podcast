@@ -1,0 +1,18 @@
+.no-favourites {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    height: 65vh;
+
+    p {
+        width: 90%;
+        text-align: center;
+        margin-bottom: 0.5em;
+    }
+
+    img {
+        margin: 0 0 1em 2em;
+    }
+}
