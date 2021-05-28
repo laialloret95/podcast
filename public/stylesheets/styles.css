@@ -796,7 +796,7 @@ hr.solid {
 
 .podcast-profile-actions-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%; }
 
 .podcast-profile-actions-container i {

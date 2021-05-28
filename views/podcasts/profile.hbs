@@ -32,11 +32,11 @@
         {{else}}
         <div class="profile-actions-left">
             <a class="podcast-profile" href="/login">
-                <i class="far fa-play-circle"></i>
+                <i class="far fa-play-circle fa-2x"></i>
                 <p class="icon-name">Play</p>
             </a>
             <a class="podcast-profile" href="/login">
-                <i class="fas fa-heart"></i>
+                <i class="fab fa-gratipay fa-2x"></i>
                 <p class="icon-name">Favourite</p>
             </a>
         </div>
@@ -61,7 +61,7 @@
                     {{/if}}
                 {{else}}
                     {{#each (formatAudioLength podcastDB.audio_length)}}
-                        <p class="minutes subtitle">{{this}}</p>
+                        <p class="minutes">Duration: {{this}}</p>
                     {{/each}}
                 {{/if}}
             </div>
