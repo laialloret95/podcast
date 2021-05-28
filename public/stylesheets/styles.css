@@ -1241,7 +1241,6 @@ hr.solid {
 .no-favourites {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   margin: auto;
   height: 65vh; }

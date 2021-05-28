@@ -3,9 +3,20 @@
 <div class="container">
   {{#if genre}}
     <h1>All {{genre}} podcast</h1>
-  {{else}}
+  {{else}} 
+    {{#if podcastsDB}}
     <h1>Results for "{{keywords}}"</h1>
+    {{/if}}
   {{/if}}
+
+  {{#unless podcastsDB}}
+    <div class="no-favourites">
+      <img src="../../images/heart_broken_panda.png" width="270px" alt="heart broken panda">
+      <p>We don't have results for <strong>"{{keywords}}"</strong></p>
+      <a class="button" href="/">Find other Podcasts here</a>
+    </div>
+  {{/unless}}
+
     <div class="card__container">
         {{#each podcastsDB}}
         <a class="card__podcast" href="/podcasts/profile/{{_id}}">
