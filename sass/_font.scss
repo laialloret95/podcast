@@ -5,12 +5,12 @@ h1, h2, h3, p, a, input, label, .subtitle, .medium {
 
 /* Font size variables */
 h1 {
-  --min: 1.5em; /* minimum value */
+  --min: 1.3em; /* minimum value */
   --val: 4vw; /* preferred value = 4% viewport width */
   --max: 1.6em; /* maximum value */
 }
 h2 {
-  --min: 1.3em;   /* minimum value */
+  --min: 1.2em;   /* minimum value */
   --val: 3vw;     /* preferred value = 3% viewport width */
   --max: 1.40em;  /* maximum value */
   margin-bottom: 0.25em;
