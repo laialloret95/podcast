@@ -112,7 +112,6 @@ router.get('/profile/edit', (req, res, next) => {
 router.post('/profile/edit', (req, res, next) => {
   const { firstName, lastName, email, preferences } = req.body;
   const id  = req.session.currentUser._id;
-  console.log(req.body);
 
   if (!firstName || !lastName || !email ) {
     User
@@ -123,8 +122,9 @@ router.post('/profile/edit', (req, res, next) => {
     return;
   }
 
-  User.findByIdAndUpdate( id, { firstName, lastName, email, preferences }, { new: true })
-   .then(() => {
+  User
+    .findByIdAndUpdate( id, { firstName, lastName, email, preferences }, { new: true })
+    .then(() => {
       req.flash('success', "Your profile has been updated successfully!");
       res.redirect("/profile");
    })
@@ -142,9 +142,9 @@ router.post('/profile/edit/picture', fileUploader.single('image'), (req, res, ne
     profilePicture = req.body.existingImage;
   }
 
-  User.findByIdAndUpdate( id, { profilePicture }, { new: true })
-   .then(() => {
-
+  User
+    .findByIdAndUpdate( id, { profilePicture }, { new: true })
+    .then(() => {
       req.flash('success', "Your profile has been updated successfully!");
       res.redirect("/profile");
    })
