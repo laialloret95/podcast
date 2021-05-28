@@ -22,7 +22,7 @@
                 <h2 class="h2--small">{{{this.podcastID.title}}}</h2>
                 <p class="subtitle">{{this.podcastID.author}}</p>
             </div>
-            <form action="/favourites/{{this.podcastID._id}}/delete" method="POST">
+            <form class="delete-favourite" action="/favourites/{{this.podcastID._id}}/delete" method="POST">
                 <button class="trash-delete"><i class="fas fa-trash-alt fa-lg" style="color:#8E1515"></i></button>
             </form>
         </a>

@@ -7,12 +7,12 @@ h1, h2, h3, p, a, input, label, .subtitle, .medium {
 h1 {
   --min: 1.5em; /* minimum value */
   --val: 4vw; /* preferred value = 4% viewport width */
-  --max: 2em; /* maximum value */
+  --max: 1.6em; /* maximum value */
 }
 h2 {
   --min: 1.3em;   /* minimum value */
   --val: 3vw;     /* preferred value = 3% viewport width */
-  --max: 1.75em;  /* maximum value */
+  --max: 1.40em;  /* maximum value */
   margin-bottom: 0.25em;
 }
 
@@ -29,7 +29,7 @@ input[type=search],
 label {
   --min: 1em;   /* minimum value */
   --val: 2vw; /* preferred value = 2 viewport width */
-  --max: 1em; /* maximum value */
+  --max: 1.15em; /* maximum value */
 }
 
 a {
