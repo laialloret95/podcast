@@ -48,6 +48,13 @@
         box-shadow: none;
         color: $font-color-primary;
     }
+
+    &.review {
+        background-color: white;
+        color: #845cfc;
+        border: 1px #845cfc solid;
+        box-shadow: none;
+    }
 }
 
 /* COMMENT BUTTON */

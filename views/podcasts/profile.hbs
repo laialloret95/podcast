@@ -18,12 +18,12 @@
             <audio controls src={{podcastDB.audio}}> </audio>
             {{#if favouritedPocast}}
             <div class="podcast-profile">
-                <i class="fas fa-check-circle"></i>
-                <p class="icon-name">Saved!</p>
+                <i class="fab fa-gratipay" style="color:#006400"></i>
+                <p class="icon-name" style="color:#006400">Saved!</p>
             </div>
             {{else}}
             <a class="podcast-profile" href="/favourites/{{podcastDB._id}}">
-                <i class="fas fa-heart"></i>
+                <i class="fab fa-gratipay fa-2x"></i>
                 <p class="icon-name">Add to Favourites</p>
             </a>
             {{/if}}
@@ -32,12 +32,12 @@
         {{else}}
         <div class="profile-actions-left">
             <a class="podcast-profile" href="/login">
-                <i class="far fa-play-circle fa-2x"></i>
-                <p class="icon-name">Play</p>
+                <i class="far fa-play-circle fa-2x" style="color:#845cfc"></i>
+                <p class="icon-name" style="color:#845cfc">Play</p>
             </a>
             <a class="podcast-profile" href="/login">
-                <i class="fab fa-gratipay fa-2x"></i>
-                <p class="icon-name">Favourite</p>
+                <i class="fab fa-gratipay fa-2x" style="color:#845cfc"></i>
+                <p class="icon-name" style="color:#845cfc">Favourite</p>
             </a>
         </div>
         {{/if}}
@@ -57,7 +57,7 @@
             <div class="profile-actions-right-bottom">
                 {{#if loggedUser}}
                     {{#if (userRatedAlready userID podcastDB.ratings)}}
-                        <a href="/podcast/{{podcastDB._id}}/rating">Rate this Podcast!</a>
+                        <a class="button small review" href="/podcast/{{podcastDB._id}}/rating">Leave a Review</a>
                     {{/if}}
                 {{else}}
                     {{#each (formatAudioLength podcastDB.audio_length)}}

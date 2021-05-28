@@ -656,6 +656,11 @@ a {
     background-color: #f2f3f4;
     box-shadow: none;
     color: #494f65; }
+  .button.review {
+    background-color: white;
+    color: #845cfc;
+    border: 1px #845cfc solid;
+    box-shadow: none; }
 
 /* COMMENT BUTTON */
 .button-comment {
@@ -808,7 +813,7 @@ hr.solid {
 .podcast-profile {
   display: flex;
   align-items: center;
-  padding: 0.5em 0; }
+  margin-top: 1em; }
 
 .icon-name {
   font: 'Lucida Grande', Helvetica, Arial, sans-serif;
