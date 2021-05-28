@@ -36,6 +36,25 @@
     }
 }
 
-@media screen {
+/*   ##Device = Tablets, Ipads (landscape) */
+@media (min-width: 570px) and (max-width: 1023px) {
+
+    .card__podcast {
     
+        &__image {
+            width: 20%;
+            padding: .5em;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .card__podcast {
+    
+        &__image {
+            width: 15%;
+            padding: .5em;
+        }
+    }
 }
