@@ -11,6 +11,7 @@ router.get('/signup', (req, res) => res.render('auth/signup'));
 
 router.post('/signup', (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
+  console.log(req.body);
 
   if (!firstName || !lastName || !email || !password) {
     res.render('auth/signup', {

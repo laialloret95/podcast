@@ -112,6 +112,7 @@ router.get('/profile/edit', (req, res, next) => {
 router.post('/profile/edit', (req, res, next) => {
   const { firstName, lastName, email, preferences } = req.body;
   const id  = req.session.currentUser._id;
+  console.log(req.body);
 
   if (!firstName || !lastName || !email ) {
     User
@@ -133,7 +134,6 @@ router.post('/profile/edit', (req, res, next) => {
 //EDIT PROFILE PICTURE 
 router.post('/profile/edit/picture', fileUploader.single('image'), (req, res, next) => {
   const id = req.session.currentUser._id;
-  console.log(req.body.existingImage);
 
   let profilePicture;
   if (req.file) {
