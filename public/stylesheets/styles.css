@@ -314,7 +314,6 @@ a {
 /* FOOTER */
 footer {
   position: absolute;
-  z-index: 1;
   bottom: 0;
   width: 100%;
   background-color: #845cfc;
@@ -1132,13 +1131,12 @@ hr.solid {
 
 #error-page {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   align-items: center;
   justify-content: center;
   background: #fff;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
   width: 90%;
   height: 80%;
   display: flex;
