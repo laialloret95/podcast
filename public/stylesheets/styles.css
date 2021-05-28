@@ -921,6 +921,9 @@ hr.solid {
     margin-right: 0.5em;
     border-radius: 50%; }
 
+.comment-margin {
+  margin-left: 2.25em; }
+
 /* USER PROFILE */
 .profile__info {
   display: flex;
