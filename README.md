@@ -178,18 +178,6 @@ The users are also able to rate and comment their favorite podcasts!
 
 ## Links
 
-### Github kanban
-
-​
-[Link to my project]()
-​
-
-### Github repository
-
-​
-[Link Repo]()
-​
-
 ### Project deploy
 
 ​
@@ -199,11 +187,11 @@ The users are also able to rate and comment their favorite podcasts!
 ### Wireframes
 
 ​
-https://excalidraw.com/#room=9ca8cea4b63cce2e4076,DYERAHJrSXWUMBT5r_uscQ
+(![podapp-wireframes](https://user-images.githubusercontent.com/70531755/125267834-73ae2180-e307-11eb-8bb7-cb582b347265.png)
+
 ​
 
 ### Slides
-
 ​
 URls for the project presentation
 [Link Slides.com]()
