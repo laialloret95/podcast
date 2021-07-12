@@ -181,17 +181,17 @@ The users are also able to rate and comment their favorite podcasts!
 ### Project deploy
 
 ​
-[Link Deploy]()
+[Link Deploy](https://podapp-ih.herokuapp.com/)
 ​
 
 ### Wireframes
 
 ​
-(![podapp-wireframes](https://user-images.githubusercontent.com/70531755/125267834-73ae2180-e307-11eb-8bb7-cb582b347265.png)
+![podapp-wireframes](https://user-images.githubusercontent.com/70531755/125267834-73ae2180-e307-11eb-8bb7-cb582b347265.png)
 
 ​
 
 ### Slides
 ​
 URls for the project presentation
-[Link Slides.com]()
+[See the Slides here](https://slides.com/elisendamonserratalbiol/deck-812d2f)
