@@ -193,5 +193,4 @@ The users are also able to rate and comment their favorite podcasts!
 
 ### Slides
 ​
-URls for the project presentation
 [See the Slides here](https://slides.com/elisendamonserratalbiol/deck-812d2f)
