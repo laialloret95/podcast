@@ -1,13 +1,10 @@
-# Your project's name
-
-​
+# Podapp 🎧
 
 ## Description
 
 Podcast webapp to discover amazing podcast and create your own collections and share it with friends.
 
 The users are also able to rate and comment their favorite podcasts!
-​
 
 ## User stories (MVP)
 
